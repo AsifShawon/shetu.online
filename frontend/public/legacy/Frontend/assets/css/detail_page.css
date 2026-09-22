@@ -1,0 +1,430 @@
+.detail_section{
+    width: 100%;
+    height: auto;
+    display: flex;
+    position: relative;
+}
+.max_width{
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+    margin: auto;
+    max-width: 1200px;
+    height: auto;
+    width: 100%;
+    display: flex;
+    gap: 25px;
+    background-color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+}
+.detail_section .max_width  .banner_part{
+    width: 100%;
+    max-height: 300px !important;
+    display: flex;
+    
+}
+.detail_section .max_width  .banner_part img{
+    height: 100%;
+    width: auto;
+    margin: auto;
+    border-radius: 15px;
+}
+.detail_section .max_width  .banner_part .banner_part_desc{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    
+}
+.detail_section .max_width  .banner_part .banner_part_desc .description{
+    height: auto;
+    background-color: white;
+    width: 100%;
+}
+
+/* ______________________________ headline start */
+.headline h1{
+    font-size: 25px;
+    font-weight: 700;
+}
+.headline .review{
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+}
+.headline .review .star{
+    color: rgb(252, 154, 56);
+    font-size: 17px;
+}
+.headline .review p{
+    margin-top:5px;
+    margin-left: 5px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.416);
+    font-size: 12px;
+}
+.mobile{
+    display: none !important;
+}
+/* ______________________________ headline end */
+
+
+.detail_section .max_width  .banner_part .banner_part_desc .description .desc_text{
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.5;
+    color: rgba(0, 0, 0, 0.83);
+    padding: 0;
+}
+
+.detail_section .max_width  .banner_part .banner_part_desc .description .price_div{
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    display: flex;
+    border-radius: 10px;
+    background-color: white;
+    margin-top: 25px;
+}
+.detail_section .max_width  .banner_part .banner_part_desc .description .price_div .price_part{
+    margin: auto;
+    padding: 10px;
+}
+.detail_section .max_width  .banner_part .banner_part_desc .description .price_div .price_part label{
+    color: rgba(0, 0, 0, 0.531);
+    font-size: 12px;
+    font-weight: 600;
+}
+.detail_section .max_width  .banner_part .banner_part_desc .description .price_div .price_part p{
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+    font-size: 13px;
+}
+.detail_section .max_width  .banner_part .banner_part_desc .description .button_sec{
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+}
+.detail_section .max_width  .banner_part .banner_part_desc .description .button_sec .sec{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+.detail_section .max_width  .banner_part .banner_part_desc .description .button_sec .sec h3{
+    width: 100%;
+    text-align: left;
+    margin: 0;
+    font-weight: 700;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.63);
+}
+.detail_section .max_width  .banner_part .banner_part_desc .description .button_sec .sec button{
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 5px;
+    border:2px solid var(--primary-color);
+    background-color: var(--primary-color);
+    color: white;
+}
+.detail_section .max_width  .banner_part .banner_part_desc .description .button_sec .sec button:hover{
+    background-color: transparent;
+    color: black;
+}
+
+@media (max-width: 1200px) {
+    .mobile{
+        display: block !important;
+        padding: 10px;
+    }
+    .detail_section .max_width  .mobile .desc_text{
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 2;
+        color: rgba(0, 0, 0, 0.507);
+    }
+    .desctop{
+        display: none !important;
+    }
+    .detail_section .max_width {
+        display: block;
+        height: auto;
+        gap: 0px;
+    }
+    .detail_section .max_width {
+        height: auto;
+    }
+    .detail_section .max_width  .banner_part img{
+        height: 200px;
+        width: auto;
+    }
+    .detail_section .max_width  .banner_part .banner_part_desc .description{
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-top: -10px;
+    }
+    .detail_section .max_width  .mobile_banner_part{
+        margin: 0;
+        padding: 0px;
+        height: 170px;
+    }
+
+  }
+
+
+
+/* ________________________________ description start */
+.description_section{
+    width: 100%;
+    height: auto;
+    display: flex;
+    position: relative;
+}
+.description_section .centered_desc{
+    margin: auto;
+    max-width: 1200px;
+    height: auto;
+    width: 100%;
+    padding-top: 35px;
+    padding-bottom: 35px;
+    position: relative;
+    background-color: white;
+    padding-left: 20px;
+    padding-right: 20px
+}
+.description_section .centered_desc .desc_text{
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    height: auto    ;
+    border-radius: 7px;
+}
+.description_section .centered_desc p,
+.description_section .centered_desc ul li{
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 2;
+    color: rgba(0, 0, 0, 0.901);
+    list-style:inside !important;
+}
+.description_section .centered_desc .features p{
+    font-size: 15px;
+    color: #000000;
+    font-weight: 600;
+}
+@media (max-width: 550px){
+    .description_section{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .detail_section .max_width  .banner_part .banner_part_desc .description .button_sec .sec h3{
+        font-size: 13px;
+        margin-top: 0px;
+    }
+    .headline h1{
+        font-size: 18px;
+    }
+}
+/* ________________________________ description end */
+
+
+
+
+/* ________________________________ REVIEW SECTION START */
+.review_section{
+    width: 100%;
+    height: auto;
+    display: flex;
+    padding-bottom: 3rem;
+}
+.review_section .center_review {
+    margin: auto;
+    max-width: 1100px;
+    height: auto;
+    width: 100%;
+    position: relative;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    overflow: hidden;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+    z-index: 100 !important;
+}
+.review_section .center_review h3{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 20px;
+    font-weight: 600;
+}
+.review_section .center_review a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .review_section .center_review  img { 
+    width: 100% !important;
+    height: 100% !important;
+    z-index: -100 !important;
+    position: relative;
+  }
+  
+  .review_section .center_review  .slider {
+    position: relative;
+    width: 800px;
+    margin: auto;
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .review_section .center_review  .slide {
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+  }
+  
+  .review_section .center_review  .active {
+    transform: translateX(0%) translateZ(0);
+    transition: 0.5s all cubic-bezier(0.4, 0.0, 0.2, 1);
+    z-index: 100;
+  }
+  
+  .review_section .center_review  .prev {
+    transform: translateX(-100%) translateZ(0);
+    transition: 0.5s all cubic-bezier(0.4, 0.0, 0.2, 1);
+    z-index: 90;
+  }
+  
+  .review_section .center_review .next {
+    transform: translateX(100%) translateZ(0);
+    transition: 0.5s all cubic-bezier(0.4, 0.0, 0.2, 1);
+    z-index: 90;
+  }
+  
+  .review_section .center_review .controls {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      z-index: 110;
+      left: 0;
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+      font-size: 32px;
+      color: rgb(0, 0, 0);
+      cursor: pointer;
+    }
+.review_section .center_review .controls #click-left,
+.review_section .center_review .controls #click-right{
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+   height: 50px;
+   width: 50px;
+   text-align: center;
+   border-radius: 50%;
+   background-color: white;
+}
+.review_section .center_review .controls #click-left:hover{
+    color: var(--primary-color);
+}
+.review_section .center_review .controls #click-right:hover{
+    color: var(--primary-color);
+}
+
+.review_section .center_review  .slide .review_text{
+    height: 100%;
+    width: 80%;
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    background-color: #fff;
+}
+.review_section .center_review  .slide .review_text .img_box{
+    display: flex;
+}
+.review_section .center_review  .slide .review_text .img_box .img_info{
+    margin: auto;
+    display: flex;
+}
+.review_section .center_review  .slide .review_text .img_box .img_info .name{
+    padding: 10px;
+}
+.review_section .center_review  .slide .review_text .img_box .img_info .name h3,
+.review_section .center_review  .slide .review_text .img_box .img_info .name p{
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+.review_section .center_review  .slide .review_text .img_box .img_info .name h3{
+    font-weight: 600;
+}
+.review_section .center_review  .slide .review_text .img_box .img_info .name p{
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.609);
+}
+.review_section .center_review  .slide .review_text .img_box img{
+    height: 50px !important;
+    width: 50px !important;
+    border-radius: 50%;
+    position: relative;
+    z-index: 200 !important;
+}
+.review_section .center_review  .slide .review_text p{
+    width: 100%;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.609);
+    font-weight: 600;
+    font-size: 13px;
+    margin-top: 15px;
+}
+.review_section .center_review  .slide .review_text .review_qoute{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.review_section .center_review  .slide .review_text .like_box{
+    width: 100%;
+    display: flex;
+    display: flex;
+    margin-top: 10px;
+}
+.review_section .center_review  .slide .review_text .like_box .likes{
+    margin: auto;
+    display: flex;
+    gap: 25px;
+}
+.review_section .center_review  .slide .review_text .like_box .like_left{
+    display: flex;
+    gap: 10px;
+}
+
+@media (max-width: 800px) {
+    .review_section .center_review  .slider {
+        width: 350px;
+        height: 220px;
+      }
+      .review_section .center_review  .slide .review_text{
+        margin-bottom: 40px;
+      }
+      .review_section .center_review .controls #click-left,
+        .review_section .center_review .controls #click-right{
+            height: 30px;
+            width: 30px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+    .detail_section .max_width{
+        padding-top: 2rem;
+    }
+}  
+/* ________________________________ REVIEW SECTION END */

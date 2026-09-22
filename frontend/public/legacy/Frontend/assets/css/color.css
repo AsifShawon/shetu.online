@@ -1,0 +1,20 @@
+:root{
+    --primary-color:rgb(12, 74, 110);
+    --primary-color-2:rgb(229, 4, 5);
+
+    --primary-color-opcity:rgba(12, 74, 110, 0.586);
+    --primary-color-transparent:rgba(12, 74, 110, 0.096);
+    --consultant-primary-color:rgb(12, 74, 110);
+    --primary-color-hover:rgb(3, 143, 225);
+    --consultant-primary-color-hover:rgb(0, 176, 220);
+    --consultant-color-transparent:rgba(226, 72, 0, 0.096);
+    --tranparent-bg:rgba(56, 255, 189, 0.326);
+    color:rgba(0, 0, 0, 0.627);
+    --gradiant-right-color:rgb(0, 100, 63);
+    --tushar-vai-favorite:#e4e4e4;
+    --tushar-vai-favorite:aliceblue;
+}
+.demo{
+    color: #fdcbc1;
+    color: #00000060;
+}

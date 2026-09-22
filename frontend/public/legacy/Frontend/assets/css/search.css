@@ -1,0 +1,94 @@
+
+/* __________________________________ search box start*/
+.search_box{
+    width:100%;
+    display: flex;
+    padding: 6px;
+}
+.search_box form{
+    margin: auto;
+    width: 100%;
+}
+.search_box form .border{
+    padding: 2px; /* Thickness of border */
+    background: linear-gradient(to left, #f20e4b, #098dec);
+    display: inline-block; /* shrink to fit content */
+    width: 100%;
+    border-radius: 50px;
+}
+.search_box form .search_field{
+     margin: auto;
+     padding: 10px;
+    height: 50px;
+    border-radius: 50px;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    background-color: white;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    position: relative;
+}
+.search_box form .search_field input{
+    padding: 10px;
+    border: none;
+    height: 100%;
+    width:93%;
+    outline:none;
+    font-size: 18px;
+}
+ .search_box form .search_field .icon{
+    position: absolute;
+    width: 30px;
+    height: 100%;
+    display: flex;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    right:10px;
+    top: 0px;
+}
+ .search_box form .search_field .icon i{
+    margin: auto;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.587);
+}
+ .search_box form .search_field .icon:hover i{
+    color: black;
+}
+@media (max-width: 830px) {
+     .search_box form .search_field{
+        width: 100% !important;
+        padding: 5px;
+        height: 35px;
+    }
+     .search_box form .search_field input{
+        border: none;
+        font-size: 13px;
+    }
+     .search_box form .search_field .icon i{
+        font-size: 15px;
+    }
+}
+/* __________________________________ search box end*/
+
+
+.autocomplete-suggestions {
+    position: relative;
+    z-index: 1000;
+    background: #fff;
+    width: 100%;
+    overflow-y: auto;
+    border-radius: 0 0 5px 5px;
+    margin: auto;
+    text-align: left !important;
+}
+
+.autocomplete-suggestions div {
+    text-align: left !important;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.autocomplete-suggestions div:hover {
+    background-color: #f0f0f0;
+}

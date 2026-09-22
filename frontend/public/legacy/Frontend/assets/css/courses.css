@@ -1,0 +1,350 @@
+
+h1,h2,h3,h4,p{
+    margin: 0;
+    padding: 0;
+}
+
+
+/* _________________ search bar */
+.search_bar_course{
+    width: 100%;
+    padding: 0;
+}
+.search_bar_course .search_field{
+    background-color: white !important;
+    position: relative;
+    padding: 0;
+    height: 50px;
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+.search_bar_course input{
+    background-color: white;
+    width: 100%;
+    outline: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: none;
+    font-size: 15px;
+}
+.search_bar_course .icon{
+    border: none;
+    width:50px;
+    height: 100%;
+    cursor: pointer;
+}
+.search_bar_course .icon i{
+    font-size: 15px;
+}
+.search_bar_course .icon:hover i{
+    color: var(--active-primary-color);
+}
+/* _________________ search bar */
+
+.course-details{
+    width: 100%;
+    display: flex;
+}
+.course-details .container-fluid{
+    max-width: 1200px;
+    margin: auto;
+}
+.sidebar {
+    border-right: 1px solid #e5e7eb;
+    min-height: 100vh;
+    background-color: #fff;
+}
+
+.sidebar h5 {
+    font-size: 14px;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 8px;
+}
+
+.sidebar .text-muted {
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 16px;
+}
+
+.sidebar .form-label {
+    font-size: 12px;
+    font-weight: bold;
+    color: #6b7280;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.sidebar .form-select {
+    font-size: 14px;
+    color: #6b7280;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    padding: 8px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.sidebar .form-check-label {
+    font-size: 14px;
+    color: #1f2937;
+    margin-left: 8px;
+}
+
+.sidebar .form-check-input {
+    margin-top: 2px;
+}
+
+.course-details .container-fluid .category{
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: rgba(0, 0, 0, 0.749);
+}
+.tabs {
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    /* Enable horizontal scrolling on mobile */
+    white-space: nowrap;
+    /* Prevent text wrapping */
+    padding-bottom: 4px;
+    /* Add padding for scrollable area */
+}
+
+/* Ensure tabs don't wrap and are scrollable */
+.tabs a {
+    font-size: 14px;
+    color: #6b7280;
+    text-decoration: none;
+    padding: 8px 16px;
+    display: inline-block;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    flex-shrink: 0;
+    font-weight: 700;
+    /* Prevent tabs from shrinking */
+}
+
+.tabs a.active {
+    color: #6199f4;
+    border-bottom: 3px solid #6199f4;
+    background-color: transparent !important;
+}
+
+.tabs a:hover {
+    color: #6199f4;
+}
+
+.program-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    transition: box-shadow 0.3s ease;
+    height: 230px;
+}
+
+.program-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.program-card .thumbnail{
+    height: 100%;
+    width: 200px;
+    display: flex;
+}
+.program-card img {
+    width: 100%;
+    height: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 10px;
+}
+
+.program-card .details h5 {
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 4px;
+}
+
+
+.program-card .details {
+    flex-grow: 1;
+    padding-left: 15px;
+}
+
+.program-card .details p {
+    margin-bottom: 0px;
+    font-size: 14px;
+    font-weight: 600;
+}
+.program-card .details p i{
+    margin-right: 5px;
+}
+.program-card .details .training_info{
+    margin-top: 10px;
+}
+.program-card .details .training_info p{
+    color: rgba(0, 0, 0, 0.735);
+}
+.program-card .details .training_info span{
+    color: #000000ef;
+    margin-right: 5px;
+}
+
+.program-card .details .text-muted span {
+    margin-left: 12px;
+    position: relative;
+}
+
+.program-card .details .text-muted span::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background-color: #6b7280;
+    border-radius: 50%;
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.program-card .apply-section {
+    text-align: right;
+}
+
+.program-card .apply-section .text-muted {
+    font-size: 14px !important;
+    color: #f45d1d;
+    font-weight: 600;
+    margin-bottom: 12px !important;
+}
+
+.apply-btn {
+    background-color: var( --primary-color);
+    color: white;
+    border: none;
+    padding: 7px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: capitalize;
+    transition: background-color 0.3s ease;
+}
+
+.apply-btn:hover {
+    background-color: var(--active-primary-color);
+    color: black;
+}
+
+
+
+@media (max-width: 767px) {
+    .program-card {
+        height: auto;
+    }
+    .program-card .thumbnail{
+        height: auto;
+        width: 100%;
+    }
+    .program-card .thumbnail img{
+        height: 100%;
+        width: 100%;
+    }
+    .tabs {
+        flex-wrap: nowrap;
+        /* Ensure tabs stay in a single row */
+        justify-content: flex-start;
+        /* Align tabs to the start */
+        -webkit-overflow-scrolling: touch;
+        /* Smooth scrolling on iOS */
+    }
+
+    .tabs a {
+        font-size: 12px;
+        /* Slightly smaller font size for mobile */
+        padding: 6px 12px;
+        /* Reduced padding for better fit */
+    }
+
+    .program-card {
+        flex-direction: column;
+        /* Stack elements vertically */
+        align-items: flex-start;
+        /* Align items to the left */
+        padding: 12px;
+        /* Reduce padding for smaller screens */
+    }
+
+    .program-card img {
+        width: 60px;
+        /* Slightly smaller logo */
+        margin-right: 0;
+        margin-bottom: 12px;
+        /* Space below the logo */
+    }
+
+    .program-card h5 {
+        font-size: 14px;
+        /* Smaller heading for mobile */
+        margin-bottom: 6px;
+    }
+
+    .program-card .details {
+        
+        padding-left: 0px;
+        padding-top: 5px;
+    }
+    .program-card .details p {
+        font-size: 12px;
+        /* Smaller text for mobile */
+        margin-bottom: 6px;
+    }
+
+    .program-card .details .text-muted {
+        font-size: 12px;
+    }
+
+    .program-card .details .text-muted span {
+        margin-left: 10px;
+    }
+
+    .program-card .details .text-muted span::before {
+        width: 4px;
+        height: 4px;
+        left: -8px;
+    }
+
+    .program-card .apply-section {
+        width: 100%;
+        /* Full width for apply section */
+        text-align: center;
+        /* Center-align text and button */
+        margin-top: 12px;
+        /* Space above apply section */
+    }
+
+    .program-card .apply-section .text-muted {
+        font-size: 12px;
+        margin-bottom: 8px;
+    }
+
+    .apply-btn {
+        width: 100%;
+        /* Full-width button */
+        padding: 10px;
+        font-size: 12px;
+    }
+}

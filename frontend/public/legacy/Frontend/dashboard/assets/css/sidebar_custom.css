@@ -1,0 +1,23 @@
+
+.app-menu .menu-item .active{
+  background-color: var( --primary-color-transparent) !important;
+}
+.app-menu .student_menu_item .active{
+  background-color: rgba(255, 255, 255, 0.146) !important;
+}
+/* Fix Bootstrap collapse override by Tailwind */
+.student_menu_item .collapse:not(.show) {
+  display: none;
+}
+
+.student_menu_item .collapse{
+  border: 1px solid red !important;
+}
+
+.student_menu_item .collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.35s ease;
+}
+

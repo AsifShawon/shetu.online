@@ -1,0 +1,8 @@
+⨯ Another next dev server is already running.
+
+- Local:        http://localhost:3000
+- PID:          20296
+- Dir:          C:\Users\User\Documents\FleekBD\Porjects\EduWise-V2.0\Eduwise_V3\frontend
+- Log:          .next\dev\logs\next-development.log
+
+Run taskkill /PID 20296 /F to stop it.

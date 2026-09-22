@@ -1,0 +1,388 @@
+/* * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    -webkit-tap-highlight-color: transparent;
+  } */
+
+   /* For Chrome, Safari, Edge, and Opera */
+input[type="number"]::-webkit-inner-spin-button,  
+input[type="number"]::-webkit-outer-spin-button {  
+  -webkit-appearance: none;  
+  margin: 0;  
+}  
+
+/* For Firefox */
+  /* Remove number input spinners in all major browsers */
+  input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+    -webkit-appearance: none;   /* Chrome, Safari, Edge */
+    appearance: none;
+    margin: 0; /* Optional: remove default spacing in some browsers */
+  }
+
+  /* Remove inner and outer spin buttons in WebKit browsers */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+
+  .login_section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    height: 100%;
+    font-family: sans-serif;
+    display: flex;
+  }
+  .login_section .centered_part{
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+      margin: auto;
+      height: 100% !important;
+      display: flex;
+      box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+      border-radius: 10px;
+      background-color: white;
+      backdrop-filter: blur(5px);
+      padding: 25px;
+  }
+  .login_section .centered_part .error-message{
+    color: red; 
+    margin-top: 15px; 
+    margin-bottom: 15px; 
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+  .login_section .form_part{
+    height: 100% !important;
+    width: 100%;
+    min-height: 300px !important;
+    display: flex;
+  }
+  .login_section .form_part>div{
+    margin: auto;
+  }
+  .login_section .form_part .logo_image{
+    display: flex;
+    margin-bottom: 10px;
+  }
+  .login_section .form_part .logo_image img{
+    width: 130px;
+    margin: auto;
+    height: auto;
+  }
+  .login_section .form_part .icon_image{
+    display: flex;
+  }
+  .login_section .form_part .icon_image img{
+    width: 55%;
+    margin: auto;
+    height: auto;
+  }
+  
+.login-box {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+  padding: 15px;
+  border-radius: 7px;
+  width: 100%;
+  
+}
+.login-box .logo_div{
+  padding: 0!important;
+  height: 50px !important;
+  display: flex;
+  width: 100%;
+  position: relative;
+}
+
+  .login-box .logo_div img{
+      width: 100px;
+      height: 50px;
+      margin-top: 0 !important;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 !important;
+  }
+  .form_left_part h4 {
+    font-size: 0.8rem;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #000000aa;
+  }
+  .login_section .centered_part .form_part .login-box form,
+  .login_section .centered_part .form_part .login-box .form{
+    width: 100% !important;
+
+  }
+  .login_section .centered_part .form_part .login-box form .input-box,
+  .login_section .centered_part .form_part .login-box .form .input-box {
+    position: relative;
+    width: 100% !important;
+    margin: 12px 0;
+    
+  }
+  .login_section .centered_part  .input-box label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    color: #01010197;
+    font-size: 13px;
+    transition: all 0.5s ease;
+    font-weight: 600;
+  }
+  .login_section .centered_part .input-box input:focus~label,
+  .login_section .centered_part .input-box input:valid~label {
+    top: -5px;
+  }
+  
+  .login_section .centered_part  .input-box input {
+    width: 100% !important;
+    height: 35px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #0000008d;
+    padding: 0 5px 0 5px;
+    border-bottom: 1px solid #000000;
+  }
+  .login_section .centered_part   .input-box .icon {
+    position: absolute;
+    right: 8px;
+    top: -6px;
+    font-size: 15px;
+    color: rgb(0, 0, 0);
+    line-height: 57px;
+  }
+  .remember-forgot {
+    color: #000000a6;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+  }
+  .remember-forgot label,
+  .remember-forgot a {
+    margin: -10px 0 10px 0;
+  }
+  .remember-forgot label {
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    margin-right: 3px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+  }
+  .remember-forgot label a{
+    color: black;
+  }
+  .remember-forgot a {
+    color: #000000a3;
+    text-decoration: none;
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+  }
+  .remember-forgot a:hover {
+    text-decoration: underline;
+    color: crimson;
+  }
+  button[type='submit'] {
+    width: 100%;
+    height: 40px;
+    color: #ffffff;
+    background-color: var(--primary-color);
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid var(--primary-color);
+    transition: all 0.3s ease;
+  }
+  button:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+  }
+  .link {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .link p{
+        color: #0000009b;
+        font-weight: 600;
+    }
+    .link p a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .link p a:hover {
+    text-decoration: underline;
+    color: var(--primary-color);
+  }
+  .form_part{
+    width: 50%;
+    height: auto;
+    height: 100% !important;
+  }
+  .login_section .sign_up_pic{
+    height: 100% !important;
+    display: flex;
+  }
+
+  /* start  mobile */
+
+@media (max-width: 600px) {
+    .login_section {
+        padding: 10px;
+        min-height: 90vh;
+    }
+    .login_section .centered_part{
+      display: block;
+      border: none;
+      height: auto !important;  
+    }
+    .login_section .centered_part .form_part{
+      padding: 0 !important;
+      width: 100% !important;
+    }
+    .login_section .centered_part .sign_up_pic{
+      height: auto;
+    }
+    .login_section .centered_part .sign_up_pic img {
+      filter: blur(2px);
+    }
+    .login_section .form_part  {
+        padding: 0px;
+    }
+
+      .login_section .form_part .icon_image{
+        display: none;
+      }
+      .login_section .form_left_part{
+        display: block;
+        height: 100px !important;
+      }
+      .login_section .centered_part .login-box {
+        width: 100% !important;
+        padding: 0px !important;
+        box-shadow: none;
+      }
+      .login_section .centered_part .login-box form,
+      .login_section .centered_part .login-box .form{
+        width: 100%;
+      }
+      .login_section .centered_part .login-box .input-box{
+        width: 100% !important;
+      }
+      .login_section .centered_part .login-box .input-box input{
+        width: 100% !important;
+      }
+
+      .input-box {
+        width: 100%;
+      }
+      .login_section .form_part{
+        height: 100% !important;
+        width: 100%;
+        min-height: 10px !important;
+        display: flex;
+      }
+      .link p{
+        font-size: 0.8rem;
+      }
+      .link p a {
+        font-size: 0.8rem;
+    }
+
+}
+  /* end  mobile */
+
+
+
+
+
+
+/* ______________________ option section start */
+.user_option_section{
+  position: absolute;
+  top: -6.5rem;
+  left: 0px;
+  width: 100%;
+  padding-top: 10px;
+  
+}
+.user_option_section .option_heading{
+  text-align: center;
+}
+.option_section{
+  width: 100%;
+  display: flex;
+  padding-top: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  
+}
+.option_section .option{
+  margin: auto;
+  display: flex;
+  max-width: 300px;
+  gap: 10px;
+  width: 100%;
+}
+.option_section .option .radio_part{
+    width: 100%;
+    border-radius: 5px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.option_section .option .radio_part input{
+    height: 20px;
+    width: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.option_section .option .radio_part label{
+  margin-top: 7px;
+  font-size: 15px;
+  font-weight: 600;
+}
+.option_section .option .radio_part label i{
+  margin-right: 5px;
+}
+
+.option_section .option .radio_part {
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+  border: 2px solid var(--primary-color);
+}
+.option_section .option .radio_part.selected {
+  background-color:var(--primary-color);
+  border:2px solid var(--active-primary-color);
+  color: aliceblue;
+}
+
+@media (max-width: 600px) {
+  .option_section .option .radio_part{
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .option_section .option .radio_part label{
+    font-size: 13px;
+  }
+  .user_option_section{
+    position: absolute;
+    top: -5.5rem;
+  }
+}
+/* ______________________ option section end */

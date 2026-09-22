@@ -1,0 +1,1153 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.profile_section {
+    width: 100%;
+    display: flex;
+    height: 100%;
+}
+
+.profile_section .centered_profile {
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    height: 100%;
+}
+
+.profile_section .card {
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    min-height: auto;
+    position: relative;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 200ms ease-in;
+    border: none;
+    transition: transform 1.0s;
+    background-color: transparent;
+    padding: 15px;
+    transition: transform 250ms;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: white;
+    padding-top: 2rem;
+}
+
+/* .profile_section .card:hover{
+    box-shadow: var(--primary-color-hover) 0px 1px 5px; */
+/* transform: translateY(-10px); */
+/* } */
+.profile_section .card .post_num_div {
+    position: absolute;
+    left: -10px;
+    top: -10px;
+    width: 25px;
+    text-align: center;
+    margin: auto;
+    height: 30px;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    border: 1px solid var(--primary-color-hover);
+    color: aliceblue;
+}
+
+.profile_section .card .post_num_div p {
+    color: var(--white-color);
+    margin-top: 2px;
+}
+
+.profile_section .card .card_section {
+    padding-top: 10px;
+    min-height: 350px;
+    height: 100%;
+}
+
+.profile_section .top_icon {
+    position: absolute;
+    right: 15px;
+    top: 5px;
+}
+
+.profile_section .top_icon i {
+    margin-left: 5px;
+    color: rgba(0, 0, 0, 0.574);
+    cursor: pointer;
+}
+
+.profile_section .top_icon i:hover {
+    color: black;
+}
+
+.profile_section .card .profile_info {
+    width: 100%;
+}
+
+.profile_section .card .updgrade_info {
+    width: 30%;
+}
+
+.profile_section .card_heading {
+    display: flex;
+    height: auto;
+
+}
+
+.profile_section .card_heading .share_icon {
+    display: flex;
+}
+
+.profile_section .card_heading .share_icon .icon {
+    margin-top: auto;
+    margin-bottom: auto;
+    cursor: pointer;
+}
+
+.profile_section .card_heading .share_icon .icon img {
+    width: 30px;
+    height: auto;
+}
+
+.profile_section .card_heading .user_img {
+    height: 100% !important;
+    position: relative;
+    width: 100px;
+
+}
+
+.profile_section .card_heading .user_img img {
+    height: auto;
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(2, 5, 7, 0.15) 0px 1px 3px 1px;
+}
+
+.profile_section .card_heading .user_title {
+    width: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-left: 15px;
+    padding-right: 5px;
+}
+
+.mobile_item {
+    display: none !important;
+}
+
+.profile_section .card_heading .user_title h3 {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 27px;
+    font-size: 20px;
+    overflow: hidden;
+    font-weight: 700;
+
+}
+
+.profile_section .card_heading .user_title .address {
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.742);
+    font-weight: 700;
+}
+
+.profile_section .card_heading .user_title .address i {
+    margin-right: 5px;
+}
+
+.profile_section .card_heading .user_title p {
+
+    margin-bottom: 5px;
+}
+
+.profile_section .card_heading .user_title .about_me {
+    width: 70%;
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* __________________________ EXPERIENCE START */
+.profile_section .card .profile_info .experiences {
+    display: flex;
+    padding: 10px;
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
+
+.profile_section .card .profile_info .experiences .exp_div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 
+.profile_section .card .profile_info .experiences .exp_div_first {
+    align-items: start;
+    justify-content: start;
+}
+
+.profile_section .card .profile_info .experiences .exp_div_end {
+    align-items: end;
+    justify-content: end;
+    } */
+.profile_section .card .profile_info .experiences .exp_div_center {
+    border-left: 0.3px solid rgba(0, 0, 0, 0.481);
+    border-right: 0.3px solid rgba(0, 0, 0, 0.481);
+}
+
+.profile_section .card .profile_info .experiences .exp_div .exp_item {
+    display: flex;
+    width: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 25px;
+}
+
+.profile_section .card .profile_info .experiences .exp_div .exp_item .icon {
+    width: 70px;
+    height: auto;
+}
+
+.profile_section .card .profile_info .experiences .share_icon {
+    width: 100%;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+}
+
+.profile_section .card .profile_info .experiences .share_icon .icon {
+    margin-top: auto;
+    margin-bottom: auto;
+    font-weight: 600;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    cursor: pointer;
+}
+
+.profile_section .card .profile_info .experiences .share_icon .icon p {
+    margin: 0;
+    padding: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.profile_section .card .profile_info .experiences .share_icon .icon:hover {
+    color: black !important;
+}
+
+.profile_section .card .profile_info .experiences .share_icon .icon i {
+    margin-top: 5px;
+    margin-bottom: 0;
+
+}
+
+
+.profile_section .card .profile_info .experiences .exp_div p {
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.profile_section .card .profile_info .experiences .exp_div span {
+    color: rgba(0, 0, 0, 0.572);
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.profile_section .card .profile_info .experiences .exp_div .icon {
+    display: flex;
+    padding-right: 10px;
+}
+
+.profile_section .card .profile_info .experiences .exp_div .icon i {
+    margin: auto;
+    font-size: 23px;
+    color: var(--primary-color);
+}
+
+.profile_section .card .profile_info .experiences .exp_div .exp_text {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+/* __________________________ EXPERIENCE END */
+
+
+/* __________________________ DETAIL BUTTON START */
+.profile_section .card .profile_info .buttons {
+    margin-top: 1%;
+    display: flex;
+    gap: 1rem;
+    background-color: rgb(233, 233, 233);
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 5px;
+}
+
+.profile_section .card .profile_info .buttons button {
+    border-radius: 0px;
+    border: none;
+    font-weight: 700;
+    font-size: 16px;
+    padding: 5px 0px;
+}
+
+.profile_section .card .profile_info .buttons .active {
+    border-bottom: 4px solid var(--primary-color);
+    color: rgb(0, 0, 0);
+    background-color: transparent !important;
+}
+
+.profile_section .card .profile_info .buttons_desc {
+    background-color: white;
+    margin-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.profile_section .card .profile_info .buttons_desc>div .details h3 {
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.profile_section .card .profile_info .buttons_desc>div .icon i {
+    color: var(--primary-color);
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 25px;
+}
+
+.profile_section .card .profile_info .buttons_desc>div .details span {
+    font-size: 13px;
+    font-weight: 600;
+    color: #00000092;
+}
+
+
+/* __________________________ DETAIL BUTTON END */
+
+/* Buttons styling */
+.buttons button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    border: none;
+    background-color: #f4f4f4;
+    transition: background-color 0.3s ease;
+}
+
+.buttons button.active {
+    color: var(--primary-color);
+}
+
+/* Section styling */
+.buttons_desc>div {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+    display: none;
+    /* Hidden by default */
+}
+
+
+.buttons_desc>div .in_details {
+    display: flex;
+}
+
+.buttons_desc>div .text {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000bf;
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+}
+
+.buttons_desc>div .in_details .details {
+    padding-left: 10px;
+}
+
+.buttons_desc>div .in_details .details h3 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.buttons_desc>div .in_details .details span {
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.buttons_desc>div .in_details .icon img {
+    width: 40px;
+    height: auto;
+}
+
+/* Show first section by default */
+.buttons_desc>div:first-child {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.buttons_desc>div p {
+    font-weight: 500;
+    font-size: 14px;
+    color: #000000ac;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+@media (max-width: 550px) {
+    .profile_section .card_heading .user_title .about_me {
+        width: 100%;
+    }
+
+    .profile_section .card_heading .user_title h3,
+    .profile_section .card_heading .user_title .address {
+        margin-left: 10px;
+    }
+
+    .desktop_item {
+        display: none !important;
+    }
+
+    .mobile_item {
+        display: block !important;
+    }
+
+    .profile_section .card_heading .user_title .about_me {
+        width: 100%;
+    }
+
+    .profile_section .card .profile_info .experiences {
+        display: block;
+        padding-left: 0px;
+        padding-top: 25px !important;
+    }
+
+    .profile_section .card .profile_info .experiences .exp_div {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-right: 25px;
+    }
+
+    .profile_section .card .profile_info .experiences .exp_div {
+        width: 100%;
+        align-items: start;
+        justify-content: start;
+    }
+
+    .profile_section .card .profile_info .experiences .icon {
+        width: 40px;
+        display: flex;
+    }
+
+    .profile_section .card .profile_info .experiences .icon img {
+        margin: auto;
+        width: 40px;
+        height: auto;
+    }
+
+    .profile_section .card .profile_info .experiences .exp_div_center {
+        border: none;
+    }
+
+    .profile_section .card .profile_info .buttons {
+        gap: 5px;
+    }
+
+    .profile_section .card .profile_info .buttons_desc {
+        margin-top: 10px;
+    }
+
+
+    .buttons_desc>div p {
+        font-size: 12px;
+        color: #000000c7;
+    }
+}
+
+@media (max-width: 450px) {
+    .profile_section .card_heading {
+        /* display: block; */
+        padding: 0px;
+    }
+
+    .profile_section .card_heading .user_img {
+        height: 100%;
+    }
+
+    .profile_section .card_heading .user_img img {
+        height: auto;
+        width: 70px;
+    }
+
+    .profile_section .card_heading .user_title {
+        padding-left: 0px;
+    }
+
+    .profile_section .card .profile_info .buttons_desc {
+        padding: 5px;
+        padding-top: 15px;
+    }
+}
+
+@media (max-width: 390px) {
+    .profile_section .card .profile_info .buttons {
+        gap: 1px;
+        border-bottom: none;
+        padding-left: 10px;
+    }
+
+    .profile_section .card .profile_info .buttons button {
+        border: none;
+        font-size: 12px;
+        margin: auto;
+        font-weight: 600;
+        padding: 10px 10px;
+    }
+
+    .profile_section .card .profile_info .buttons .active {
+        border-bottom: 4px solid var(--primary-color);
+        color: var(--primary-color);
+    }
+}
+
+
+/* ________________________ ADD REVIEW START */
+.add_review_section {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    margin-top: 2rem;
+    border-radius: 5px;
+    border: 0.5px solid rgba(0, 0, 0, 0.318);
+    overflow: hidden;
+}
+
+.add_review_section .add_review_header {
+    display: flex;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.318);
+}
+
+.add_review_section .add_review_header img {
+    width: 30px;
+    height: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.add_review_section .add_review_header h3 {
+    font-size: 17px;
+    padding: 0;
+    margin: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+}
+
+.add_review_section .review_form {
+    height: auto;
+    width: 100%;
+    padding: 10px;
+}
+
+.add_review_section .review_form form {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.add_review_section .review_form .pro_img_div {
+    width: 60px;
+    padding-top: 10px;
+}
+
+.add_review_section .review_form .pro_img {
+    width: 100%;
+    height: auto;
+}
+
+.add_review_section .review_form .pro_img img {
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+}
+
+.add_review_section .review_form .input_div {
+    width: 100%;
+    height: 100%;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 1rem;
+}
+
+.add_review_section .review_form .input_div textarea {
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    resize: vertical;
+    border: none;
+    outline: none;
+    overflow-x: hidden;
+}
+
+.add_review_section .review_form .input_div .is-invalid {
+    border: 1px solid red;
+}
+
+.add_review_section .review_form .input_div .invalid-feedback {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.add_review_section .review_form .input_div .star_input {
+    padding-top: 10px;
+    padding-bottom: 5px;
+    display: flex;
+}
+
+.add_review_section .review_form .input_div .star_input .inputs {
+    width: 100%;
+}
+
+.add_review_section .review_form .input_div .star_input .right_input {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+}
+
+.add_review_section .review_form .input_div .star_input .right_input .sign_in,
+.add_review_section .review_form .input_div .star_input .right_input input {
+    max-width: 200px;
+    width: 100%;
+    padding: 5px;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 3px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    cursor: pointer;
+    margin-bottom: auto;
+    margin-top: auto;
+    text-align: center;
+}
+
+.add_review_section .review_form .input_div .star_input .right_input input:hover {
+    background-color: rgb(2, 144, 225);
+}
+
+.add_review_section .review_form .input_div .star_input .right_input .sign_in:hover {
+    background-color: rgb(2, 144, 225);
+}
+
+.star_review ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 5px;
+    cursor: pointer;
+    align-items: start;
+    justify-content: start;
+}
+
+.star_review ul li {
+    font-size: 20px;
+    color: #ccc;
+    /* default gray */
+    transition: color 0.2s;
+}
+
+.star_review ul li.active,
+.star_review ul li.hover {
+    color: rgb(255, 179, 0);
+    /* selected star color */
+}
+
+@media (max-width: 500px) {
+    .add_review_section .review_form form {
+        display: block;
+        padding: 0;
+    }
+
+    .add_review_section .review_form .pro_img_div {
+        width: 40px;
+        padding: 0;
+    }
+
+    .add_review_section .review_form .input_div {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .add_review_section .review_form .input_div textarea {
+        height: 100px;
+    }
+}
+
+/* ________________________ ADD REVIEW END */
+
+
+
+/* __________________________ REVIEW SECTION START */
+.testimonials-wrap {
+    padding: 20px 0;
+    margin-top: 10px;
+    background-color: white;
+}
+
+.testimonials-wrap .container {
+    background-color: white;
+}
+
+.testimonials-wrap .container .carousel-testimonial {
+    margin: auto;
+}
+
+.testimonials-wrap .container .carousel-testimonial .item {
+    background-color: white;
+    margin: auto;
+}
+
+.heading-section {
+    text-align: center;
+}
+
+.sub-heading {
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    display: block;
+    font-weight: 600;
+    color: #2e9ca1;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.heading-section h2 {
+    font-size: 20px;
+    font-weight: 600;
+    padding-top: 10px;
+    padding-bottom: 15px;
+}
+
+.testimonial-box {
+    display: block;
+    position: relative;
+    padding: 30px 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.testimonial-box .img_section {
+    display: flex;
+}
+
+.user-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    position: relative;
+    min-width: 80px;
+    background-size: 100%;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+.carousel-testimonial .item {
+    padding: 30px 10px;
+}
+
+.quote {
+    position: absolute;
+    top: -23px;
+    color: var(--primary-color);
+    font-size: 27px;
+}
+
+.testimonial-box .text_review {
+    height: 85px;
+    overflow: hidden;
+}
+
+.name {
+    margin-bottom: 0;
+    line-height: 14px;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.testimonial-box .review_name {
+    text-align: right;
+}
+
+.testimonial-box .review_name .name {
+    font-size: 12px;
+}
+
+.star_review {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.star_review ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    gap: 3px;
+    align-items: start;
+    justify-content: start;
+}
+
+.below_name ul {
+    align-items: left;
+    justify-content: left;
+    position: absolute;
+}
+
+.star_review ul li {
+    list-style: none;
+    background-color: transparent;
+}
+
+.star_review span {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.63);
+    font-weight: 600;
+}
+
+.profile_section .centered_profile .card .profile_info {
+    border-radius: 0 !important;
+}
+
+.testimonial-box .star_review ul .marked,
+.profile_section .centered_profile .card .profile_info .user_title .star_review ul .marked {
+    background: transparent !important;
+}
+
+.testimonial-box .star_review ul i,
+.profile_section .centered_profile .card .profile_info .user_title .star_review ul i {
+    color: rgba(0, 0, 0, 0.656) !important;
+}
+
+.testimonial-box .star_review ul .marked i,
+.profile_section .centered_profile .card .profile_info .user_title .star_review ul .marked i {
+    background-color: transparent !important;
+    color: rgb(255, 207, 13) !important;
+    text-shadow: 1px 1px #000000;
+}
+
+.carousel-testimonial .owl-nav {
+    text-align: center;
+}
+
+.carousel-testimonial .owl-nav button.owl-next,
+.carousel-testimonial .owl-nav button.owl-prev {
+    padding: 0 12px !important;
+}
+
+.carousel-testimonial .owl-nav button {
+    outline: none;
+    padding: 0;
+}
+
+.carousel-testimonial .owl-nav button.owl-next span,
+.carousel-testimonial .owl-nav button.owl-prev span {
+    display: block;
+    font-size: 40px;
+    width: 25px;
+    height: 25px;
+    line-height: 16px;
+}
+
+.carousel-testimonial .owl-nav button.owl-next.disabled,
+.carousel-testimonial .owl-nav button.owl-prev.disabled {
+    opacity: 0.5;
+}
+
+.testimonial-box .name_section {
+    text-align: right;
+}
+
+.testimonial-box .text p {
+
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #000000af;
+}
+
+/* __________________________ REVIEW SECTION END */
+
+
+
+/* .profile_section .card_heading .user_title p i{
+    margin-right: 3px;
+}
+.profile_section .card_heading .user_title ul{
+    display: flex;
+}
+.profile_section .card_heading .user_title ul li{
+    list-style: none;
+    margin-right: 3px;
+}
+.profile_section .card_heading .user_title ul li i{
+    font-weight: 600;
+    font-size: 12px;
+    color: rgb(234, 205, 52);
+} */
+
+
+
+
+.profile_section .gen_amnt {
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.profile_section .gen_amnt p {
+    margin-right: 10%;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.profile_section .gen_amnt p i {
+    margin-right: 5px;
+}
+
+
+.profile_section .jobs_desc {
+    padding-bottom: 15px;
+    width: 100%;
+    height: 80px;
+    overflow: hidden;
+}
+
+.profile_section .jobs_desc p {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.763);
+    width: 100%;
+    position: relative;
+    white-space: normal;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.profile_section button {
+    border: 1px solid rgba(0, 0, 0, 0.763);
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.655);
+    padding: 5px;
+    background: transparent;
+}
+
+.profile_section button:hover {
+    color: black;
+    border: 1px solid black;
+}
+
+
+.profile_section .accept_button {
+    padding-top: 15px;
+}
+
+.profile_section .accept_button button {
+    border: none;
+    width: 100%;
+    font-size: 13px;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: 900;
+    color: var(--white-color);
+    background-color: var(--skin-color-1);
+}
+
+.profile_section .accept_button .disabled {
+    background-color: rgb(95, 95, 95);
+    cursor: not-allowed;
+    /* Change cursor to indicate disabled state */
+    pointer-events: none;
+    /* Prevent all interactions */
+    opacity: 0.6;
+}
+
+.profile_section .accept_button button:hover {
+    background-color: crimson;
+}
+
+.profile_section .bottom_icon {
+    display: flex;
+    padding-top: 15px;
+}
+
+.profile_section .bottom_icon .ago,
+.profile_section .bottom_icon .view {
+    width: 50%;
+}
+
+.profile_section .bottom_icon .ago p,
+.profile_section .bottom_icon .view p {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.745);
+}
+
+
+.consultant_card a {
+    border: none;
+}
+
+.consultant_card a .tag {
+    font-weight: 700;
+    font-size: 13px;
+    background-color: rgba(12, 74, 110, 0.266);
+    color: rgb(0, 0, 0);
+    padding-left: 15px;
+    padding-right: 15px;
+    border: none;
+}
+
+.consultant_card a .tag:hover {
+    border: none;
+    color: rgb(0, 0, 0);
+}
+
+.consultant_card .request_button {
+    display: flex;
+    gap: 10px;
+    padding-top: 20px;
+}
+
+.consultant_card .request_button a {
+    width: 100%;
+}
+
+.consultant_card .request_button button {
+    width: 100%;
+    margin: auto;
+    border-radius: 5px;
+    border: 1px solid var(--primary-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.consultant_card .request_button button:hover {
+    color: aliceblue;
+}
+
+.consultant_card .request_button .active {
+    color: aliceblue;
+}
+
+
+.consultant_card i {
+    color: var(--primary-color);
+}
+
+.profile_section .card .posting_time {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+
+.profile_section .card .posting_time i {
+    margin-right: 5px;
+}
+
+
+
+@media (max-width: 1400px) {
+    .profile_section {
+        grid-template-columns: repeat(auto-fit, minmax(7rem, 30rem));
+    }
+}
+
+@media (max-width: 600px) {
+    .consultant_card .request_button button {
+        font-size: 12px;
+    }
+}
+
+
+
+/* __________________ consultants no review section start */
+.no_review_section {
+    width: 100%;
+    height: auto;
+    margin-top: 2rem;
+}
+
+.no_review_section .no_img {
+    width: 100%;
+    display: flex;
+}
+
+.no_review_section .no_img img {
+    height: 150px;
+    width: auto;
+    margin: auto;
+}
+
+.no_review_section p {
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+}
+
+.no_review_section .add_review {
+    display: flex;
+}
+
+.no_review_section .add_review a {
+    margin: auto;
+    font-weight: 600;
+}
+
+.no_review_section .add_review a button {
+    border-radius: 5px;
+    padding: 5px;
+    padding: 10px 25px;
+    border: 1px solid var(--primary-color);
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.no_review_section .add_review a button:hover {
+    color: rgb(247, 247, 247);
+    background-color: var(--primary-color);
+}
+
+.no_review_section .add_review a button i {
+    margin-left: 10px;
+}
+
+/* __________________ consultants no review section end */

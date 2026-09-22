@@ -1,0 +1,267 @@
+
+
+  .add_btn{
+    /* border: 1px solid red; */
+    justify-content: end;
+    align-items: end;
+    display: flex;
+    position: fixed;
+    bottom:10%;
+    right: 20px;
+    z-index: 100;
+}
+.add_btn button{
+    padding: 5px;
+    padding-left: 35px;
+    padding-right: 35px;
+    border-radius: 5px;
+    font-weight: 600;
+    background:var(--consultant-primary-color);
+    color: aliceblue;
+    cursor: pointer;
+    border: none;
+}
+.add_btn button:hover{
+    background-color: var(--consultant-primary-color-hover);
+}
+  
+.education_section {
+    padding: 0;
+}
+.container {
+    max-width: 1500px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .container h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+    text-align: center;
+    margin-bottom: 15px;
+    color: var(--consultant-primary-color);
+}
+
+.responsive-table{
+    padding: 0;
+}
+
+.responsive-table li {
+    border-radius: 3px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .responsive-table .table-header {
+    background-color: aliceblue !important;
+    font-size: 14px;
+    text-transform: capitalize;
+    letter-spacing: 0.03em;
+    font-weight: 700;
+    border: 0.4px solid rgba(0, 0, 0, 0.211);
+    padding: 10px;
+}
+
+
+.responsive-table .table-header .col{
+    display: flex;
+}
+.responsive-table .table-header .col p{
+    margin: 0;
+    padding: 0;
+    height: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: left;
+}
+.responsive-table .col {
+    width: 16%;
+    height: auto;
+}
+.responsive-table .col p{
+    margin: 0;
+    padding: 0;
+}
+  .responsive-table .col-2 {
+    width: 25%;
+  }
+  .responsive-table .col-3 {
+    width: 15%;
+  }
+  .responsive-table .col-4 {
+    width: 15%;
+  }
+  .responsive-table .col-5 {
+    width: 15%;
+  }
+  .responsive-table .col-6 {
+    width: 15%;
+  }
+  .responsive-table .col-7{
+    width: 15%;
+  }
+  .responsive-table .col .icon i{
+      font-size: 20px;
+      display: none;
+      color: var(--consultant-primary-color);
+    }
+    .responsive-table .col .icon p{
+        font-size: 14px;
+        color: black;
+    }
+
+.responsive-table .table-row{
+    /* box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px; */
+    /* border: 0.4px solid rgba(0, 0, 0, 0.211); */
+    border-top: none;
+    background-color: white;
+}
+.responsive-table .table-row .edu_list {
+    height: auto;
+    flex-direction: column;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal; 
+    overflow-wrap: break-word;
+    width: 100%;
+    padding: 10px;
+    border-left: 0.2px solid rgba(0, 0, 0, 0.208);
+}
+.responsive-table .edu_list p {
+    margin: 0;
+    padding: 0;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+}
+
+.responsive-table .edu_list_center .body .buttons{
+    display: flex;
+    gap: 5px;
+    justify-content: start;
+    align-items: start;
+}
+.responsive-table .edu_list_center .body .buttons>div,
+.responsive-table .edu_list_center .body .buttons button,
+.responsive-table .edu_list_center .body .buttons a{
+    margin-top: auto;
+    width: 100%;
+}
+.responsive-table .table-row .edu_list span,
+.responsive-table .table-row .edu_list i{
+    display: none;
+}
+
+.responsive-table .table-row .edu_list .body .buttons button{
+    border: 1px solid var(--consultant-primary-color);
+    padding: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 3px;
+    color: var(--consultant-primary-color);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px !important;
+    margin-top: 5px;
+}
+.responsive-table .table-row .edu_list .body button:hover{
+    background-color: var(--consultant-primary-color);
+    color: aliceblue;
+}
+.responsive-table .table-row .edu_list .body .buttons .delete:hover{
+ background-color: red;
+}
+.responsive-table .table-row .edu_list{
+    display: flex;
+}
+/* .responsive-table .table-row .edu_list .body{
+    margin-top: auto;
+    margin-bottom: auto;
+} */
+.last_li_button{
+    padding: 0;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+.last_li_button button{
+    border: none;
+    background-color: var(--consultant-primary-color);
+    color: aliceblue;
+    border-radius: 3px;
+    padding: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.last_li_button button:hover{
+    background-color: var(--consultant-primary-color-hover);
+}
+  @media all and (max-width: 1370px) {
+  .responsive-table .table-row .edu_list .body .buttons button{
+    font-size: 10px;
+    }
+  }
+  @media all and (max-width: 767px) {
+    .responsive-table .table-header {
+        display: none;
+    }
+    .responsive-table li {
+        display: block;
+    }
+    .responsive-table .table-row{
+        border-radius: 5px;
+        width: 100%;
+    }
+    .responsive-table .col {
+        width: 100%;
+        width: 100%;
+        display: flex;
+        padding: 5px 0;
+    }
+    .responsive-table .col:before {
+        color: #6C7A89;
+      padding-right: 10px;
+      content: attr(data-label);
+      width: 50% !important;
+      text-align: left;
+    }
+    .responsive-table .col {
+        font-weight: 700 !important;
+        color: var(--consultant-primary-color);
+    }
+    .responsive-table .table-row .edu_list span,
+    .responsive-table .table-row .edu_list i{
+        display: flex;
+    }
+    .responsive-table .table-row{
+        width: 100%;
+    }
+    .responsive-table .table-row .edu_list {
+        display: flex !important;
+        border: none;
+        width: 100% !important;
+        padding-top: 25px;
+        border-bottom: 0.3px solid rgba(0, 0, 0, 0.148) !important;
+        align-items: end;
+        justify-content: end;
+        position: relative;
+        font-weight: 700;
+    }
+    .responsive-table .table-row .edu_list .body{
+        padding-left: 35px;
+        width: 100%;
+    }
+    .responsive-table .table-row .edu_list .body p{
+        color: var(--consultant-primary-color);
+    }
+    .responsive-table .table-row .edu_list .icon{
+        position: absolute;
+        left: 5px;
+        top: 40%;
+    }
+    .responsive-table .table-row .edu_list .icon i{
+        font-size: 20px;
+        color: var(--consultant-primary-color);
+    }
+  }

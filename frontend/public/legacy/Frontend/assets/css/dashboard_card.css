@@ -1,0 +1,886 @@
+body {
+    background-color: aliceblue;
+}
+
+
+/* ____dashbaord_profile_section start */
+.dashbaord_profile_section {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 170px;
+}
+
+/* ____dashbaord_profile_section end */
+
+
+/* summery section start */
+.dashbaord_profile_section .summery_section {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.dashbaord_profile_section .summery_section .summery_card {
+    display: flex;
+    background-color: rgba(7, 18, 26, 0.563);
+    padding: 10px;
+    max-width: 200px;
+    width: 100%;
+    border-radius: 7px;
+}
+
+.dashbaord_profile_section .summery_section .summery_card .summery_text {
+    color: white;
+}
+
+.dashbaord_profile_section .summery_section .summery_card .summery_text p {
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-size: 12px;
+}
+
+.dashbaord_profile_section .summery_section .summery_card .summery_text p,
+.dashbaord_profile_section .summery_section .summery_card .summery_text h2 {
+    margin: 0;
+    padding: 0;
+}
+
+.dashbaord_profile_section .summery_section .summery_card .summery_text h2 {
+    color: rgb(68, 203, 237);
+    font-size: 18px;
+}
+
+.dashbaord_profile_section .summery_section .summery_card .summery_icon {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    width: 30px;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+}
+
+.dashbaord_profile_section .summery_section .summery_card .summery_icon img {
+    width: 25px;
+    width: 25px;
+    height: auto;
+}
+
+/* summery section end */
+
+/* profile img and name section start */
+.dashbaord_profile_section .profile_section {
+    margin-top: -1rem;
+    padding-left: 2rem;
+}
+
+.dashbaord_profile_section .profile_section .pro_img_name {
+    display: flex;
+}
+
+.dashbaord_profile_section .profile_section .pro_img_name img {
+    height: 130px;
+    width: 130px;
+    border-radius: 100%;
+}
+
+.dashbaord_profile_section .profile_section .pro_img_name h3 {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 20px;
+    color: white !important;
+}
+
+@media screen and (max-width: 1100px) {
+    .dashbaord_profile_section {
+        padding-bottom: 1rem !important;
+    }
+
+    .dashbaord_profile_section .profile_section {
+        width: 50%;
+        padding: 0;
+        display: flex;
+        margin-top: auto;
+    }
+
+    .dashbaord_profile_section .profile_section .pro_img_name img {
+        height: 80px;
+        width: 80px;
+    }
+
+    .dashbaord_profile_section .profile_section .pro_img_name img {
+        height: 60px;
+        width: 60px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .dashbaord_profile_section {
+        width: 110%;
+        margin-left: -5%;
+    }
+
+    .dashbaord_profile_section .profile_section {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        display: flex;
+    }
+
+    .dashbaord_profile_section .profile_section .pro_img_name {
+        width: 100%;
+        margin-top: auto;
+        height: auto;
+        padding-left: 10px;
+    }
+
+    .dashbaord_profile_section .profile_section .pro_img_name h3 {
+        margin-left: 10px;
+        color: white;
+    }
+
+    .dashbaord_profile_section .summery_section {
+        display: none;
+    }
+
+    .dashbaord_profile_section {
+        height: 100px;
+        padding: 15px;
+    }
+}
+
+/* profile img and name section end */
+
+
+/* ACTION SECTION START */
+.action_section {
+    height: auto;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 !important;
+}
+
+.action_section .centered_action {
+    padding: 0;
+    display: flex;
+    margin: 0;
+    gap: 2rem;
+}
+
+
+.action_section .centered_action .action_button {
+    display: flex;
+    height: 100%;
+    margin: 0;
+    padding: 20px 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+.action_section .centered_action .action_button:hover p {
+    color: rgb(248, 102, 5);
+}
+
+.action_section .centered_action .action_button:hover .right_arrow i {
+    color: rgb(248, 102, 5);
+
+}
+
+.action_section .centered_action .action_button img {
+    width: 40px;
+    height: auto;
+    margin: auto;
+}
+
+.action_section .centered_action .action_button p {
+    margin: auto;
+    font-weight: 600;
+    font-size: 16px;
+    margin-left: 15px;
+    color: black;
+}
+
+.action_section .centered_action .action_button .right_arrow i {
+    margin: auto;
+    font-size: 30px;
+    color: rgba(0, 0, 0, 0.375);
+}
+
+/* .action_section .centered_action .active,
+.action_section .centered_action .active p,
+.action_section .centered_action .active .right_arrow i{
+    color: rgb(248, 102, 5) !important;
+} */
+
+.action_section .centered_action .active {
+    background-color: rgb(226, 226, 226);
+    border-bottom: 4px solid var(--primary-color);
+}
+
+
+.action_section .centered_action .action_button .right_arrow {
+    height: 100%;
+    position: absolute;
+    right: -20px;
+    top: 0;
+    /* transform: rotate(45deg);
+    transform-origin: center; */
+    display: flex;
+    z-index: 10;
+}
+
+
+@media screen and (max-width: 1450px) {
+    .action_section .centered_action .action_button {
+        /* border: 1px solid red; */
+        display: flex;
+        height: 100%;
+        margin: 0;
+        padding: 10px 10px;
+        position: relative;
+    }
+
+    .action_section .centered_action .action_button .right_arrow {
+        height: 100%;
+        position: absolute;
+        right: -10px;
+    }
+
+    .action_section .centered_action .action_button .right_arrow i {
+        font-size: 20px;
+    }
+
+    .action_section .centered_action {
+        gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    .action_section .centered_action {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        align-items: right;
+        justify-content: right;
+        padding-right: 15px !important;
+        height: auto;
+        padding: 1rem 0px;
+        gap: 15px;
+        background-color: white;
+    }
+
+    .action_section .centered_action .action_button .right_arrow {
+        display: none;
+    }
+
+    .action_section .centered_action .action_button img {
+        width: 35px;
+    }
+
+    .action_section .centered_action .action_button p {
+        margin: auto;
+        font-size: 18px;
+        margin-left: 7px;
+    }
+
+    .action_section .centered_action .action_button {
+        border-radius: 3px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .action_section {
+        width: 110%;
+        margin-left: -5%;
+    }
+
+    .action_section .centered_action {
+        align-items: center;
+        justify-content: center;
+        padding: 0 !important;
+        padding-top: 15px !important;
+        padding-bottom: 15px !important;
+    }
+
+    .action_section .centered_action {
+        gap: 15px;
+    }
+
+    .action_section .centered_action .action_button {
+        display: flex;
+        height: 100%;
+        margin: 0;
+        padding: 5px 15px;
+        position: relative;
+    }
+
+    .action_section .centered_action .action_button p {
+        margin: auto;
+        font-size: 15px;
+        margin-left: 5px;
+    }
+
+}
+
+
+/* ACTION SECTION END */
+
+/* ____________________ dashboard section start */
+.dashboard_section {
+    height: auto;
+    width: 100%;
+}
+
+/* ____________________ dashboard section end*/
+
+.wellcome_text .text_div {
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    background-color: hsla(0, 0%, 100%, 1);
+    padding: 15px;
+    border-radius: 10px;
+    position: relative;
+    border: 2px solid rgb(251, 123, 11);
+}
+
+.wellcome_text .text_div .close_icon {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    right: 10px;
+    top: 10px;
+    display: flex;
+    cursor: pointer;
+}
+
+.wellcome_text .text_div .close_icon i {
+    margin: auto;
+}
+
+.wellcome_text .text_div .close_icon:hover i {
+    color: black;
+}
+
+.wellcome_text .text_div h3 {
+    color: var(--consultant-primary-color);
+}
+
+.wellcome_text .text_div h3 span {
+    color: rgb(251, 123, 11);
+}
+
+.wellcome_text .text_div h3,
+.wellcome_text .text_div p {
+    font-family: 'Poppins', sans-serif;
+}
+
+.wellcome_text .text_div p {
+    font-weight: 600;
+    padding: 0;
+    color: black;
+    font-size: 15px;
+}
+
+.wellcome_text .row .card {
+    height: 280px;
+    overflow: hidden;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border: 0.5px solid rgba(0, 0, 0, 0.515);
+    border-radius: 10px;
+    padding: 15px !important;
+}
+.wellcome_text .row .agency_dash_card{
+    border: none;
+    box-shadow: none;
+    border-radius: 0px;
+    /* border-left: 0.5px solid rgba(0, 0, 0, 0.515); */
+    border: none;
+}
+
+.wellcome_text .row .card .card_heading {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+}
+
+.wellcome_text .row .card .card_heading h4 {
+    font-size: 14px;
+    text-align: right;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.wellcome_text .row .card .card_heading img {
+    margin-top: auto;
+    margin-bottom: auto;
+    color: var(--consultant-primary-color);
+    margin-left: 5px;
+    height: 25px;
+    width: 25px;
+}
+
+.dashboard_section {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.wellcome_text .text_div {
+    margin-bottom: 20px;
+}
+
+.wellcome_text .row .card .card-body {
+    padding: 0 !important;
+}
+
+.wellcome_text .row .card .card-body h5 {
+    color: black;
+    font-weight: 700;
+    margin-top: 15px;
+}
+
+.wellcome_text .row .card .card-body ul {
+    padding: 0;
+}
+
+.wellcome_text .row .card .card-body li {
+    list-style: none;
+    margin-bottom: 5px;
+}
+
+.wellcome_text .row .card .card-body li a {
+    display: flex;
+    color: rgba(0, 0, 0, 0.635);
+    font-weight: 700;
+}
+
+.wellcome_text .row .card .card-body li a .list_icon {
+    width: 25px;
+    color: var(--consultant-primary-color);
+}
+
+.wellcome_text .row .card .card-body li a:hover {
+    color: black;
+}
+
+/* ______________ student request list card start*/
+.wellcome_text .row .card .card-body {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.wellcome_text .row .card .card-body .body_list {
+    height: 250px;
+    overflow: hidden;
+    overflow-y: auto;
+    width: 100%;
+}
+
+.wellcome_text .row .card .card-body .body_list .quick_view_heading{
+    display: flex;
+}
+.wellcome_text .row .card .card-body .body_list .quick_view_heading img {
+    height: 25px;
+    width: 25px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.wellcome_text .row .card .card-body .body_list .quick_view_heading span{
+    padding: 0;
+    margin: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+}
+
+.wellcome_text .row .card .card-body .request_list {
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.wellcome_text .row .card .card-body .request_list:hover {
+    background-color: #e7e7e7;
+}
+
+.wellcome_text .row .card .card-body .request_list .list_card {
+    padding: 0px !important;
+    display: flex;
+}
+
+.wellcome_text .row .card .card-body .request_list .list_card .student_img img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .info_text span,
+.wellcome_text .row .card .card-body .request_list .list_card h5,
+.wellcome_text .row .card .card-body .request_list .list_card p {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.wellcome_text .row .card .card-body .request_list .list_card .student_info {
+    width: 100%;
+    padding: 5px;
+}
+
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .info_text {
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%;
+}
+
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .info_text span {
+    border: 0.3px solid rgb(218, 160, 1);
+    border-radius: 25px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 12px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .info_text h5 {
+    margin-bottom: 5px;
+}
+
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .info_text p {
+    color: black;
+}
+
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .info_text .new {
+    padding: 3px;
+    border-radius: 3px;
+    background-color: rgb(0, 119, 175);
+    border: none;
+    color: white;
+}
+
+.wellcome_text .row .card .card-body .request_list .list_card p {
+    font-size: 12px;
+}
+
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .button {
+    width: 80px;
+    display: flex;
+}
+
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .student_button {
+    display: flex;
+    width: 100%;
+    padding: 0 !important;
+    gap: 15px;
+    margin-top: 7px;
+    align-items: self-end;
+}
+
+.wellcome_text .row .card .card-body .request_list .list_card .student_button>div {
+    width: 100%;
+    display: flex;
+}
+
+.wellcome_text .row .card .card-body .request_list .list_card .student_info span {
+    border-radius: 25px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 12px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-weight: 700;
+}
+
+
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .student_button .open_btn {
+    display: flex;
+    width: auto !important;
+    justify-content: end;
+    align-items: end;
+}
+
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .student_button .open_btn a {
+    width: 75px;
+    text-align: center;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding: 5px 0px;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.no_service_msg {
+    color: red;
+    text-align: center;
+    margin-top: 40%;
+    font-weight: 600;
+}
+
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .student_button .open_btn a:hover {
+    color: rgba(26, 245, 223, 0.971);
+}
+
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .student_button span {
+    border: 0.3px solid rgba(255, 106, 0, 0.971);
+    background-color: rgba(255, 94, 0, 0.287);
+    color: black;
+    padding: 3px 10px;
+}
+
+/* _____________ dashboard quick links start */
+
+
+
+/* progress start*/
+.circle {
+    --size: 100px;
+    --percent: 0;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: conic-gradient(var(--primary-color) calc(var(--percent) * 1%),
+            #d4d4d4 0);
+    font-family: sans-serif;
+    font-weight: bold;
+    color: #111;
+}
+
+.inner {
+    width: calc(var(--size) - 20px);
+    height: calc(var(--size) - 20px);
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+/* progress end*/
+
+.wellcome_text .row .card .profile_info {
+    display: flex;
+}
+
+.wellcome_text .row .card .profile_info .taka_sign img {
+    width: 70px;
+}
+
+.wellcome_text .row .card .profile_info .percent_text {
+    /* border: 1px solid red !important; */
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.wellcome_text .row .card .profile_info .percent_text>div {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.wellcome_text .row .card .profile_info .percent_text h4 {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.wellcome_text .row .card .profile_info .percent_text h4,
+.wellcome_text .row .card .profile_info .percent_text p {
+    margin: 0;
+    padding: 0;
+}
+
+.wellcome_text .row .card .profile_info .percent_text p {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 17px;
+    margin-top: 7px;
+    color: rgb(35, 35, 35);
+}
+
+/* account link start */
+.wellcome_text .row .card .account_links {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+.wellcome_text .row .card .account_links>div {
+    display: flex;
+    padding-bottom: 10px;
+}
+
+.wellcome_text .row .card .account_links>div p {
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+    font-size: 14px;
+    margin-left: 5px;
+    color: black;
+}
+
+.wellcome_text .row .card .account_links>div p span {
+    font-weight: 500;
+    color: black;
+}
+
+.wellcome_text .row .card .account_links>div img {
+    width: 20px;
+    height: 20px;
+}
+
+/* account link end */
+
+.wellcome_text .row .card {
+    position: relative;
+}
+
+.card_btn_section {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+    left: 0;
+    bottom: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.card_btn_section a {
+    width: 100%;
+    cursor: pointer;
+}
+
+.card_btn_section button {
+    cursor: pointer;
+    width: 100%;
+    padding: 5px 2px;
+    border: 2px solid var(--primary-color);
+    font-weight: 600;
+    background-color: transparent;
+    transition: all 0.3s ease;
+    /* smooth animation */
+}
+
+.card_btn_section button:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.card_btn_section .active {
+    background-color: var(--primary-color);
+    color: white;
+    transition: all 0.3s ease;
+    /* smooth animation */
+}
+
+
+.action_section .centered_action .active:hover {
+    background-color: white;
+    color: black;
+}
+
+
+
+/* _____________ dashboard quick links end */
+
+/* On smaller screens, reverse the order */
+@media screen and (max-width: 768px) {
+    .wellcome_text .text_div .text_p {
+        height: 100px;
+        overflow: hidden;
+        overflow-y: auto;
+    }
+
+    .dashboard_section {
+        flex-direction: column-reverse;
+    }
+
+    .wellcome_text .row .user_request_card {
+        height: 400px;
+    }
+
+    .wellcome_text .row .user_request_card .card-body .body_list {
+        height: 380px;
+    }
+
+    .wellcome_text .text_div {
+        padding: 10px;
+    }
+
+    .wellcome_text .row .card .card-body .request_list .list_card .student_info {
+        display: block;
+    }
+
+    .wellcome_text .row .card .card-body .request_list .list_card .student_info .desktop_span {
+        display: none;
+    }
+
+
+    .wellcome_text .row .card .card-body {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .wellcome_text .row .card .card-body .request_list .list_card .student_info .student_button,
+    .wellcome_text .row .card .card-body .request_list .list_card .student_info .button {
+        width: 100%;
+        position: relative;
+    }
+
+    .wellcome_text .row .card .card-body .request_list .list_card .student_info .student_button {
+        width: 100%;
+        position: relative;
+    }
+
+    .wellcome_text .row .card .card-body .request_list .list_card .student_info .student_button .open_btn,
+    .wellcome_text .row .card .card-body .request_list .list_card .student_info .button .open_btn {
+        right: 0px;
+        position: absolute;
+        width: 110px;
+    }
+
+    .wellcome_text .text_div h3 {
+        font-size: 17px;
+    }
+
+    .wellcome_text .text_div p {
+        font-size: 14px;
+    }
+
+    .wellcome_text .row .card .card-body .request_list .list_card .student_img img {
+        height: 40px;
+        width: 40px;
+    }
+
+    .wellcome_text .row .card .card-body .request_list .list_card .info_text h5 {
+        font-size: 14px;
+    }
+
+    .wellcome_text .row .card .card-body .request_list .list_card .info_text p {
+        font-size: 12px;
+    }
+    .action_div{
+        border: none !important;
+    }
+}
+
+/* ______________ student request list card end*/
+
+/* ______________ student request list card end*/

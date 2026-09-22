@@ -1,0 +1,57 @@
+/* For Chrome, Safari, Edge, and Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* For Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* 
+.card-header{
+    border: 1px solid red;
+} */
+.card-header .d-flex{
+    gap: 0.5em;
+}
+.table_heading h4{
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+}
+
+/* __________ transaction page modal start */
+.modal-content{
+    padding: 15px;
+    padding-top: 25px;
+}
+.modal-content form{
+    border: 1px solid rgba(0, 0, 0, 0.335) !important;
+    background-color: rgb(243, 243, 243);
+    border-radius: 5px;
+}
+/* __________ transaction page modal end */
+
+@media (max-width: 600px) {
+    
+    /* .transaction_action{
+        background: linear-gradient(to right, var(--primary-color), #002130);
+        border: 1px solid var(--primary-color-hover);
+    } */
+    .card-header {
+        padding: 0 !important;
+    }
+    .card-header .d-flex{
+        gap: 5px;
+        display: block !important;
+    }
+    .card-header button,
+    .card-header a{
+        margin-top: 5px;
+        padding: 5px !important;
+        font-size: 12px;
+    }
+}

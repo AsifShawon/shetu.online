@@ -1,0 +1,12 @@
+
+
+/* _____________________ search bar start */
+.search_box_consultants{
+    margin-top: -2rem;
+    position: relative;
+    z-index: 800;
+}
+.search_box_consultants .search_field{
+    border: 2px solid var(--active-primary-color);
+}
+/* _____________________ search bar start */

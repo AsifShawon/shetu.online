@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+.country_section{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    position: relative;
+}
+.country_section .content_header{
+    width: 100%;
+    display: flex;
+    padding-bottom: 3rem;
+}
+.country_section .content_header .header_text{
+    margin: auto;
+    max-width: 1000px;
+}
+.country_section .content_header .header_text h1{
+    font-weight: 700;
+    text-align: center;
+    color: var(--primary-color);
+    text-align: center;
+}
+.country_section .content_header .header_text p{
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+}
+.country_section .country_carousel {
+  height: auto;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  display: flex;
+  padding-bottom: 2.5rem;
+  position: relative;
+}
+
+.country_carousel .wrapper_container {
+    width: 100%;
+    margin: auto;
+}
+
+
+
+/* __________ carousel arrow start */
+.country_section .icon_div{
+    width: 100%;
+    position: absolute;
+    display: flex;
+    top: 9rem;
+    left: 0;
+    z-index: 500;
+}
+.country_section .icon_div .icons{
+    margin: auto;
+    max-width: 1300px;
+    width: 100%;
+    display: flex;
+}
+.country_section .icon_div .icon{
+    width: 100%;
+}
+.country_section .icon_div .icons .icon_right{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+.country_section .icon_div .icon .ico{
+    border: 1px solid transparent;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.country_section .icon_div .icon .ico i{
+    margin: auto;
+    font-size: 2.5rem;
+}
+.country_section .icon_div .icon .ico:hover{
+    border: 1px solid rgba(0, 0, 0, 0.627);
+}
+/* __________ carousel arrow end */
+
+
+
+.country_carousel .carousel {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0;
+}
+
+.country_carousel .carousel .card {
+  text-align: center;
+  margin: 0;
+  line-height: 250px;
+  font-size: 90px;
+  font-weight: 600;
+  /* border-radius: 10px; */
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.country_carousel .owl-dots {
+  text-align: center;
+  margin-top: 10px;
+  display: none !important;
+}
+.country_carousel .owl-dot {
+  display: none !important;
+  height: 15px;
+  width: 45px;
+  margin: 0 5px;
+  outline: none;
+  border-radius: 14px;
+  border: 2px solid #0072bc !important;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+.country_carousel .owl-dot.active,
+.country_carousel .owl-dot:hover {
+  background: #0072bc !important;
+}
+
+.country_carousel .carousel .card .card_part {
+  height: auto;
+  width: 100%;
+  background-color: rgb(213, 29, 29) !important;
+}
+.country_carousel .carousel .card .card_part img {
+  height: 150px;
+  width: 100%;
+}
+.country_carousel .carousel .card .card_text {
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+.country_carousel .carousel .card .card_text p {
+  margin: 0;
+  padding: 0;
+}
+.country_carousel .carousel .card .card_text .study_in {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.618);
+}
+.country_carousel .carousel .card .card_text .country_name {
+  font-size: 16px;
+  color: black;
+  font-weight: 600;
+}
+
+
+
+@media (max-width: 1200px) {
+  .country_carousel .carousel {
+      padding-left: 15px;
+      padding-right: 15px;
+  }
+}
+
+@media (max-width: 500px) {
+  .country_carousel .carousel {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .country_section .content_header .header_text h1{
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  .country_section .content_header .header_text p{
+    font-size: 13px;
+  }
+  .country_section .icon_div{
+    top: 10rem;
+  }
+  .country_section .icon_div .icons .icon_left{
+    margin-left: -10px;
+  }
+  .country_section .icon_div .icons .icon_right{
+    margin-right: -10px;
+  }
+  .country_carousel .owl-dots {
+    display: none;
+  }
+}

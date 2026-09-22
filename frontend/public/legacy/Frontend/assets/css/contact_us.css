@@ -1,0 +1,411 @@
+.contact_section{
+    width: 100%;
+    display: flex;
+    background-color: white;
+}
+.contact_section .center_contact{
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    background-color: white;
+}
+.contact_section .center_contact .page_heading{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.contact_section .center_contact .page_heading h3{
+    font-size: 2rem;
+    font-weight: 600;
+}
+.contact_section .center_contact .div_part{
+    display: flex;
+    margin: auto;
+}
+
+/* _____________ contact option start */
+.contact_section .center_contact .contact_option{
+  display: flex;
+  margin-bottom: 25px;
+  border-bottom: 0.2px solid rgba(0, 0, 0, 0.291);
+}
+.contact_section .center_contact .contact_option .option_part{
+  width: 100%;
+  display: flex;
+}
+.contact_section .center_contact .contact_option .option_part a{
+  margin: auto;
+  text-align: center;
+  cursor: pointer;
+}
+.contact_section .center_contact .contact_option .option_part a i{
+  margin: auto;
+  font-size: 30px;
+  color: var(--primary-color);
+}
+.contact_section .center_contact .contact_option .option_part a p{
+  font-weight: 700;
+}
+.contact_section .center_contact .contact_option .option_part a:hover p{
+  color: rgb(3, 143, 225);
+}
+.contact_section .center_contact .contact_option .option_part a:hover i{
+  color: rgb(3, 143, 225);
+}
+
+@media screen and (max-width: 800px) {
+  .contact_section .center_contact .contact_option .option_part a i{
+    font-size: 20px;
+  }
+  .contact_section .center_contact .contact_option .option_part a p{
+    font-size: 12px;
+  }
+}
+/* _____________ contact option start */
+
+
+.contact_section .center_contact .div_part .poster_part{
+    height: 100%;
+    display: flex;
+}
+.contact_section .center_contact .div_part .poster_part .img{
+    margin: auto;
+}
+.contact_section .center_contact .div_part .poster_part img{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+.contact_section .center_contact .div_part .poster_part .img_text{
+    width: 80%;
+    margin-right: auto;
+}
+.contact_section .center_contact .div_part .poster_part .img_text p{
+    font-weight: 600;
+    margin-top: 15px;
+    color: rgba(0, 0, 0, 0.73);
+}
+.contact_section .center_contact 
+.poster_part{
+    width: 50%;
+}
+
+.contact_section .center_contact .my-form{
+    width: 50%;
+    display: flex;
+}
+
+.contact_section .center_contact .poster_part,
+.contact_section .center_contact .my-form{
+    min-height: 500px;
+    height: 100%;
+}
+
+.my-form input,
+.my-form select,
+.my-form textarea,
+.my-form button {
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  font-family: inherit;
+  font-size: 100%;
+  padding: 10px;
+}
+
+
+.my-form select {
+  appearance: none;
+}
+
+/* Remove native arrow on IE*/
+.my-form select::-ms-expand {
+  display: none;
+}
+
+.my-form select:-moz-focusring {
+  color: transparent !important;
+  text-shadow: 0 0 0 var(--white);
+}
+
+.my-form textarea {
+  resize: none;
+}
+
+.my-form ul {
+  list-style: none;
+}
+
+
+.my-form .container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  margin-left:auto;
+  margin-right:auto;
+  /* background-color: aliceblue; */
+  /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; */
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-radius: 10px;
+}
+
+/*Form Elements*/
+.my-form h1 {
+  margin-bottom: 1.5rem;
+  font-size: 20px;
+}
+
+
+
+/*Custom Variables Here */
+.my-form select,
+.my-form input,
+.my-form textarea,
+.my-form button {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--borderFormEls);
+  color: rgba(0, 0, 0, 0.56);
+  background: var(--bgFormEls);
+  border-radius: 5px;
+  transition: background-color 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25), transform 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25);
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  background-color: white;
+}
+
+.my-form textarea {
+  height: 170px;
+}
+
+.my-form ::placeholder {
+  color: inherit;
+  /*Fix opacity issue on Firefox */
+  opacity: 1;
+}
+
+.my-form select:focus,
+.my-form input:focus,
+.my-form textarea:focus,
+.my-form button:enabled:hover,
+.my-form button:focus,
+input[type=checkbox]:focus + label {
+  background: white;
+}
+
+.my-form select:focus,
+.my-form input:focus,
+.my-form textarea:focus {
+  transform: scale(1.02);
+}
+
+.my-form *:required,
+.my-form select {
+  background-repeat: no-repeat;
+  background-position: center right 12px;
+  background-size: 15px 15px;
+}
+
+.my-form *:disabled {
+  cursor: default;
+  filter: blur(2px);
+}
+
+.my-form .btn-grid {
+  position: relative;
+  overflow: hidden;
+  transition: filter 0.2s;
+  cursor: pointer;
+}
+
+.my-form button {
+  font-weight: bold;
+  background-color: var(--primary-color);
+  color: aliceblue;
+  font-size: 14px;
+  border: 1px solid var(--primary-color);
+}
+.my-form button:hover{
+    color: black;
+}
+
+
+.my-form button > * {
+  display: inline-block;
+  width: 100%;
+  transition: transform 0.4s ease-in-out;
+}
+
+.my-form button .back {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-110%, -50%);
+}
+
+.my-form button:enabled:hover .back,
+.my-form button:focus .back {
+  transform: translate(-50%, -50%);
+}
+
+.my-form button:enable:hover .front,
+.my-form button:focus .front {
+  transform: translateX(110%);
+}
+
+/* Custom Checkbox */
+.my-form input[type=checkbox] {
+  position: absolute;
+  left: -9999px;
+}
+
+.my-form .grid{
+    position: relative;
+    height: 50px;
+}
+.my-form .grid button{
+    width: 150px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.my-form input[type=checkbox] + label {
+  position: relative;
+  display: inline-block;
+  padding-left: 2rem;
+  transition: background 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25);
+}
+
+.my-form input[type=checkbox]:focus + label {
+  background: var(--bgFormElsFocus);
+}
+
+.my-form input[type=checkbox] + label::before,
+.my-form input[type=checkbox] + label::after {
+  content: "";
+  position: absolute;
+}
+
+.my-form input[type=checkbox] + label::before {
+  left: 0;
+  top: 6px;
+  width: 18px;
+  height: 18px;
+  border: 1px solid red;
+}
+
+.my-form input[type=checkbox]:checked + label::before {
+  background: var(--red);
+}
+
+.my-form input[type=checkbox]:checked + label::after {
+  left: 7px;
+  top: 7px;
+  width: 6px;
+  height: 14px;
+  border-bottom: 1px solid red;
+  border-right: 1px solid red;
+  transform: rotate(45deg);
+}
+
+
+
+/*Media Queries*/
+@media screen and (min-width: 600px) {
+  .my-form .grid {
+    display: grid;
+    grid-gap: 1.5rem;
+  }
+
+  .my-form .grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .my-form .grid-3 {
+    grid-template-columns: auto auto auto;
+    align-items: center;
+  }
+
+  .my-form .grid .required-msg {
+    display: block;
+  }
+}
+@media screen and (min-width: 541px) {
+  .my-form input[type=checkbox] + label::before {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .my-form input[type=checkbox]:checked + label::after {
+    top: 3px;
+  }
+}
+/* .my-form *:disabled {
+  cursor: default;
+  filter: blur(2px);
+} */
+
+
+/* ________ map section start */
+.map_section{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.map_section h3{
+    margin-bottom: 10px;
+}
+/* ________ map section end */
+
+@media screen and (max-width: 800px) {
+  .contact_section .center_contact{
+    padding: 10px;
+  }
+  .contact_section .center_contact .div_part{
+    display: block;
+    margin: auto;
+    padding: 0px;
+  }
+  .contact_section .center_contact .poster_part,
+  .contact_section .center_contact .my-form{
+    width: 100%;
+    padding: 0;
+    min-height: auto;
+    height: 100%;
+  }
+
+
+  .contact_section .center_contact .poster_part .img_text{
+    padding: 0;
+    margin: auto;
+    width: 100% !important;
+  }
+  .contact_section .center_contact .poster_part .img_text .img,
+  .contact_section .center_contact .poster_part .img_text img{
+    width: 100%;
+  }
+  .contact_section .center_contact .page_heading{
+    padding-top: 1.5rem;
+    padding-bottom: 0rem;
+    text-align: center;
+    margin-bottom: 0rem;
+  }
+  .contact_section .center_contact .page_heading h3{
+    margin-bottom: 10px;
+  }
+  .contact_section .center_contact .my-form h1,
+  .contact_section .center_contact .page_heading h3{
+    font-size: 1rem;
+  }
+  .contact_section .center_contact .div_part .poster_part .img_text p{
+    font-size: 14px;
+  }
+  .my-form textarea {
+    margin-top: 3.1rem !important;    
+    height: 130px;
+  }
+
+}

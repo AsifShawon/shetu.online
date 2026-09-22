@@ -1,0 +1,77 @@
+/* translator start */
+.translate {
+    margin-top: auto;
+    margin-bottom: auto;
+    overflow: hidden;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=SUSE:wght@100..800&display=swap');
+
+input[type="checkbox"] {
+    display: none;
+}
+
+#button {
+    position: relative;
+    background-color: white;
+    display: block;
+    width: 60px;
+    height: 31px;
+    border: 1px solid rgb(250, 250, 250);
+    border-radius: 30px;
+    cursor: pointer;
+    margin: auto;
+    transition: background-color 0.3s ease;
+}
+
+.user_dashbaord #button {
+    border: 1px solid rgb(18, 119, 0);
+}
+
+#knob {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    background-color: #fff !important;
+    top: 2px;
+    left: 3px;
+    border-radius: 50%;
+    transition: 0.4s ease left, 0.4s ease background-color;
+    background-image: url(/translate/bn.png);
+    background-size: cover;
+    background-position: center;
+}
+
+
+#language-text {
+    position: absolute;
+    top: 50%;
+    left: 32px;
+    transform: translateY(-50%);
+    color: #000000;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    transition: color 0.4s ease, left 0.4s ease;
+    ;
+}
+
+#language-toggle:checked+#button {
+    background-color: #0d1366;
+    border: 1px solid #fcfcfc;
+}
+
+#language-toggle:checked+#button #knob {
+    left: 30px;
+    background-color: #ffffff;
+    background-image: url(/translate/en.png);
+}
+
+#language-toggle:checked+#button #language-text {
+    color: #ffffff;
+    left: 8px;
+    transition: left 0.4s ease;
+}
+
+/* translator end */

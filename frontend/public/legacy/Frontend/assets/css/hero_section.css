@@ -1,0 +1,80 @@
+  .hero-section {
+      color: rgb(143, 26, 26);
+      /* border: 1px solid red; */
+      padding-top:15rem !important;
+      padding-bottom:4rem !important;
+      background-color: white;
+      position: relative;
+    }
+    
+    .hero-container {
+        max-width: 1200px;
+        margin: auto;
+    }
+    
+    .hero-image {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .hero-section .hero_part{
+        padding: 0;
+    }
+    .hero-section .text_part{
+        width: 65%;
+    }
+    .hero-section .filter_part{
+        width: 35%;
+    }
+  /* @media (max-width: 767.98px) {
+    .hero-section {
+        text-align: center;
+    }
+  } */
+
+    @media (max-width: 1200px) {
+        .hero-section {
+            padding-top:10rem !important;
+        }
+        .hero-section .hero-container {
+            padding-top: 25px;
+        }
+    }
+    @media (max-width: 500px) {
+        .hero-section {
+            padding-bottom: 0rem !important;
+        }
+    }
+
+
+/* _______________________ */
+  .hero-section .plane_section{
+      display: flex;
+      width: 100%;
+      position: absolute;
+      bottom: -10rem;
+      left: 0;
+      z-index: 100;
+    }
+    .hero-section .plane_section .plane{
+        width: 100%;
+        display: flex;
+        max-width: 1200px;
+        margin: auto;
+    }
+    .hero-section .plane_section .plane>div{
+        width: 100%;
+        display: flex;
+    }
+    .hero-section .plane_section .plane .right{
+        display: flex;
+        align-items: end;
+        justify-content: end;
+    }
+    @media (max-width: 800px) {
+        .hero-section .plane_section .plane>div img{
+            height: 70px;
+            width: auto;
+        }
+    }
+/* _______________________ */

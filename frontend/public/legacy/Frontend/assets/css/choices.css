@@ -1,0 +1,642 @@
+
+/* _____________________ */
+.search_bar{
+  display: flex;
+  padding: 5px;
+  position: relative;
+}
+.search_bar input{
+  width:50%;
+  margin-left: auto;
+}
+.search_bar i{
+  position: absolute;
+  right:15px;
+  top: 15px;
+  font-size: 15px;
+  background-color: white;
+}
+
+.selected_assessment_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding-top: 20px;
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+  @media (max-width: 800px) {
+    .selected_assessment_section {
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+    .search_bar input{
+      width:100%;
+    }
+  }
+  .selected_assessment_section h3{
+      /* max-width: 1100px; */
+      width: 100%;
+      font-weight: 700;
+      padding: 0;
+      margin: 0;
+  }
+  .selected_assessment_section h3 i{
+      color: var(--primary-color);
+      text-shadow: 0 0 2px #000000;
+  }
+  
+  .selected_assessment_section .choice_list{
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    /* max-width: 1200px; */
+    width: 100%;
+  }
+
+  .selected_assessment_section .accordian {
+    /* border-radius: 5px; */
+    overflow: hidden;
+    width: 100% !important;
+    /* padding: 0.6rem; */
+    /* padding-top: 5px; */
+    /* border-radius: 12px; */
+    /* border-left: 4px solid var(--primary-color); */
+    position: relative;
+    /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; */
+    overflow-x: auto;
+    background-color: white;
+  }
+  
+  /* .selected_assessment_section .accordian:first-child {
+  background: #fdf7f0;
+  border-left: 4px solid #fac38b;
+  }
+  
+  .selected_assessment_section .accordian:nth-child(2) {
+  background: #f1f0fe;
+  border-left: 4px solid #9090eb;
+  }
+  
+  .selected_assessment_section .accordian:nth-child(3) {
+  background: #fff0f3;
+  border-left: 4px solid #ef95ac;
+  }
+  
+  .selected_assessment_section .accordian:nth-child(4) {
+  background: #eef9ff;
+  border-left: 4px solid #98d1f3;
+  }
+  */
+  .selected_assessment_section .accordian_head {
+    padding: 5px;
+    padding-left: 40px;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    cursor: pointer;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    border-top: 0.2px solid rgba(0, 0, 0, 0.261);
+  }
+  
+  .selected_assessment_section .accordian_head .index {
+    width: 30px !important;
+    height: 100% !important;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: flex;
+  }
+  .selected_assessment_section .accordian_head .index p{
+      color: var(--primary-color);
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        margin: auto;
+        font-weight: 700;
+    }
+  .selected_assessment_section .accordian_head  .mov_status{
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    color: aliceblue;
+    border-radius: 3px;
+    padding: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 12px;
+    width: 75px;
+    text-align: center;
+  }
+  
+
+  .selected_assessment_section .accordian_head .head_elelments{
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    cursor: pointer;
+    width: 98%;
+    overflow: hidden;
+  }
+
+  
+  .selected_assessment_section .accordian_toggler {
+    align-self: flex-start;
+    font-size: 1.5rem;
+    transition: all 0.5s ease;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 100%;
+    width: 30px;
+    display: flex;
+  }
+  .selected_assessment_section .toggler_arrow i {
+    margin: auto;
+    color: black;
+    font-size: 14px;
+    transition: transform 0.3s ease;
+  }
+
+  .selected_assessment_section .rotate {
+    transform: rotate(180deg);
+  }
+  .selected_assessment_section .toggler_arrow:hover i{
+    color: var(--primary-color-hover);
+  }
+
+  
+  .selected_assessment_section  .accordian_description .bottom_part .part_text button,
+  .selected_assessment_section  .accordian_description .bottom_part .part_text a{
+    padding: 0;
+    margin: 0 !important;
+    margin-bottom: 3px !important;
+  }
+  /* .selected_assessment_section  .accordian_description .bottom_part p{
+    position: relative;
+    color: aliceblue;
+    border-radius: 3px;
+    padding: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 12px;
+    width: 75px;
+    text-align: center;
+  } */
+    /* .selected_assessment_section  .accordian_description .bottom_part .icon{
+      border: 1px solid red;
+    } */
+  
+  .selected_assessment_section .accordian_part {
+    font-size: 1rem;
+    font-weight: 500;
+    width: 100%;
+    border-right: 0.5px solid rgba(0, 0, 0, 0.294);
+  }
+  .selected_assessment_section .accordian_part p{
+    margin: 0;
+    padding: 0;
+    font-weight: 700;
+    max-height: 50px;
+    overflow: hidden;
+    font-size: 14px;
+  }
+  .selected_assessment_section .accordian_part .span{
+    font-size: 12px;
+    font-weight: 600;
+    min-width: 150px !important;
+    margin: 0;
+    padding: 0;
+  }
+  .selected_assessment_section .accordian_part .span i{
+    color: var(--primary-color);
+    font-size: 15px;
+  }
+  
+  @media (max-width: 350px) {
+    .selected_assessment_section .accordian_part p{
+        font-size: 13px;
+        max-height: 40px;
+    }
+    .selected_assessment_section .accordian_part .span{
+        font-size: 13px;
+    }
+  }
+  
+  
+  .selected_assessment_section .accordian_body {
+    background: white;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.5s ease;
+    width: 100%;
+  }
+  
+  .selected_assessment_section .active_body {
+    grid-template-rows: 1fr;
+  }
+  
+  .selected_assessment_section  .accordian_description {
+    background-color: transparent;
+    padding-left: 0px;
+    padding-right: 0px;
+    font-size: 0.9rem;
+    overflow: hidden;
+    line-height: 1.2rem;
+    display: flex;
+    width: 100%;
+  }
+  .selected_assessment_section  .accordian_description .detail_part_section{
+    display: flex;
+    padding-left: 10px;
+    width: 100%;
+  }
+  /* __________________  mov_consultant_section start*/
+  
+  .selected_assessment_section  .accordian_description  .mov_consultant_section{
+    display: none;
+    height: auto;
+    background-color: var(--primary-color-transparent);
+    padding: 10px;
+    padding-bottom: 5px;
+    position: relative;
+  }
+  .selected_assessment_section  .accordian_description  .mov_consultant_section .item{
+    margin-bottom: 5px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .selected_assessment_section  .accordian_description  .mov_consultant_section .item i{
+    color: var(--primary-color);
+    margin-right: 5px;
+    font-size: 15px;
+  }
+  .selected_assessment_section  .accordian_description  .mov_consultant_section .mov_attachment{
+    position: absolute;
+    bottom:10px;
+    right:15px;
+  }
+  .selected_assessment_section  .accordian_description  .mov_consultant_section .mov_attachment p{
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .selected_assessment_section  .accordian_description  .mov_consultant_section .mov_attachment .attach_buttons{
+    display: flex;
+    gap: 5px;
+    width: 100%;
+  }
+  .selected_assessment_section  .accordian_description  .mov_consultant_section .mov_attachment .attach_buttons ._df_button,
+  .selected_assessment_section  .accordian_description  .mov_consultant_section .mov_attachment .attach_buttons a{
+    width: 100%;
+    margin: auto;
+    font-weight: 600;
+    border: 1px solid var(--primary-color);
+    border-radius: 3px;
+    font-size: 13px;
+    padding: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .selected_assessment_section  .accordian_description  .mov_consultant_section .mov_attachment .attach_buttons ._df_button{
+    color: var(--primary-color) !important;
+    font-weight: 700;
+    background: transparent !important;
+  }
+  .selected_assessment_section  .accordian_description  .mov_consultant_section .mov_attachment .attach_buttons a{
+    color: aliceblue;
+    background: transparent;
+    background-color: var(--primary-color);
+  }
+  .selected_assessment_section  .accordian_description  .mov_consultant_section .mov_attachment .attach_buttons a:hover{
+    background-color: var(--primary-color-hover);
+  }
+  .selected_assessment_section  .accordian_description  .mov_consultant_section .mov_attachment .attach_buttons ._df_button:hover{
+    background-color: var(--primary-color) !important;
+    color: aliceblue !important;
+  }
+  /* __________________  mov_consultant_section end*/
+  
+  
+  /* __________________ desktop-attachment start */
+  .desktop_attachment{
+    position: relative;
+    margin-top: 10px;
+  }
+  .desktop_attachment p{
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.581) !important;
+  }
+  .desktop_attachment .attach_buttons{
+    display: flex;
+    gap: 5px;
+    width: 100%;
+  }
+  .desktop_attachment .attach_buttons ._df_button{
+    background-color: transparent !important;
+  }
+  .desktop_attachment .attach_buttons ._df_button,
+  .desktop_attachment .attach_buttons a{
+    width: 100%;
+    margin: auto;
+    font-weight: 600;
+    border: 1px solid var(--primary-color);
+    border-radius: 3px;
+    font-size: 13px;
+    padding: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .desktop_attachment .attach_buttons ._df_button{
+    color: var(--primary-color);
+    font-weight: 700;
+  }
+  .desktop_attachment .attach_buttons a{
+    color: aliceblue;
+    background: transparent;
+    background-color: var(--primary-color);
+  }
+  .desktop_attachment .attach_buttons a:hover{
+    background-color: var(--primary-color-hover);
+  } .desktop_attachment .attach_buttons ._df_button:hover{
+    background-color: var(--primary-color) !important;
+    color: aliceblue;
+  }
+  /* __________________ desctop-attachment end */
+  
+  .selected_assessment_section  .accordian_description .detail_part{
+    align-items: end;
+    width: auto;
+    margin-top: 10px;
+    display: flex;
+    gap: 5px;
+    padding-right: 7px;
+    padding-bottom:10px;
+  }
+  .selected_assessment_section  .accordian_description .detail_part .icon{
+    margin-bottom: auto;
+  }
+  
+  .selected_assessment_section  .accordian_description .detail_part p{
+    margin: 0;
+    padding: 0;
+  }
+  .selected_assessment_section  .accordian_description .detail_part .part_text{
+    display: block;
+  }
+  
+  .selected_assessment_section  .accordian_description .detail_part i{
+  color: var(--primary-color);
+  font-size: 15px;
+  }
+  
+  .selected_assessment_section  .accordian_description .detail_part p{
+    font-weight: 700;
+  }
+  .accordian_body .mobile_element {
+    display: none !important;
+   }
+  
+  @media (max-width: 800px) {
+    .selected_assessment_section  .accordian_description {
+      display: block;
+    }
+    .selected_assessment_section  .accordian_description .detail_part_section {
+      display: block;
+    }
+    .selected_assessment_section  .accordian_description .detail_part{
+      width: 100%;
+      margin-top: 5px;
+    }
+    .selected_assessment_section  .accordian_description .bottom_part{
+      padding-bottom: 10px;
+    }
+    .selected_assessment_section  .accordian_description  .mov_consultant_section{
+      display: block;
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .selected_assessment_section .desctop_element{
+      display: none;
+    }
+    .selected_assessment_section .accordian_part {
+      border: none;
+    }
+    .accordian_body .mobile_element{
+    display: block !important;
+   }
+    .selected_assessment_section {
+      gap: 15px;
+    }
+    .selected_assessment_section .accordian_toggler {
+      width: 20px;
+    }
+    .selected_assessment_section .accordian_toggler i{
+      font-size: 15px;
+    }
+    .selected_assessment_section .accordian_head  .mov_status{
+      display: block;
+    }
+    .selected_assessment_section  .accordian_description .bottom_part .part_text a{
+      margin-right: 10px !important;
+    }
+  }
+  
+  
+  .demo{
+    color: rgb(233, 179, 0);
+  }
+
+
+/* ________________________________________ UPDATE LAST EDU START */
+.update_edu_section {
+    background-color: rgba(27, 27, 27, 0.416);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    padding: 10px;
+}
+
+.update_edu_section.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.update_edu_center {
+    max-width: 500px;
+    width: 100%;
+    height: auto;
+    margin: auto;
+    background-color: white;
+    padding: 25px;
+    transform: scale(0.8);
+    transition: transform 0.4s ease;
+    border-radius: 5px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.update_edu_section.show .update_edu_center {
+    transform: scale(1);
+}
+.update_edu_section.show .update_edu_center .heading{
+    display: flex;
+    width: 100%;
+}
+.update_edu_section.show .update_edu_center .heading .heading_title{
+    width: 97%;
+}
+.update_edu_section.show .update_edu_center .heading .heading_title h4{
+    width: 100%;
+    text-align: center;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+.update_edu_section .update_edu_center .heading .close_icon{
+    display: flex;
+    width: 3%;
+    justify-content: end;
+    font-size: 20px;
+    cursor: pointer;
+}
+.update_edu_section .update_edu_center .heading .close_icon:hover i{
+    color: red;
+}
+.update_edu_section .update_edu_center .save_btn{
+    width: 100%;
+    border: 1px solid var(--primary-color);
+    background:var(--primary-color);
+    border-radius: 5px;
+    font-weight: 700;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: aliceblue;
+}
+.update_edu_section .update_edu_center .save_btn:hover{
+    background-color: var(--primary-color-hover);
+    color: aliceblue;
+}
+@media (max-width: 600px) {
+.update_edu_section{
+    padding-top: 5rem;
+}
+    /* .update_edu_center {
+        height: 100%;
+    } */
+}
+
+
+.update_edu_center .row .col-12{
+    margin-top: 25px;
+    padding: 10px;
+    border-left: 2px solid var(--primary-color);
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+/* For modern browsers */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+    appearance: textfield; /* Standard */
+}
+
+.choice_table_heading{
+  display: flex;
+  /* max-width: 1200px; */
+  width: 100%;
+  background-color: #e0e4e7;
+  /* background-color: #f6f6f6; */
+}
+.choice_table_heading>div{
+  width: 100%;
+}
+
+.choice_table_heading .heading_right{
+  display: flex;
+  justify-content: right;
+  align-items: right;
+}
+  
+  .choice_create button,
+  .choice_create{
+      background-color: var(--primary-color);
+      padding: 5px;
+      padding-left: 25px;
+      padding-right: 25px;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+      color: aliceblue;
+      border-radius: 3px;
+      border: none;
+  }
+  .choice_create:hover{
+    background-color: var(--primary-color-hover);
+  }
+  .choice_create button:hover{
+      background-color: var(--primary-color-hover);
+  }
+@media (max-width: 900px) {
+.choice_table_heading .heading_left{
+    width: 60% !important;
+  }
+.choice_table_heading .heading_right{
+    width: 40% !important;
+    display: flex;
+  }
+  .choice_table_heading .heading_right
+  .choice_create button,
+  .choice_table_heading .heading_right
+  .choice_create{
+      padding: 5px;
+      font-size: 12px;
+      width: 150px !important;
+      height: 30px !important;
+      margin: auto;
+  }
+
+}
+@media (max-width: 650px) {
+  
+  .choice_table_heading .heading_left h3{
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+  }
+  .choice_create button,
+  .choice_create{
+      padding: 3px;
+      padding-left: 5px !important;
+      padding-right: 5px !important;
+      width: 50px !important;
+  }
+}
+
+/* ________________________________________ UPDATE LAST EDU END */
+

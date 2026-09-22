@@ -1,0 +1,139 @@
+
+/* ________________________________________ UPDATE ASSESSMENT START */
+.update_assessment {
+    background-color: rgba(27, 27, 27, 0.416);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    overflow: auto; /* Enables scrolling */
+}
+
+.update_assessment.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.update_edu_center {
+    max-width: 800px;
+    width: 100%;
+    height: auto;
+    margin: auto;
+    background-color: white;
+    padding: 25px;
+    transform: scale(0.8);
+    transition: transform 0.4s ease;
+    border-radius: 15px;
+}
+.update_edu_center .input_div p{
+    padding: 7px;
+    margin: 0;
+}
+
+.update_assessment.show .update_edu_center {
+    transform: scale(1);
+}
+.update_assessment.show .update_edu_center .heading{
+    display: flex;
+    width: 100%;
+}
+.update_assessment.show .update_edu_center .heading .heading_title{
+    width: 97%;
+}
+.update_assessment.show .update_edu_center .heading .heading_title h4{
+    width: 100%;
+    text-align: center;
+    color:var(--consultant-primary-color);
+    font-size: 25px;
+    font-weight: 700;
+}
+/* For modern browsers like Chrome, Safari, and Edge */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* For Firefox */
+/* input[type="number"] {
+    -moz-appearance: textfield;
+} */
+
+.update_assessment .update_edu_center .heading .close_icon{
+    display: flex;
+    width: 3%;
+    justify-content: end;
+    font-size: 25px;
+    cursor: pointer;
+}
+.update_assessment .update_edu_center .heading .close_icon:hover i{
+    color: rgb(255, 69, 27);
+}
+.update_assessment .update_edu_center .save_btn{
+    width: 100%;
+    border: 1px solid var(--consultant-primary-color);
+    background:var(--consultant-primary-color);
+    border-radius: 5px;
+    font-weight: 700;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: aliceblue;
+}
+.update_assessment .update_edu_center .save_btn:hover{
+    background-color: var(--consultant-primary-color-hover);
+    color: aliceblue;
+}
+@media (max-width: 600px) {
+.update_assessment{
+    padding-top: 5rem;
+}
+    /* .update_edu_center {
+        height: 100%;
+    } */
+}
+.input_div{
+    border: 0.5px solid rgba(0, 0, 0, 0.137);
+    display: flex;
+    border-radius:4px;
+}
+.input_div .form-control{
+    border: none;
+}
+.input_div .icon_div{
+    width: 30px;
+    display: flex;
+}
+.input_div .icon_div i{
+    margin: auto;
+    font-size: 18px;
+    color: var(--consultant-primary-color);
+}
+/* ________________________________________ UPDATE ASSESSMENT END */
+
+.autocomplete-suggestions {
+    position: absolute;
+    z-index: 1000;
+    background: #fff;
+    max-height: 200px;
+    overflow-y: auto;
+    border-radius: 0 0 5px 5px;
+    width: 100%;
+    }
+
+    .autocomplete-suggestions div {
+    padding: 8px 12px;
+    cursor: pointer;
+    color: black;
+    }
+
+    .autocomplete-suggestions div:hover {
+    background-color: #f0f0f0;
+    }

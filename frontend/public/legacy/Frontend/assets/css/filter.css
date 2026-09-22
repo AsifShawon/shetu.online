@@ -1,0 +1,408 @@
+.filter_section{
+    width: 100%;
+    height: auto;
+    display: flex;
+    position: relative;
+    z-index: 800 !important;
+    
+}
+.filter_section .centered_filter{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    overflow: hidden;
+    
+    border-radius: 10px;
+    overflow: hidden;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+    
+    padding: 2px; /* Thickness of border */
+    border-radius: 12px;
+    background: linear-gradient(to left, #f20e4b, #098dec);
+    display: inline-block; /* shrink to fit content */
+}
+
+.filter_section .centered_filter .down_border{
+    background-color: rgb(241, 243, 243) !important;
+    border-radius: 9px;
+    padding: 10px;
+}
+
+/* __________________________ DETAIL BUTTON START */
+ .filter_section .centered_filter .filter_head{
+    height: auto;
+     width: 100%;
+}
+
+
+.filter_section .centered_filter .filter_head .head{
+    margin-top: 2rem;
+}
+
+.filter_section .centered_filter .filter_head .head p{
+    font-family: "Poppins", sans-serif !important;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    background: -webkit-linear-gradient(#ce2828, rgb(12, 74, 110));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+ .filter_section .centered_filter .buttons{
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    font-family: "Poppins", sans-serif;
+}
+/* ___________________ selection div start */
+.filter_section .centered_filter .buttons .selection{
+    width: 100%;
+    position: relative;
+}
+.filter_section .centered_filter .buttons .selection .selected{
+    height: 40px;
+    background-color: white;
+    display: flex;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.filter_section .centered_filter .buttons .selection .selected img{
+    height: 25px;
+    width: auto;
+    margin-right: 10px;
+}
+.filter_section .centered_filter .buttons .selection .selected p{
+    margin: 0;
+    margin-top: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+.filter_section .centered_filter .buttons .selection .selected p i{
+    margin-right: 10px;
+}
+.filter_section .centered_filter .buttons .selection .selected i{
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 20px;
+}
+.hidden{
+    display: none;
+}
+.filter_section .centered_filter .buttons .selection ul{
+    padding: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: white;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+.filter_section .centered_filter .buttons .selection ul button{
+    list-style: none;
+    padding-left: 15px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}
+.filter_section .centered_filter .buttons .selection ul button:hover{
+    background-color: rgb(206, 206, 206);
+}
+/* ___________________ selection div end */
+.filter_section .centered_filter .buttons select{
+    width: 100%;
+    padding: 10px;
+}
+.filter_section .centered_filter .buttons button{
+    border-radius: 0px;
+    border: none;
+    font-weight: 700;
+    font-size: 12px;
+    color: black;
+    background:transparent;
+    font-family: "Poppins", sans-serif;
+    padding: 3px;
+}
+.filter_section .centered_filter .buttons button i{
+    margin-right: 5px;
+    font-size: 15px;
+}
+.filter_section .centered_filter .buttons .active{
+    color: var(--primary-color);
+    background:transparent !important;
+}
+/* __________________________ DETAIL BUTTON END */
+ .filter_section .centered_filter .buttons_desc{
+    padding: 10px;
+    font-family: "Poppins", sans-serif;
+}
+
+.filter_section .centered_filter .buttons_desc>div .details h3{
+    
+    font-weight: 700;
+    font-size: 20px;
+    font-family: "Poppins", sans-serif;
+}
+
+ .filter_section .centered_filter .buttons_desc>div .icon i{
+    color: var(--primary-color);
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 30px;
+}
+
+/* Buttons styling */
+.buttons button {
+    padding: 10px 5px;
+    margin-right: 10px;
+    cursor: pointer;
+    border: none;
+    background-color: #f4f4f4;
+    transition: background-color 0.3s ease;
+    font-family: "Poppins", sans-serif;
+}
+
+.buttons button.active {
+    color: var(--primary-color);
+}
+
+
+/* Section styling */
+.buttons_desc > div {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+    display: none; /* Hidden by default */
+}
+
+
+/* Show first section by default */
+.buttons_desc > div:first-child {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+}
+.buttons_desc > div .in_details .details p{
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+}
+
+
+
+/* ________________ */
+.buttons_desc > div .in_details{
+    display: block !important;
+    padding-bottom: 5px;
+}
+
+.buttons_desc > div .in_details .input_box{
+    width: 100%;
+    display: block;
+    align-items: start;
+}
+
+.buttons_desc > div .in_details .input_box .input_label{
+    display: block !important;
+    width: 100%;
+}
+.buttons_desc > div .in_details .input_box .input_label p{
+    font-size: 15px;
+}
+.buttons_desc > div .in_details .input_box p{
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+    color: black;
+}
+
+.buttons_desc > div .in_details .input_box p i{
+    margin-right: 5px;
+}
+
+
+/*  _____________ search field start*/
+.input_box {
+    margin-bottom: 5px;
+}
+
+.buttons_desc > div .in_details .input_box .container-fluid .row{
+    height: auto !important;
+    display: block !important;
+    
+    padding: 0 !important;
+}
+.buttons_desc > div .in_details .input_box .container-fluid .row .col-md-14{
+    
+    width: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+
+
+/* _______________ search button start */
+.filter_section .centered_filter .buttons_desc .button_section{
+    width: 100%;
+    display: flex;
+    padding-top: 15px;
+    /* justify-content: end;
+    align-items: end;
+    border: 1px solid red; */
+}
+.filter_section .centered_filter .buttons_desc .button_section button[type="submit"],
+.filter_section .centered_filter .buttons_desc .button_section input[type="submit"] {
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-weight: 600;
+    font-size: 16px;
+    color: aliceblue;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 100%;
+}
+.filter_section .centered_filter .buttons_desc .button_section button[type="submit"] i{
+    margin-left: 10px;
+}
+
+.filter_section .centered_filter .buttons_desc .button_section input[type="submit"]:hover {
+    background-color: var(--active-primary-color);
+    color: black;
+}
+.filter_section .centered_filter .buttons_desc .button_section button[type="submit"]:hover {
+    background: transparent;
+    color: var(--primary-color);
+}
+.filter_section .centered_filter .buttons_desc .button_section button[type="submit"]:hover i{
+    color: var(--primary-color);
+}
+
+.filter_section .centered_filter .buttons_desc form 
+.in_details .input_box .container-fluid .row .col-md-14{
+    padding: 5px !important;
+    background-color: white;
+    overflow: hidden;
+    border-radius: 5px !important;
+}
+.buttons_desc > div .in_details .input_box .container-fluid .row input,
+.select2-container--default .select2-selection--multiple {
+    border: none !important;
+    box-shadow: none;
+}
+/* _______________ search button end */
+
+
+
+
+/* Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+
+
+/* Add these styles to your existing CSS */
+.dropdown-content {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.search-input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.dropdown-items {
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.highlight {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+.no-results {
+    padding: 10px;
+    color: #666;
+    font-style: italic;
+    text-align: center;
+}
+
+.dropdown-content p {
+    padding: 8px 15px;
+    margin: 0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.dropdown-content p:hover {
+    background-color: #f0f0f0;
+}
+
+
+
+  /* start  mobile */
+  @media (max-width: 850px) {
+    .buttons_desc > div .in_details{
+        display: block;
+    }
+    .filter_section{
+        margin-top: 1rem;
+    }
+    .filter_section .centered_filter .filter_head .head{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .filter_section .centered_filter .filter_head .head p{
+        font-size: 12px;
+    }
+  }
+
+  @media (max-width: 450px) {
+    .filter_section .centered_filter .buttons{
+        gap: 5px;
+    }
+    .filter_section .centered_filter .buttons button{
+        font-weight: 600;
+        font-size: 10px;
+    }
+    .filter_section .centered_filter .buttons button i{
+        font-size: 11px;
+    }
+  }
+

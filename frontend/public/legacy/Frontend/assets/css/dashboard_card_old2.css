@@ -1,0 +1,437 @@
+body{
+    background-color: aliceblue;
+}
+.col-md-12 .card,
+.col-md-6 .card{
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+.col-md-6 .bg-1{
+    background-image: linear-gradient(to right, rgba(0, 101, 174, 0.183) , rgb(255, 255, 255));
+}
+.col-md-6 .bg-2{
+    background-image: linear-gradient(to right, rgba(49, 0, 174, 0.122) , rgb(255, 255, 255));
+}
+.col-md-6 .bg-3{
+    background-image: linear-gradient(to right, rgba(0, 174, 26, 0.126) , rgb(255, 255, 255));
+}
+.col-md-6 .bg-4{
+    background-image: linear-gradient(to right, rgba(174, 125, 0, 0.13) , rgb(255, 255, 255));
+}
+
+/* ______________________ */
+.col-md-6 .bg-1 .icon_box{
+    background-color: rgba(0, 101, 174, 0.996);
+}
+.col-md-6 .bg-2 .icon_box{
+    background-color: rgb(49, 0, 174);
+}
+.col-md-6 .bg-3 .icon_box{
+    background-color: rgb(0, 117, 49);
+}
+.col-md-6 .bg-4 .icon_box{
+    background-color: rgb(226, 162, 0);
+}
+
+/* ______________________ */
+.col-md-6 .bg-1 .last_earning span,
+.col-md-6 .bg-1 .last_earning i{
+    color: rgba(0, 101, 174, 0.996);
+}
+.col-md-6 .bg-2 .last_earning span,
+.col-md-6 .bg-2 .last_earning i{
+    color: rgb(49, 0, 174);
+}
+
+.col-md-6 .bg-3 .last_earning span,
+.col-md-6 .bg-3 .last_earning i{
+    color: green;
+}
+
+.col-md-6 .bg-4 .last_earning span,
+.col-md-6 .bg-4 .last_earning i{
+    color: rgb(226, 162, 0);
+}
+/* ______________________ */
+
+
+.col-md-6 .card .mb-4{
+    width: 80%;
+}
+.col-md-6 .card .icon_box{
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    display: flex;
+    border-radius: 50%;
+}
+.col-md-6 .card .icon_box i{
+    font-size: 15px;
+    margin: auto;
+    color: aliceblue;
+}
+.col-md-6 .card .last_earning i{
+    margin-right: 5px;
+    font-size: 18px;
+    margin-top: 5px;
+}
+.col-md-6 .card .last_earning h5{
+    font-weight: 700;
+}
+.col-md-6 .card .last_earning span{
+    margin-right: 5px;
+}
+
+.card-body .card-title,
+.card-body h2{
+    font-size: 14px;
+    font-weight: 700;
+}
+.card-body .card-title{
+    font-size: 12px;
+}
+
+
+
+
+
+/* ____________________ dashboard section start */
+.dashboard_section{
+    height: auto;
+    width: 100%;
+    padding-top: 20px;
+}
+/* ____________________ dashboard section end*/
+
+.wellcome_text .text_div{
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    background-color:hsla(0,0%,100%,1);
+    background-image:
+    radial-gradient(at 98% 9%, hsla(178,83%,66%,0.13) 0px, transparent 50%),
+    radial-gradient(at 50% 93%, hsla(308,90%,70%,0.07) 0px, transparent 50%),
+    radial-gradient(at 46% 4%, hsla(134,100%,36%,0.09) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, hsla(106,96%,45%,0.09) 0px, transparent 50%),
+    radial-gradient(at 80% 100%, hsla(197,100%,50%,0.12) 0px, transparent 50%),
+    radial-gradient(at 0% 0%, hsla(343,28%,62%,0.08) 0px, transparent 50%);
+    padding: 25px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.wellcome_text .text_div .close_icon{
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    right:10px;
+    top: 10px;
+    display: flex;
+    cursor: pointer;
+}
+.wellcome_text .text_div .close_icon i{
+    margin: auto;
+}
+.wellcome_text .text_div .close_icon:hover i{
+    color: black;
+}
+.wellcome_text .text_div h3{
+    color: var( --consultant-primary-color);
+}
+.wellcome_text .text_div h3,
+.wellcome_text .text_div p{
+    font-family: 'Poppins', sans-serif;
+}
+.wellcome_text .text_div p{
+    font-weight: 600;
+    padding: 0;
+}
+.wellcome_text .row .card{
+    height: 220px;
+    overflow: hidden;
+}
+
+.dashboard_section {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.wellcome_text .text_div{
+    margin-bottom: 20px;
+}
+.wellcome_text .row .card .card-body h5{
+    color: black;
+    font-weight: 700;
+    margin-top: 15px;
+}
+.wellcome_text .row .card .card-body ul{
+    padding: 0;
+}
+.wellcome_text .row .card .card-body li{
+    list-style: none;
+    margin-bottom: 5px;
+}
+.wellcome_text .row .card .card-body li a{
+    display: flex;
+    color: rgba(0, 0, 0, 0.635);
+    font-weight: 700;
+}
+.wellcome_text .row .card .card-body li a .list_icon{
+    width: 25px;
+    color: var(--consultant-primary-color);
+}
+.wellcome_text .row .card .card-body li a:hover{
+    color: black;
+}
+
+/* ______________ student request list card start*/
+.wellcome_text .row .card .card-body{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.wellcome_text .row .card .card-body .body_list{
+    height: 200px;
+    overflow: hidden;
+    overflow-y: auto;
+    width: 100%;
+}
+.wellcome_text .row .card .card-body .request_list .list_card{
+    display: flex;
+}
+.wellcome_text .row .card .card-body .request_list .list_card .student_img img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .info_text span,
+.wellcome_text .row .card .card-body .request_list .list_card h5,
+.wellcome_text .row .card .card-body .request_list .list_card p{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.wellcome_text .row .card .card-body .request_list .list_card .student_info{
+    width: 100%;
+    display: flex;
+    padding: 5px;
+}
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .info_text{
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%;
+}
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .info_text span{
+    border: 0.3px solid rgba(0, 0, 0, 0.409);
+    border-radius: 25px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 12px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .info_text h5{
+    margin-bottom: 5px;
+}
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .info_text .new{
+    padding: 3px;
+    border-radius: 3px;
+    background-color: rgb(0, 119, 175);
+    border: none;
+    color: white;
+}
+.wellcome_text .row .card .card-body .request_list .list_card p{
+    font-size: 12px;
+}
+
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .button{
+    width: 80px;
+    display: flex;
+}
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .student_button{
+    display: flex;
+    width: 150px;
+    padding: 0 !important;
+}
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .student_button span,
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .button span{
+    display: none;
+    border: 0.3px solid rgba(0, 0, 0, 0.409);
+    border-radius: 25px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 12px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-weight: 700;
+}
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .button .open_btn{
+    margin: auto;
+    border: 1px solid var(--consultant-primary-color);
+    width: 100px;
+    text-align: center;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .student_button .open_btn{
+    margin: auto;
+    border: 1px solid var(--consultant-primary-color);
+    width: 110px;
+    text-align: center;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .student_button .open_btn a,
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .button .open_btn a{
+    color: var(--consultant-primary-color);
+}
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .student_button .open_btn:hover{
+    background-color: var(--consultant-primary-color);
+}
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .button .open_btn:hover{
+    background-color: var(--consultant-primary-color);
+}
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .button .open_btn:hover a{
+    color: white;
+}
+.wellcome_text .row .card .card-body .request_list .list_card .student_info .student_button .open_btn:hover a{
+    color: white;
+}
+
+/* _____________ dashboard quick links start */
+.quick_card{
+    padding-top: 15px;
+    padding-left: 15px;
+}
+.quick_card h4{
+    font-weight: 700 !important;
+    color: var(--primary-color) !important;
+}
+.quick_card .quick_links{
+    padding: 0;
+    display: flex;
+}
+.quick_card .quick_links .card-body{
+    /* border: 1px solid red; */
+    padding: 0px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    height: auto;
+}
+.quick_card .quick_links .card-body h5{
+    margin: 0;
+    padding: 0;
+    margin-bottom: 5px;
+    color: rgba(0, 0, 0, 0.616) !important;
+}
+.quick_card .quick_links .card-body ul li,
+.quick_card .quick_links .card-body ul li a i,
+.quick_card .quick_links .card-body ul li a{
+    color: rgb(236, 85, 4) !important;
+}
+.quick_card .quick_links .card-body ul li:hover a{
+    color: rgb(241, 96, 74) !important;
+}
+
+.user_request_card .card-body .body_list .quick_view_heading{
+    font-weight: 700 !important;
+}
+.user_request_card .card-body .body_list .pro{
+    color: rgb(241, 96, 74) !important;
+}
+.user_request_card .card-body .body_list .verrified{
+    color: rgb(1, 191, 112) !important;
+}
+@media screen and (max-width: 600px) {
+    .quick_card .quick_links{
+        display: block;
+    }
+    .quick_card{
+        height: auto !important;
+    }
+}
+
+/* _____________ dashboard quick links end */
+
+/* On smaller screens, reverse the order */
+@media screen and (max-width: 768px) {
+    .wellcome_text .text_div .text_p{
+        height: 100px;
+        overflow: hidden;
+        overflow-y: auto;
+    }
+    .dashboard_section {
+        flex-direction: column-reverse;
+    }
+    .wellcome_text .row .user_request_card{
+        height: 400px;
+    }
+    .wellcome_text .row .user_request_card .card-body .body_list{
+        height: 380px;
+    }
+
+    .wellcome_text .text_div{
+        padding: 10px;
+    }
+    .wellcome_text .row .card .card-body .request_list .list_card .student_info{
+        display: block;
+    }
+    .wellcome_text .row .card .card-body .request_list .list_card .student_info .desktop_span{
+        display: none;
+    }
+    .wellcome_text .row .card .card-body .request_list .list_card .student_info .student_button span,
+    .wellcome_text .row .card .card-body .request_list .list_card .student_info .button span{
+        display: block;
+    }
+    .wellcome_text .row .card .card-body{
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    .wellcome_text .row .card .card-body .request_list .list_card .student_info .student_button,
+    .wellcome_text .row .card .card-body .request_list .list_card .student_info .button{
+        width: 100%;
+        position: relative;
+    }
+    .wellcome_text .row .card .card-body .request_list .list_card .student_info .student_button{
+        width: 100%;
+        position: relative;
+    }
+    .wellcome_text .row .card .card-body .request_list .list_card .student_info .student_button .open_btn,
+    .wellcome_text .row .card .card-body .request_list .list_card .student_info .button .open_btn{
+        right:0px;
+        position: absolute;
+        width: 110px;
+    }
+    
+    .wellcome_text .text_div h3{
+        font-size: 17px;
+    }
+    .wellcome_text .text_div p{
+        font-size: 12px;
+    }
+    .wellcome_text .row .card .card-body .request_list .list_card .student_img img{
+        height: 40px;
+        width: 40px;
+    }
+    .wellcome_text .row .card .card-body .request_list .list_card .info_text h5{
+        font-size: 14px;
+    }
+    .wellcome_text .row .card .card-body .request_list .list_card .info_text p{
+        font-size: 12px;
+    }
+}
+/* ______________ student request list card end*/
+

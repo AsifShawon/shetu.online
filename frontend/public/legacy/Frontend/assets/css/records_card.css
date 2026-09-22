@@ -1,0 +1,670 @@
+.records_card{
+    width: 100%;
+    height: auto;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.records_card .consultants_heading h1,
+.records_card .consultants_heading p{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.records_card .consultants_heading h1{
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--primary-color);
+}
+.records_card .consultants_heading p{
+    padding: 700;
+    font-size: 16px;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.628);
+}
+
+/* ______________________ row wise result card start*/
+.row_records{
+    width: 100%;
+}
+.row_records .result_card{
+    height: auto;
+    width: 100%;
+    margin-bottom: 4rem !important;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+}
+.row_records .result_card .desc .qoute{
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.row_records .result_card .desc .desc_box .desc_box_header{
+    width: 100%;
+}
+.row_records .result_card .desc_box .desc_box_header h2{
+    font-size: 20px;
+    font-weight: 600;
+}
+.row_records .result_card .desc_box .desc_box_header h4{
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+}
+.row_records .result_card .desc_box .desc_box_header h4 i{
+    margin-right: 5px;
+}
+.row_records .result_card .desc .desc_box{
+    display: flex;
+    gap: 5px;
+}
+.row_records .result_card .desc .desc_box .country{
+    min-width: 80px;
+}
+.row_records .result_card .desc .desc_box .country p{
+    padding: 0;
+    font-weight: 600;
+    width: 100%;
+    text-align: right;
+}
+.row_records .result_card .desc .desc_box .country .flag{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+.row_records .result_card .desc .desc_box .country img{
+    width: 80px;
+    height: 40px;
+    border: 0.01px solid rgba(0, 0, 0, 0.272);
+}
+.row_records .result_card .features{
+    display: flex;
+    gap: 5px;
+}
+
+.row_records .result_card .features .box{
+    border-left: 0.5px solid rgba(0, 0, 0, 0.467);
+    width: 100%;
+    padding-left: 7px;
+}
+.row_records .result_card .features .box p{
+    margin: 0;
+    padding: 0;
+}
+.row_records .result_card .features .box .lebel{
+    font-size: 11px;
+    font-weight: 500;
+}
+.row_records .result_card .features .box .lebel i{
+    color: var(--primary-color);
+}
+.row_records .result_card .features .box .data{
+    margin-bottom: 10px;
+}
+
+
+/* consultants carousel star */
+.row_records .result_card .consultants{
+    width: 100% !important;
+    height: auto;
+    margin-top: 20px;
+}
+.row_records .result_card .consultants .consultant_heading p{
+    font-weight: 600;
+}
+/* __________ carousel arrow start */
+.row_records .result_card .consultants .icon_div{
+    display: none;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    top: 12rem;
+    left: 0;
+    z-index: 500;
+}
+.row_records .result_card .consultants .icon_div .icons{
+    margin: auto;
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+}
+.row_records .result_card .consultants .icon_div .icon{
+    width: 100%;
+}
+.row_records .result_card .consultants .icon_div .icons .icon_right{
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+.row_records .result_card .consultants .icon_div .icon .ico{
+    border: 1px solid transparent;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.row_records .result_card .consultants .icon_div .icon .ico i{
+    margin: auto;
+    font-size: 2.5rem;
+}
+.row_records .result_card .consultants .icon_div .icon .ico:hover{
+    border: 1px solid rgba(0, 0, 0, 0.627);
+}
+/* __________ carousel arrow end */
+
+.row_records .result_card .consultants .country_carousel {
+  height: auto;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  display: flex;
+}
+
+.row_records .result_card .consultants .country_carousel .wrapper_container {
+  width: 100%;
+  margin: auto;
+  background-color: transparent;
+  background: transparent;
+}
+
+.row_records .result_card .consultants .country_carousel .carousel {
+    width: auto !important;
+    margin: auto;
+    padding: 0;
+    max-width: 800px !important;
+    width: 100%;
+    background-color: transparent !important;
+    background: transparent !important;
+}
+
+.row_records .result_card .consultants .country_carousel .carousel .card,
+.row_records .result_card .consultants .country_carousel .carousel .card a{
+  text-align: center;
+  margin: 0;
+  font-size: 90px;
+  font-weight: 600;
+  overflow: hidden;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  background-color: white
+}
+.row_records .result_card .consultants .country_carousel .carousel>div{
+        background-color: transparent !important;
+    background: transparent !important;
+
+}
+.row_records .result_card .consultants .country_carousel .card{
+    padding: 3px;
+    /* border-radius: 5px; */
+    overflow: hidden !important;
+    background-color: white;
+    
+}
+
+.row_records .result_card .consultants .country_carousel .card .card_container{
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+    height: auto;
+    width: 100% ;
+    padding: 15px;
+    border-radius: 5px;
+}
+.row_records .result_card .consultants .country_carousel .owl-dots {
+  text-align: center;
+  margin-top: 0px;
+}
+.row_records .result_card .consultants .country_carousel .owl-dot {
+  height: 7px;
+  width: 15px;
+  margin: 0 5px;
+  outline: none;
+  border-radius: 14px;
+  border: 2px solid var(--primary-color) !important;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+.row_records .result_card .consultants .country_carousel .owl-dot.active,
+.row_records .result_card .consultants .country_carousel .owl-dot:hover {
+  background: var(--primary-color) !important;
+}
+
+
+.row_records .result_card .consultants .country_carousel .card .card_part {
+    height: auto;
+    width: 100%;
+    
+    display: flex;
+}
+.row_records .result_card .consultants .country_carousel .card .card_part .name{
+    
+    width: 100%;
+    padding-left: 10px;
+}
+.row_records .result_card .consultants .country_carousel .card .card_part img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+.row_records .result_card .consultants .country_carousel .card .card_part .name p{
+    font-size: 12px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: left;
+    font-weight: 500;
+}
+.row_records .result_card .consultants .country_carousel .card .card_part .name .user_name{
+    font-weight: 600;
+    color: black;
+}
+.row_records .result_card .consultants .country_carousel .card .card_text {
+  height: 40px;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.row_records .result_card .consultants .country_carousel .card .card_text p {
+    margin: 0;
+    padding: 0;
+    font-size: 11px;
+    font-weight: 600;
+    width: 100%;
+    text-align: left;
+}
+.row_records .result_card .consultants .country_carousel .card .card_part .name .verified{
+    margin: 0;
+    padding: 0;
+    font-size: 11px;
+    width: fit-content;
+    text-align: left;
+    color: green;
+    font-weight: 600;
+}
+.row_records .result_card .consultants .country_carousel .card .buttons{
+    margin-top: 15px;
+    width: 100%;
+    display: flex;
+    gap: 5px;
+    height: auto;
+    height: 30px;
+    position: relative;
+    padding: 0 !important;
+}
+.row_records .result_card .consultants .country_carousel .card .card_container .country{
+    margin: 0;
+    margin-top: 5px;
+    padding: 0;
+    font-size: 11px;
+    width: fit-content;
+    text-align: left;
+    border: 1px solid var(--primary-color);
+    border-radius: 25px;
+    padding: 5px 10px;
+    background-color: rgba(3, 148, 215, 0.371);
+}
+
+.row_records .result_card .consultants .country_carousel .card .buttons button{
+    height: 100%;
+    width: 100%;
+    border: none;
+    padding: 0 !important;
+    margin: auto;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: transparent;
+    padding: 0 !important;
+    text-align: left;
+}
+.row_records .result_card .consultants .country_carousel .card .buttons button a{
+    margin: 0 !important;
+    height: 100%;
+    width: 100% !important;
+    padding: 0 !important;
+    font-size: 12px;
+    font-weight: 600;
+    background-color: transparent;
+    border: none !important;
+    text-align: left;
+    cursor: pointer;
+}
+.row_records .result_card .consultants .country_carousel .card .buttons .active{
+    background-color: var(--primary-color);
+    cursor: pointer;
+    text-align: center;
+    color: white !important;
+}
+.row_records .result_card .consultants .country_carousel .card .buttons .active a{
+    color: white !important;
+}
+.row_records .result_card .consultants .country_carousel .card .buttons .active:hover{
+    background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));
+}
+
+/* _________________________ only show consultant cards start  */
+.row_records .result_card .consultants .country_carousel .all_card_container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 0px;
+}
+.row_records .result_card .consultants .country_carousel .all_card_container .card{
+    width: 32%;
+}
+@media (max-width:850px) {
+    .row_records .result_card .consultants .country_carousel .all_card_container .card{
+        width: 45%;
+    }
+}
+@media (max-width:650px) {
+    .row_records .result_card .consultants .country_carousel .all_card_container .card{
+        width: 100%;
+    }
+}
+/* _________________________ only show consultant cards end */
+
+
+@media (max-width: 1200px) {
+  .row_records .result_card .consultants .country_carousel {
+      padding-left: 15px;
+      padding-right: 15px;
+  }
+}
+
+@media (max-width: 500px) {
+  .row_records .result_card .consultants .country_carousel {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .row_records .result_card .consultants .header_text h1{
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+ .row_records .result_card .consultants .header_text p{
+    font-size: 13px;
+  }
+  .row_records .result_card .consultants .icon_div{
+    top: 20rem;
+  }
+  .row_records .result_card .consultants .icon_div .icons .icon_left{
+    margin-left: -10px;
+  }
+.row_records .result_card .consultants  .icon_div .icons .icon_right{
+    margin-right: -10px;
+  }
+  .row_records .result_card .consultants .owl-dots {
+    display: none;
+  }
+}
+
+
+
+/* consultants carousel end */
+
+/* ______________________ row wise result card end */
+
+.records_card {
+    padding-top: 20px;
+    width: 100%;
+    display: grid;    
+    grid-template-columns: 1fr minmax(300px, 90rem) 1fr; 
+}
+
+.records_card .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(7rem, 25rem));
+    gap: 1rem;
+    justify-content: center;
+    padding-bottom: 20px;      
+      
+}
+
+
+
+.records_card .cards .card {
+    margin: auto;
+    height: auto;
+    width: 100%;
+    min-height: auto;
+    position: relative;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    transition: 200ms ease-in;
+    border: none;
+    transition: transform 1.0s; 
+    background-color: transparent;
+    padding: 20px;
+    transition: transform 550ms;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: white;
+    transition: transform .2s;
+}
+.records_card .cards .card:hover{
+    box-shadow: var(--primary-color-hover) 0px 1px 5px;
+    transform: scale(1.02);
+}
+
+.records_card .cards .card .card_body{
+    width: 100%;
+    height: auto;
+}
+.records_card .cards .card .card_content{
+    width: 100%;
+    height: 320px;
+    padding-top: 5px;
+}
+
+.records_card .cards .card .card_body .desc{
+    padding-top: 5px;
+}
+.records_card .cards .card .card_body .desc h2{
+    font-size: 15px;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 7;
+}
+.records_card .cards .card .card_body .desc h2,
+.records_card .cards .card .card_body .desc h4{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+}
+.records_card .cards .card .card_body .desc h4{
+    color: rgba(0, 0, 0, 0.607);
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+.records_card .cards .card .card_body .desc h4 i{
+    color: var(--primary-color);
+    margin-right: 5px;
+    font-size:18px;
+}
+
+.records_card .cards .card .card_body .desc .rating{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.records_card .cards .card .card_body .desc .rating i{
+    color: rgb(125, 125, 125);
+}
+.records_card .cards .card .card_body .desc .rating #active{
+    color: rgb(242, 147, 4);
+}
+
+.records_card .cards .card .card_body .desc .qoute{
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.616);
+    font-size: 13px;
+    padding: 0;
+    margin-top: 7px;
+}
+.records_card .cards .card .card_body .features {
+    width: 100%;
+    margin-top: 10px;
+    
+}
+
+.records_card .cards .card .card_body .features p {
+    /* border: 1px solid rgba(0, 0, 0, 0.616); */
+    padding: 0;
+    font-weight: 600;
+    margin: 0;
+    font-size: 12px;
+    white-space: nowrap;
+    color: rgba(0, 0, 0, 0.772);
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 5px;
+}
+.records_card .cards .card .card_body .features p i{
+    font-size: 15px;
+    margin-right: 7px;
+    width: 15px;
+}
+.records_card .cards .card .card_body .features .country{
+    
+    display: flex;
+    margin-bottom: 7px;
+}
+.records_card .cards .card .card_body .features .country .flag{
+    height: 30px;
+    width: 50px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+}
+.records_card .cards .card .card_body .features .country .flag img{
+    height: 100%;
+    width: 100%;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+}
+.records_card .cards .card .card_body .features .country p{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 7px;
+    font-size: 15px;
+}
+
+.records_card a{
+    border: none;
+}
+
+.records_card .request_button{
+    display: flex;
+    gap: 10px;
+    padding-top: 20px;
+}
+.records_card .request_button a{
+    width: 100%;
+}
+.records_card .request_button .button{
+    width: 100%;
+    margin: auto;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 1px solid var(--primary-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 700;
+    font-size: 12px;
+    text-align: center;
+}
+.records_card .request_button .button:hover{
+    background-color: var(--primary-color);
+    color: aliceblue;
+}
+.records_card .request_button .active{
+    background-color: var(--primary-color);
+    color: aliceblue;
+}
+.records_card .request_button .active:hover{
+    background-color: var(--active-primary-color) !important;
+    color: black;
+    border: transparent;
+}
+.records_card i{
+    color: var(--primary-color);
+}
+
+
+.view_all_btn{
+    width: 100%;
+    display: flex;
+    margin-top: 15px;
+}
+.view_all_btn a{
+    margin: auto;
+}
+.view_all_btn a button {
+    border: none;
+    background-color: var(--primary-color);
+    font-size: 16px;
+    padding: 15px 30px;
+    color: aliceblue;
+    border-radius: 5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.view_all_btn a button:hover {
+    background-color: var(--active-primary-color);
+    color: black;
+}
+
+
+/* @media (max-width: 1400px) {
+    .records_card .cards {
+        grid-template-columns: repeat(auto-fit, minmax(7rem, 30rem));
+    }
+} */
+@media (max-width: 600px) {
+    .records_card .request_button .button{
+        font-size: 12px;
+    }
+    .records_card .consultants_heading h1{
+        font-size: 20px;
+    }
+    .records_card .consultants_heading p{
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 800px) {
+    .row_records .result_card .features{
+        display: block;
+        gap: 5px;
+    }
+    .row_records .result_card .features .box{
+        margin-bottom: 5px;
+        display: flex;
+        width: 100%;
+        padding: 0;
+        gap: 5px;
+        border: none;
+    }
+    .row_records .result_card .features .box .box_data{
+        width: 100%;
+    }
+    .row_records .result_card .desc .desc_box .country{
+        min-width: 100px;
+    }
+    .row_records .result_card .desc .desc_box .country img{
+        width: 60px;
+        height: 30px;
+    }
+    .row_records .result_card .desc .qoute{
+        margin-bottom: 20px;
+    }
+}

@@ -1,0 +1,241 @@
+
+/* ________________________________________ UPDATE CHOICE EDU START */
+.choice_section{
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+}
+.choice_section form{
+    width: 100%;
+}
+.choice_section .create_choice_section {
+    width:100%;
+  }
+
+
+.create_choice_section{
+    padding: 25px;
+    height: auto;
+    margin: 0 !important;
+    border-right: 0.5px solid rgba(0, 0, 0, 0.168);
+}
+  .choice_section .create_choice_section .heading{
+    padding: 0;
+    margin: 0;
+    
+  }
+
+ .create_choice_section .save_btn{
+    width: 100%;
+    border: 1px solid var(--primary-color);
+    background:var(--primary-color);
+    border-radius: 5px;
+    font-weight: 700;
+    padding-top: 10px;
+
+    padding-bottom: 10px;
+    color: aliceblue;
+}
+ .create_choice_section .save_btn:hover{
+    background-color: var(--primary-color-hover);
+    color: aliceblue;
+}
+
+
+
+.create_choice_section .col-12{
+    margin-top: 10px;
+    /* padding-left: 10px;
+    border-left: 2px solid var(--primary-color); */
+}
+
+/* For modern browsers */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+    appearance: textfield; /* Standard */
+}
+
+  
+  .choice_create button,
+  .choice_create{
+      background-color: var(--primary-color);
+      padding: 5px;
+      padding-left: 25px;
+      padding-right: 25px;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: center;
+      color: aliceblue;
+      border-radius: 3px;
+      border: none;
+  }
+  .choice_create:hover{
+    background-color: var(--primary-color-hover);
+  }
+  .choice_create button:hover{
+      background-color: var(--primary-color-hover);
+  }
+@media (max-width: 900px) {
+.choice_table_heading .heading_left{
+    width: 60% !important;
+  }
+.choice_table_heading .heading_right{
+    width: 40% !important;
+    display: flex;
+  }
+  .choice_table_heading .heading_right
+  .choice_create button,
+  .choice_table_heading .heading_right
+  .choice_create{
+      padding: 5px;
+      font-size: 12px;
+      width: 150px !important;
+      height: 30px !important;
+      margin: auto;
+  }
+
+}
+@media (max-width: 650px) {
+  
+  .choice_table_heading .heading_left h3{
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+  }
+}
+
+/* ________________________________________ UPDATE CHOICE EDU END */
+
+.consultants_list_heading{
+  color: #3d3d3d;
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+  margin-top: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.consultants_list_heading .heading_left{
+    width: 100%;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.252);
+}
+.consultants_list_heading .heading_left h3{
+    font-size: 15px;
+    color: var(--primary-color);
+}
+.consultants_list_heading .heading_left h3 i{
+    font-size: 20px;
+}
+.consultants_list_heading .heading_right{
+  display: flex;
+  justify-content: right;
+  align-items: right;
+}
+
+/* ___________ last education start */
+.choice_content .box_sec{
+  display: flex;
+  flex-wrap: wrap;
+  gap:10px;
+}
+
+.choice_content .box_sec .box{
+  border-left: 0.5px solid rgba(4, 4, 4, 0.259);
+  padding-left: 10px;
+  padding-right: 10px;
+  display: block;
+}
+.choice_content .box_sec .box .session label{
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.choice_content .box_sec .box input,
+.choice_content .box_sec .box p{
+  margin: 0;
+  padding: 0;
+  font-weight: 700;
+  outline: none;
+  color: rgba(0, 0, 0, 0.679);
+  padding: 5px;
+  border: 0.5px solid rgba(0, 0, 0, 0.126);
+  border-radius: 3px;
+  width: auto;
+}
+  .choice_content .box_sec .box .session .date{
+    display: flex;
+  }
+  .choice_content .box_sec .box .session .date p{
+    margin: 0;padding: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: rgba(0, 0, 0, 0.489);
+    border: none;
+    font-weight: 500;
+  }
+  @media (max-width: 650px) {
+    .choice_section{
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+     .choice_section .create_choice_section{
+      padding: 10px;
+     }
+    .choice_content input{
+      width: 100% !important;
+    }
+    .choice_content .box_sec{
+      display: block !important;
+    }
+    .last_edu .choice_content{
+      display: block !important;
+    }
+    .last_edu .choice_content .box_sec{
+      width:100%;
+    }
+ 
+    .choice_content .box_sec .mob_box{
+      display: flex !important;
+      width: 100% !important;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .choice_content .box_sec .mob_box .box,
+      .choice_content .box_sec .mob_box .box input{
+      width: 100% !important;
+    }
+    .last_edu .choice_content .box_sec .box{
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      border: none !important;
+      margin-top: 10px !important;
+    }
+    .choice_content .box_sec .box .session{
+      display: block !important;
+    }
+    .choice_content .box_sec .box .session .label{
+      width: 100px !important;
+    }
+    .choice_content .box_sec .box .session .date{
+      margin-bottom: 10px;
+    }
+     .choice_content .box_sec .box .session .date input{
+      margin-right: 0px !important;
+     }
+    .choice_content .box_sec .box .session .date p{
+      width: 40px;
+    }
+    .choice_section .create_choice_section .choice_form{
+      display: block !important;
+    }
+  }
+
+/* ___________ last education end */

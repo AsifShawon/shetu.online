@@ -1,0 +1,152 @@
+
+  .selected_assessment_section_choice {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap:0px !important;
+      margin-top: 25px;
+    }
+    .selected_assessment_section_choice h3{
+        width: 100%;
+        font-weight: 700;
+        padding: 0;
+        margin: 0;
+    }
+    .selected_assessment_section_choice h3 i{
+        color: var(--primary-color);
+        text-shadow: 0 0 2px #000000;
+    }
+  
+  .selected_assessment_section_choice .accordian_choice {
+    width: 100%;
+    background-color: white;
+    position: relative;
+    overflow: hidden;
+    /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; */
+    border: 1px solid rgba(0, 0, 0, 0.123);
+    margin:0px;
+    padding: 0px;
+  }
+  
+  .selected_assessment_section_choice .accordian_head_choices {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+  
+  .selected_assessment_section_choice .accordian_toggler {
+    align-self: flex-start;
+    background-color: transparent;
+    font-size: 1rem;
+    transition: all 0.5s ease;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+  
+  .selected_assessment_section_choice .accordian_toggler.active {
+    rotate: 133deg;
+  }
+  
+    
+@media (max-width: 350px) {
+    .selected_assessment_section_choice .accordian_title_choice p{
+        font-size: 13px;
+        max-height: 40px;
+    }
+    .selected_assessment_section_choice .accordian_title_choice span{
+        font-size: 13px;
+    }
+}
+  
+  .selected_assessment_section_choice .accordian_body_choice {
+    background: transparent;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.5s ease;
+  }
+
+
+.selected_assessment_section_choice .active_body_choice {
+    grid-template-rows: 1fr;
+}
+
+.selected_assessment_section_choice  .accordian_description_choice {
+    background-color: transparent;
+    margin-top: 0.7rem;
+    padding-left: 2.3rem;
+    padding-right: 2.3rem;
+    font-size: 0.9rem;
+    overflow: hidden;
+    line-height: 1.2rem;
+    width: 100%;
+  }
+  .selected_assessment_section_choice  .accordian_description_choice .choice_info{
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+.selected_assessment_section_choice  .accordian_description_choice i{
+    color: var(--primary-color);
+    font-size: 20px;
+}
+
+.selected_assessment_section_choice  .accordian_description_choice .choice_info{
+  width: 100%;
+  padding-left: 5px;
+}
+.selected_assessment_section_choice  .accordian_description_choice .choice_info>div{
+  width: 100%;
+}
+.selected_assessment_section_choice .accordian_body_choice .buttons{
+  padding-bottom: 10px;
+  display: flex;
+  align-items: right;
+  justify-content: right;
+}
+.selected_assessment_section_choice .accordian_body_choice .buttons button{
+  border: none;
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  color: aliceblue;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 25px;
+  padding-right: 25px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.selected_assessment_section_choice .accordian_body_choice .buttons button:hover{
+  background-color: var(--primary-color-hover);
+}
+.selected_assessment_section_choice  .accordian_description_choice .choice_info p{
+    font-weight: 700;
+}
+.selected_assessment_section_choice  .accordian_description_choice .country_part{
+  display: none;
+}
+@media (max-width: 450px) {
+  .selected_assessment_section_choice  .accordian_description_choice .choice_info{
+    padding-left: 5px;
+    padding-right: 5px;
+    display: block;
+    font-size: 13px;
+  }
+  .selected_assessment_section_choice  .accordian_description_choice {
+    padding-left: 10px;
+    padding-right: 5px;
+  }
+  .accordian_choice  .accordian_head_choices .country_part{
+    display: none;
+  }
+  .selected_assessment_section_choice  .accordian_description_choice .country_part{
+    display: block;
+  }
+  .selected_assessment_section_choice .accordian_body_choice .buttons{
+    padding-right: 10px;
+  }
+}
+  

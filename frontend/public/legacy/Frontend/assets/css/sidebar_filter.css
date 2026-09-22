@@ -1,0 +1,297 @@
+.side_filter_section{
+    width: fit-content;
+    height: auto;
+    padding: 10px;
+    position: relative;
+    height: 100%;
+}
+.side_filter_section .centered_filter{
+    width: 330px !important;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-y: auto;
+    position: relative;
+    z-index: 1200 !important;
+}
+
+
+/* __________________________ DETAIL BUTTON START */
+.side_filter_section .centered_filter .filter_head{
+     height: auto;
+     width: 100%;
+     padding-bottom: 10px;
+}
+.side_filter_section .centered_filter .filter_head .head p{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 17px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    /* text-shadow: 0.2px 0.2px 0.5px #0000008c; */
+    background: linear-gradient(to bottom, var(--active-primary-color), var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+ .side_filter_section .centered_filter .buttons{
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.222);
+    position: relative;
+    display: flex;
+    padding: 5px;
+    height: auto;
+}
+
+ .side_filter_section .centered_filter .buttons button{
+    border-radius: 0px;
+    border: none;
+    font-weight: 700;
+    font-size: 14px;
+    color: black;
+    background:transparent;
+    margin: auto;
+}
+.side_filter_section .centered_filter .buttons button i{
+    margin-right: 5px;
+    font-size: 15px;
+}
+.side_filter_section .centered_filter .buttons .active{
+    border-bottom: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    background:transparent !important;
+}
+/* __________________________ DETAIL BUTTON END */
+ .side_filter_section .centered_filter .buttons_desc{
+    padding: 5px;
+}
+
+ .side_filter_section .centered_filter .buttons_desc>div .details h3{
+    font-weight: 700;
+    font-size: 20px;
+}
+ .side_filter_section .centered_filter .buttons_desc>div .icon i{
+    color: var(--primary-color);
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 30px;
+}
+
+/* Buttons styling */
+.buttons button {
+    padding: 10px 5px;
+    margin-right: 10px;
+    cursor: pointer;
+    border: none;
+    background-color: white;
+    transition: background-color 0.3s ease;
+}
+
+.buttons button.active {
+    color: var(--primary-color);
+}
+
+
+/* Section styling */
+.buttons_desc > div {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+    display: none; /* Hidden by default */
+}
+.buttons_desc > div .in_details{
+    display: block;
+}
+
+/* Show first section by default */
+.buttons_desc > div:first-child {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+}
+.buttons_desc > div .in_details .details p{
+    font-weight: 700;
+}
+
+
+
+
+
+
+/* ________________ */
+
+.buttons_desc > div .in_details .input_box{
+    width: 100%;
+}
+/* .buttons_desc > div .in_details .input_box input,
+.buttons_desc > div .in_details .input_box .dropbtn,
+.buttons_desc > div .in_details .input_box select{
+    width: 100%;
+    padding: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: auto;
+    font-size: 14px;
+    border: 0.02px solid rgba(0, 0, 0, 0.344);
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.546);
+    border-radius: 5px;
+    outline: none;
+}
+.buttons_desc > div .in_details .input_box span{
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.568)
+}
+.buttons_desc > div .in_details .input_box select option{
+    padding: 5px;
+    font-size: 14px;
+}
+.buttons_desc > div .in_details .input_box span i{
+    margin-right: 5px;
+} */
+
+
+/*  _____________ search field start*/
+.input_box {
+    margin-bottom: 10px;
+    /* border: 1px solid red; */
+    padding: 0 !important;
+}
+/* 
+.tag-span {
+    background-image: linear-gradient(to right, var(--primary-color) , rgb(0, 0, 0));
+    color: #fff !important;
+    padding: 4px 7px;
+    border-radius: 3px;
+    margin: 2px;
+    font-size: 12px !important;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tag-span:hover {
+    background-image: linear-gradient(to right, red, red);
+}
+
+.dropdown {
+    width: 100%;
+    position: relative;
+    display: inline-block;
+} */
+
+/* .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f6f6f6;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    z-index: 10;
+}
+
+.dropdown-content input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+}
+
+.dropdown-content p {
+    padding: 5px 10px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.dropdown-content p:hover {
+    background-color: #ddd;
+}
+
+.dropbtn {
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fafafa;
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+} */
+/*  _____________ search field end*/
+
+
+
+
+/* _______________ search button start */
+.side_filter_section .centered_filter .buttons_desc .button_section{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+.side_filter_section .centered_filter .buttons_desc .button_section input[type="submit"] {
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 5px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-weight: 600;
+    font-size: 15px;
+    color: aliceblue;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.side_filter_section .centered_filter .buttons_desc .button_section input[type="submit"]:hover {
+    background-color: var(--active-primary-color);
+    color: black;
+}
+
+/* _______________ search button end */
+
+
+
+
+/* Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+
+
+
+  /* start  mobile */
+  @media (max-width: 1000px) {
+    .buttons_desc > div .in_details{
+        display: block;
+    }
+    .side_filter_section{
+        width: auto;
+    }
+    .side_filter_section .centered_filter{
+        width: auto;
+    }
+  }
+
+  @media (max-width: 450px) {
+    .side_filter_section .centered_filter .buttons{
+        gap: 5px;
+    }
+    .side_filter_section .centered_filter .buttons button{
+        font-weight: 600;
+        font-size: 12px;
+    }
+    .side_filter_section .centered_filter .buttons button i{
+        font-size: 13px;
+    }
+  }

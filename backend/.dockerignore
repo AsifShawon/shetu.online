@@ -1,0 +1,12 @@
+.git
+.venv
+venv
+__pycache__
+*.py[cod]
+.pytest_cache
+.mypy_cache
+.env
+db.sqlite3
+test_db.sqlite3
+media
+staticfiles

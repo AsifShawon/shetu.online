@@ -1,0 +1,436 @@
+a{
+    text-decoration: none !important;
+}
+.consultant_card {
+    /* margin-top: -5%; */
+    padding: 5px;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+    width: 100%;
+    display: grid;    
+    position: relative;
+    z-index: 800;
+    grid-template-columns: 1fr minmax(300px, 80rem) 1fr;
+}
+
+/* .consultant_card .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(7rem, 25rem));
+    gap: 0.5rem;
+    justify-content: center;
+    padding-bottom: 20px;           
+} */
+/* @media (max-width: 1400px) {
+    .consultant_card .cards {
+        grid-template-columns: repeat(auto-fit, minmax(7rem, 25rem));
+    }
+} */
+
+
+.consultant_card .cards .card {
+    margin: auto;
+    height: auto;
+    width: 98%;
+    min-height: auto;
+    position: relative;
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 200ms ease-in;
+    border: none;
+    transition: transform 1.0s; 
+    background-color: transparent;
+    padding: 15px;
+    transition: transform 250ms;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: white;
+}
+.consultant_card .cards .card:hover{
+    box-shadow: var(--primary-color-hover) 0px 1px 5px;
+    /* transform: translateY(-10px); */
+}
+.consultant_card .cards .card  .jobs_body{
+    height: 250px;
+    
+}
+.consultant_card .cards .card .post_num_div{
+    position: absolute;
+    left: -10px;
+    top: -10px;
+    width: 25px;
+    text-align: center;
+    margin: auto;
+    height: 30px;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    border: 1px solid var(--primary-color-hover);
+    color: aliceblue;
+}
+.consultant_card .cards .card .post_num_div p{
+    color: var(--white-color);
+    margin-top: 2px;
+}
+
+.consultant_card .cards .card .card_section{
+    padding-top: 10px;
+    min-height: 350px;
+    height: 100%;
+}
+
+.consultant_card .cards .select_checkbox,
+.consultant_card .cards .top_icon{
+    position: absolute;
+    right: 15px;
+    bottom: 80px;
+    cursor: pointer;
+}
+.consultant_card .cards .select_checkbox input{
+    cursor: pointer;
+    height: 20px;
+    width: 20px;
+    accent-color: var(--primary-color);
+}
+.consultant_card .cards .top_icon i{
+    margin-left: 5px;
+    color: rgba(0, 0, 0, 0.574);
+    cursor: pointer;
+    font-size: 18px;
+}
+.consultant_card .cards .top_icon i:hover{
+    color: black;
+}
+.consultant_card .cards .const_heading{
+    display: flex;
+    height: auto;
+}
+.consultant_card .cards .const_heading .consultants_img{
+    height: 100% !important;
+    width: 70px !important;
+    position: relative;
+    position: relative;
+}
+.consultant_card .cards .const_heading .consultants_img img{
+    margin-top: auto;
+    margin-bottom: auto;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+.consultant_card .cards .const_heading .verified_consultants_img img{
+    border: 2px solid var(--active-primary-color);
+}
+.consultant_card .cards .const_heading .verified_consultants_img i{
+    position: absolute;
+    bottom: 3px;
+    right: 3px;
+    color: var(--active-primary-color);
+    text-shadow: 1px 1px 5px black;
+}
+.consultant_card .cards .const_heading .job_title{
+    padding-left: 10px;
+    width: calc(100%-70px);
+}
+.consultant_card .cards .const_heading .job_title h3{
+    font-size: 15px;
+    font-weight: 600;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+.consultant_card .cards .const_heading .job_title p {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 5px;
+}
+.consultant_card .cards .const_heading .job_title p i{
+    margin-right: 3px;
+}
+.consultant_card .cards .const_heading .job_title ul{
+    display: flex;
+}
+.consultant_card .cards .const_heading .job_title ul li{
+    list-style: none;
+    margin-right: 3px;
+}
+.consultant_card .cards .const_heading .job_title ul li i{
+    font-weight: 600;
+    font-size: 12px;
+    color: rgb(234, 205, 52);
+}
+
+.consultant_card .cards .const_heading .job_title .user_name{
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.678);
+}
+.consultant_card .cards .const_heading .job_title .address{
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.449);
+    font-weight: 700;
+}
+
+.consultant_card .cards .gen_amnt{
+    display: flex;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    
+    height: auto;
+}
+.consultant_card .cards .gen_amnt p{
+    padding: 0;
+    margin: 0;
+    margin-right: 10%;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    color: rgba(0, 0, 0, 0.627);
+}
+.consultant_card .cards .gen_amnt p i{
+    margin-right: 5px;
+}
+
+.consultant_card .cards .service_desc{
+    padding-bottom: 15px;
+    width: 100%;
+    height: 80px;
+    overflow: hidden;
+    
+    font-size: 12px !important;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.763);
+    width: 100%;
+    position: relative;
+    white-space: normal;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+.consultant_card .cards button{
+    border: 1px solid rgba(0, 0, 0, 0.763);
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.655);
+    padding: 5px;
+    background: transparent;
+}
+.consultant_card .cards button:hover{
+    color: black;
+    border: 1px solid black;
+}
+
+
+.consultant_card .cards .accept_button{
+    padding-top: 15px;
+}
+.consultant_card .cards .accept_button button{
+    border: none;
+    width: 100%;
+    font-size: 13px;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: 900;
+    color: var(--white-color);
+    background-color: var(--skin-color-1);
+}
+.consultant_card .cards .accept_button .disabled{
+    background-color: rgb(95, 95, 95);
+    cursor: not-allowed; /* Change cursor to indicate disabled state */
+    pointer-events: none; /* Prevent all interactions */
+    opacity: 0.6;
+}
+.consultant_card .cards .accept_button button:hover{
+    background-color: crimson;
+}
+
+.consultant_card .cards .bottom_icon{
+    display: flex;
+    padding-top: 15px;
+}
+.consultant_card .cards .bottom_icon .ago,
+.consultant_card .cards .bottom_icon .view{
+    width: 50%;
+}
+.consultant_card .cards .bottom_icon .ago p,
+.consultant_card .cards .bottom_icon .view p{
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.745);
+}
+
+
+.consultant_card a{
+    border: none;
+}
+.consultant_card a .tag{
+    font-weight: 600;
+    font-size: 12px;
+    background-color: rgba(12, 74, 110, 0.266);
+    color: rgb(0, 0, 0);
+    padding-left: 15px;
+    padding-right: 15px;
+    border: none;
+}
+.consultant_card a .tag:hover{
+    border: none;
+    color: rgb(0, 0, 0);
+}
+.consultant_card .request_button{
+    display: flex;
+    gap: 10px;
+    padding-top: 5px;
+}
+.consultant_card .request_button a{
+    width: 100%;
+    text-decoration: none;
+    color: black;
+}
+.consultant_card .request_button .button{
+    width: 100%;
+    margin: auto;
+    border-radius: 5px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border: 1px solid var(--primary-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 700;
+    font-size: 13px;
+    text-align: center;
+}
+.consultant_card .request_button .button:hover{
+    background-color: var(--primary-color);
+    color: aliceblue;
+}
+.consultant_card .request_button .active{
+    background-color: var(--primary-color);
+    color: aliceblue;
+}
+.consultant_card .request_button .active:hover{
+    background-color: var(--active-primary-color) !important;
+    border: 1px solid transparent;
+    color: black;
+}
+.consultant_card i{
+    color: var(--primary-color);
+}
+
+.consultant_card .cards .card .posting_time{
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.748);
+}
+.consultant_card .cards .card .posting_time i{
+    margin-right: 5px;
+}
+
+
+
+@media (max-width: 600px) {
+    .consultant_card .request_button .button{
+        font-size: 12px;
+    }
+    .consultant_card {
+        padding-top: 1rem;
+    }
+}
+
+
+/* ________________ no balance card start */
+.no_balance_section{
+    width: 100%;
+    padding: 7px;
+}
+.no_balance_section .centered_balance{
+    padding: 7px;
+    max-width: 1150px;
+    width: 100%;
+    margin: auto;
+    border-radius: 7px;
+    display: flex;
+    background-color: var( --primary-color-transparent);
+    padding-left: 25px;
+}
+.no_balance_section .centered_balance p{
+    margin-top: 5px;
+    font-weight:700;
+    font-size:18px;
+    width:100%;
+    text-align:center;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    padding-top: 5px;
+    width: 100%;
+}
+.no_balance_section .centered_balance a{
+    max-width: 150px;
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: right;
+}
+.no_balance_section .centered_balance button{
+    border: none;
+    background-color: var(--primary-color);
+    color: aliceblue;
+    border-radius: 7px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-weight: 700;
+}
+.no_balance_section .centered_balance button:hover{
+    background-color: var(--primary-color-hover);
+}
+@media (max-width: 600px) {
+    .no_balance_section .centered_balance{
+        display: block;
+        padding: 5px;
+    }
+    .no_balance_section .centered_balance p{
+        text-align: center;
+        margin-bottom: 3px;
+    }
+    .no_balance_section .centered_balance a{
+        max-width: 100%;
+        width: 100%;
+    }
+    .no_balance_section .centered_balance button{
+        width: 100% !important;
+    }
+}
+/* ________________ no balance card end */
+
+
+/* pagination */
+.text-muted{
+    display: none;
+}
+.pagination .page-link {
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.692);               
+    border-color: rgba(0, 0, 0, 0.692);  
+}
+
+.pagination .page-link:hover {
+    border-color: var(--primary-color);
+    background: transparent;
+    color: var(--primary-color);
+}
+
+.pagination .active .page-link {
+    background-color: var(--primary-color); /* Active page color */
+    border-color: var(--primary-color);
+}

@@ -1,0 +1,100 @@
+.no_data_section {
+    background: transparent;
+    font-family: "Poppins", sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.empty-state {
+    width: 100%;
+    margin: 10px auto;
+    background: transparent;
+    border-radius: 4px;
+}
+.empty-state__content {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.empty-state__content .empty-state__icon {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    border-radius: 200px;
+    justify-content: center;
+}
+.empty-state__content .empty-state__icon img {
+    width: 170px;
+}
+.empty-state__content .empty-state__message {
+    color: var(--primary-color);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-top: 0.85rem;
+}
+.empty-state__content .for_consultant {
+    color: var( --consultant-primary-color);
+}
+.empty-state__content .empty-state__help {
+    color: #a2a5b9;
+    font-size: 0.875rem;
+}
+.empty-state__content button{
+    margin-top: 25px !important;
+    padding: 10px !important;
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+    border: none !important;
+    background-color: var(--primary-color) !important;
+    border-radius: 7px !important;
+    color: aliceblue !important;
+    font-weight: 700 !important;
+    font-size: 14px !important;
+    cursor: pointer;
+    border: 1px solid var(--primary-color) !important;
+}
+.empty-state__content button:hover{
+    background-color: var(--active-primary-color) !important;
+    color: black !important;
+}
+.empty-state__content .button_for_consultant{
+    background-color: var(--consultant-primary-color) !important;
+}
+.empty-state__content .button_for_consultant:hover{
+    background-color: var( --consultant-primary-color-hover) !important;
+}
+  
+  .credit {
+    color: #A2A5B9;
+    font-size: 0.75rem;
+    text-align: center;
+  }
+  .credit a {
+    color: #444;
+  }
+
+
+  /* ___________ for educational qualification mov start*/
+  @media (max-width: 550px) {
+    .no_data_section .empty-state .empty-state__content {
+        padding: 0px !important;
+    }
+    .no_data_section .empty-state .empty-state__content .empty-state__icon{
+        padding: 0px !important;
+        border-radius: 0px !important;
+    }
+    .no_data_section .empty-state .empty-state__content .empty-state__icon img{
+        height: 150px;
+        width: auto;
+    }
+    .no_data_section .empty-state .empty-state__content .empty-state__message{
+        text-align: center;
+        font-size: 18px;
+    }
+    .no_data_section .empty-state .empty-state__content .empty-state__help{
+        text-align: center;
+    }
+}
+  /* ___________ for educational qualification mov end*/

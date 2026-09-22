@@ -1,0 +1,198 @@
+/* Reset and basics */
+/* Section styling */
+
+.about_section {
+  position: relative;
+  height: auto;
+  padding-bottom: 0 !important;
+  margin: 0 !important;
+  background-color: white;
+}
+.about_section .container {
+  background-color: white;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1200px;
+  width: 100%;
+  padding-top: 0rem;
+  margin-bottom: 0rem !important;
+}
+
+.about_section img {
+  max-width: 100%;
+  height: auto;
+}
+.about_section a,
+.about_section a:hover,
+.about_section a:focus,
+.about_section a:active {
+  text-decoration: none;
+  outline: none;
+}
+.about_section ul {
+  list-style: none;
+}
+.about_section .logo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.about_section  .logo img {
+  width: 200px;
+  height: auto;
+}
+
+/* Grid system (mimicking Bootstrap) */
+.about_section .row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+[class*="col-"] {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.about_section .col-lg-12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+.about_section .col-lg-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+.about_section .col-lg-4 {
+  flex: 0 0 33.3333%;
+  max-width: 33.3333%;
+}
+
+/* Responsive columns */
+@media (max-width: 992px) {
+  .about_section .col-lg-6,
+  .about_section .col-lg-4,
+  .about_section .col-lg-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .about_section .row {
+    
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+/* Spacing utilities */
+.about_section .mt-3 {
+  margin-top: 1rem;
+}
+.about_section .mt-4 {
+  margin-top: 1.5rem;
+}
+.about_section .mt-5 {
+  margin-top: 3rem;
+}
+.about_section .mb-0 {
+  margin-bottom: 0;
+}
+.about_section .mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Text utilities */
+.about_section .text-center {
+  text-align: center;
+}
+.about_section .text-capitalize {
+  text-transform: capitalize;
+}
+.about_section .text-muted {
+  color: #000000c4;
+  padding-left: 0;
+  line-height: 2.0rem;
+}
+.about_section  .text-dark {
+  color: #000000c4;
+}
+.about_section .text_custom {
+  color: var(--primary-color);
+  
+  padding: 0;
+}
+.about_section  .font-weight-bold {
+  font-weight: bold;
+}
+
+
+.about_section .section_title_all h3 {
+  font-weight: bold;
+}
+.about_section .section_subtitle {
+  letter-spacing: 0.4px;
+  line-height: 28px;
+  max-width: 550px;
+}
+
+/* About section styling */
+.about_section .about_icon i {
+  font-size: 22px;
+  height: 65px;
+  width: 65px;
+  line-height: 65px;
+  display: inline-block;
+  background: #fff;
+  border-radius: 35px;
+  color: var(--primary-color);
+  box-shadow: 0 8px 20px -2px rgba(158, 152, 153, 0.5);
+  text-align: center;
+}
+.about_section  .about_content_box_all {
+  padding: 28px;
+  border-radius: 10px;
+  /* box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  background-color: white; */
+}
+.about_section .about_header_main .about_heading {
+  max-width: 450px;
+  font-size: 20px;
+}
+.about_section .img_about img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+}
+.about_section .about_icon i:hover {
+  color: var(--primary-color-hover);
+}
+.about_section  .about_content_box_all h5{
+  font-size: 18px;
+}
+.about_section  .about_content_box_all .edu_desc{
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+
+
+@media screen and (max-width: 800px) {
+  .about_section .container {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .about_section .about_header_main .about_heading {
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .about_section .section_title_all .text-muted,
+  .about_section .about_header_main .text-muted {
+    font-size: 13px;
+    line-height: 1.5rem;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.727);
+  }
+
+}

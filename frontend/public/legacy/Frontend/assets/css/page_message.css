@@ -1,0 +1,87 @@
+.page_message_section{
+    width:100%;
+    display: flex;
+    padding-top: 15px;
+}
+.page_message_section .page_message_box{
+    width: 100%;
+    margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgba(250, 209, 3, 0.448);
+    position: relative;
+    padding-right: 30px;
+}
+.page_message_section .page_message_box_center{
+    max-width: 1200px;
+    width: 100%;
+}
+.page_message_section .page_message_dashboard{
+    max-width: 100% !important;
+}
+.page_message_section .page_message_box_success{
+    width: 100%;
+    margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgba(3, 250, 32, 0.293);
+    position: relative;
+    padding-right: 30px
+}
+.page_message_section .page_message_box_success .close,
+.page_message_section .page_message_box .close{
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top:5px;
+    right: 3px;
+    cursor: pointer;
+}
+.page_message_section .page_message_box_success p,
+.page_message_section .page_message_box p{
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+    color: black;
+}
+.page_message_section .page_message_box_success .close i,
+.page_message_section .page_message_box .close i{
+    color: rgba(0, 0, 0, 0.513);
+}
+.page_message_section .page_message_box_success .close:hover i{
+    color: black;
+}
+.page_message_section .page_message_box .close:hover i{
+    color: black;
+}
+
+@media (max-width: 800px) {
+    .page_message_section{
+        padding: 0;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .page_message_box_success,
+    .page_message_box{
+        height: 100px;
+        padding: 10px !important;
+        padding-right: 10px !important;
+        overflow: hidden;
+    }
+    .page_message_box_success .msg_box,
+    .page_message_box .msg_box{
+        height: 100px;
+        overflow-y: auto;
+        padding-right: 20px;
+        padding-bottom: 20px;
+    }
+    .page_message_section .page_message_box_success p,
+    .page_message_section .page_message_box p{
+        font-size: 12px;
+    }
+    .checkout{
+        margin-top: 20px;
+    }
+}

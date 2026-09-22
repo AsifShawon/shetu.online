@@ -1,0 +1,390 @@
+
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+.checkout_section{
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+  }
+
+.checkout_section .checkout_section_center{
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    padding: 10px;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+.checkout_section .checkout_section_center .package_heading{
+    color: var(--primary-color);
+    margin: 0;
+    padding: 0;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Layout */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: var(--container-padding);
+}
+
+/* Header */
+.site-header {
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+}
+.site-header .container {
+  padding: 0.5rem;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav__brand {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.nav__list {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+
+/* Main Layout */
+.site-main {
+  padding-block: 0.3rem;
+  flex: 1;
+}
+
+.checkout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border: 1px solid  var(--primary-color);
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.checkout .checkout__payment{
+    background: linear-gradient(to right, var(--primary-color), rgb(0, 17, 55));
+}
+
+/* Card Component */
+.card {
+  background: var(--color-white);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  flex: 1 1 300px;
+}
+
+/* Checkout Section */
+.checkout__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: white;
+}
+.checkout__item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  background-color: rgba(207, 207, 207, 0.266);
+  margin-top: 10px;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.268);
+}
+.includes{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.includes h5{
+    color: rgba(0, 0, 0, 0.627);
+}
+.includes ul li{
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.616);
+}
+
+.checkout__item-name {
+  font-weight: 600;
+}
+.checkout__item-qtd {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  margin-left: 0.5rem;
+}
+.checkout__item-desc {
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+.checkout__item-price {
+    font-weight: 600;
+}
+.checkout__item-price span{
+    font-size: 13px;
+    font-weight: 500;
+}
+.checkout__summary {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+}
+.checkout__summary span,
+.checkout__summary .checkout__total,
+.form span{
+    color: white;
+}
+.checkout__total {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+.form input {
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 13px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  outline: none;
+  border-radius: 5px;
+}
+.text-danger{
+  color: rgb(255, 230, 0);
+  font-weight: 600;
+}
+
+/* For Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* For Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+}
+.btn--primary {
+  background: var(--primary-color);
+  color: white;
+  border: 1px solid var(--active-primary-color);
+  transition: background-color 0.2s ease-in-out;
+}
+.btn--primary:hover {
+  background: var(--active-primary-color);
+  color: black;
+}
+
+/* Footer */
+.site-footer {
+  text-align: center;
+  padding: 2rem 0 1rem;
+  font-size: 0.875rem;
+  color: var(--color-muted);
+  border-top: 1px solid var(--color-border);
+}
+
+
+.pro_tag{
+    font-size:12px;
+    font-weight:600;
+    color:rgb(255, 102, 0) !important;
+    margin: 0;
+    padding: 0;
+}
+
+/* ________________ existing enrollment popup message start */
+.btn-close {
+  cursor: pointer;
+  position: relative;
+  right: -5px;
+  top: -5px;
+  margin: 3px;
+  width: 20px;
+  height: 20px;
+  float: right;
+}
+
+.clear {
+  clear: both;
+}
+
+.btn-close::before,
+.btn-close::after {
+  content: "";
+  height: 2px;
+  display: block;
+  background: #d6d6d6;
+}
+
+.btn-close::before {
+  margin-top: 10px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.btn-close::after {
+  margin-top: -2px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.btn-close:hover:after, .btn-close:hover:before {
+  background: #FF8CB4;
+}
+
+.modal-wrapper {
+  display: flex;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  visibility: hidden;
+  top: 0;
+  left: 0;
+  background: rgba(25, 18, 12, 0.3);
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.modal-wrapper.open {
+  visibility: visible;
+  opacity: 1;
+  filter: alpha(opacity=1);
+}
+
+.modal {
+  padding: 20px;
+  padding-bottom: 3rem;
+  display: inline-block;
+  height: auto;
+  max-width: 400px;
+  width: 100%;
+  position: relative;
+  margin: auto;
+  background: #e8e8e8;
+  background: -webkit-linear-gradient(bottom, #e8e8e8, #fff);
+  background: -o-linear-gradient(bottom, #e8e8e8, #fff);
+  background: linear-gradient(to top, #e8e8e8, #fff);
+  box-shadow: 0px 16px 16px -6px rgba(47, 46, 38, 0.5);
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -ms-transform: scale(0.7);
+  /* IE 9 */
+  -webkit-transform: scale(0.7);
+  /* Safari */
+  transform: scale(0.7);
+  border-radius: 10px;
+}
+
+.modal-wrapper.open .modal {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -ms-transform: scale(1);
+  /* IE 9 */
+  -webkit-transform: scale(1);
+  /* Safari */
+  transform: scale(1);
+}
+
+.content {
+  text-align: center;
+}
+.content .icon{
+  display: flex;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.content .icon i{
+  font-size: 50px;
+  margin: auto;
+  color: rgb(255, 89, 0);
+  color: rgb(255, 140, 0);
+}
+.content p{
+  font-weight: 600;
+}
+
+@media screen and (max-width: 425px) {
+  .modal {
+    width: 100%;
+  }
+
+  .btn-close {
+    right: 5px;
+  }
+  .checkout_section{
+    height: 100%;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  .checkout_section{
+    padding-top: 1rem;
+    height: 100%;
+  }
+}
+
+
+/* ________________ existing enrollment popup message end */

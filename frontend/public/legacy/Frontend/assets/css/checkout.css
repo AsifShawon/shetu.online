@@ -1,0 +1,345 @@
+/* For Chrome, Safari, Edge, and Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+input{
+    outline: none;
+}
+  .checkout_section{
+      background-color: aliceblue;
+      width: 100%;
+      padding-top: 3rem;
+      padding-bottom: 1rem;
+      position: relative;
+    }
+    .manual{
+        padding-top: 1rem;
+        padding-bottom: 4rem;
+    }
+
+    .checkout_section .whole_div{
+        width: 60%;
+        margin: auto;
+        padding-right: 0px;
+    }
+    .checkout_section .row {
+      display: -ms-flexbox; /* IE10 */
+      display: flex;
+      -ms-flex-wrap: wrap; /* IE10 */
+      flex-wrap: wrap;
+      margin: 0 -16px;
+      padding-right: 15px;
+    }
+    .checkout_section .whole_div .row h3{
+      padding-bottom: 10px;
+    }
+    .checkout_section  .col-25 {
+      -ms-flex: 30%; /* IE10 */
+      flex: 30%;
+    }
+    .checkout_section .col-25 .container p{
+      margin-top: 5px;
+      text-transform: capitalize;
+    }
+    .checkout_section  .col-25 .container p i{
+      margin-right: 10px;
+      color: rgb(129, 128, 128);
+    }
+    .checkout_section   .col-25 .container p i:hover{
+      color: red;
+    }
+    .checkout_section  .col-25 .container p a{
+      text-decoration: none;
+      text-transform: capitalize;
+    }
+    
+    .checkout_section  .col-50 {
+      -ms-flex: 50%; /* IE10 */
+      flex: 50%;
+    }
+    
+    .checkout_section .col-75 {
+      -ms-flex: 70%; /* IE10 */
+      flex: 70%;
+    }
+    
+    .checkout_section .col-25,
+    .checkout_section .col-50,
+    .checkout_section .col-75 {
+      padding: 0 16px;
+    }
+    
+    .checkout_section .pay_btn {
+      width: 100%;
+      margin-top: 20px;
+      background-color: red;
+    }
+    .checkout_section .row .pay {
+      text-decoration: none;
+    }
+    .checkout_section .row .pay span{
+        background-color: #087ca3;
+        border: none;
+        padding: 5px 59px 5px 59px;
+        border-radius: 5px;
+        color:#fff;
+        text-align: center;
+        font-size: large;
+    }
+    
+  
+    .checkout_section .container {
+        background-color: #f2f2f2;
+        padding: 15px 20px 15px 20px;
+        border: 1px solid lightgrey;
+        border-radius: 3px;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+  
+  .manual .container{
+      /* background-color: rgb(25, 135, 84); */
+      padding: 0px;
+    }
+    .manual .container h4{
+        background-color: rgb(197, 209, 204);
+        width: 100%;
+        text-align: center;
+        color: rgb(0, 0, 0);
+        margin: 0;
+        padding: 0;
+        font-weight: 700;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .manual .container .btn_part{
+        display: flex;
+        width: 100%;
+    }
+    
+    .manual .container .btn_part a{
+        border-left: 1px solid lightgrey;
+        display: flex;
+        width: 50%;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .manual .container .btn_part a:hover span{
+        color:rgb(25, 135, 84);
+    }
+    .manual .container .btn_part a .icon{
+        margin: auto;
+        display: flex;
+        height: 100%;
+    }
+    .manual .container .btn_part a .icon .fs-5,
+    .manual .container .btn_part a .icon span{
+        margin: auto;
+        font-weight: 600;
+    }
+        
+    .manual .container .btn_part a .icon i{
+        font-size: 30px;
+        margin-right: 10px;
+    }
+ 
+  textarea,
+  input[type=text],
+  input[type=number],
+  input[type=email] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .checkout_section  label {
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+
+  .checkout_section .icon-container img{
+    height: 50px;
+    width: 85px;
+    border-radius: 5px;
+  }
+  .checkout_section .icon_last{
+  padding-bottom: 20px;
+}  
+.checkout_section .pay_btn {
+    background: linear-gradient(to right, var(--primary-color), #000428);
+    color: white;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    width: 100%;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 17px;
+  }
+  .checkout_section .disabled{
+      pointer-events: none;
+  }
+  .checkout_section .disabled{
+      opacity: 0.6;
+      background-color: gray;
+  }
+  
+  .checkout_section .row .pay span:hover{
+    background-color: #52c8f0;
+  }
+  .checkout_section .pay_btn:hover {
+    background: linear-gradient(to right, var(--active-primary-color), var(--active-primary-color));
+    color: black;
+  }
+  
+ 
+  .checkout_section  hr {
+    border: 1px solid lightgrey;
+  }
+  
+  .checkout_section  span.price {
+    float: right;
+    color: grey;
+  }
+  
+  .checkout_section  .payment_section{
+    border-radius: 10px;
+    /* background: linear-gradient(to right, var(--primary-color), #000428); */
+    /* border: 2px solid var(--primary-color); */
+    background-color: white ;
+    /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px; */
+    padding-bottom: 15px;
+     border: 2px solid var(--primary-color);
+  }
+  .checkout_section  .payment_section .promocod_div{
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color:rgb(0, 0, 0);
+  }
+  .checkout_section  .payment_section .promocod_div p{
+    margin: 0;
+    padding: 0;
+    color: rgb(0, 0, 0);
+  }
+  .checkout_section  .payment_section .promocod_div input{
+    outline:none;
+    padding: 3px;
+    background-color: #cccccc32;
+    color:rgb(0, 0, 0);
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+    .checkout_section .payment_section h3{
+        padding: 0;
+        margin: 0;
+      padding-top: 10px;
+    }
+    .checkout_section .payment_section h3, .payment_section .fname{
+        color: #000000;
+    }
+    .checkout_section .payment_section .fname{
+        font-size: 20px;
+        font-weight: 600;
+        margin: 0;
+        padding: 0;
+    }
+    .checkout_section .payment_section .desc{
+        color: rgb(0, 0, 0);
+        margin-bottom: 25px;
+    }
+    .checkout_section .payment_section .desc .desc_head{
+        color: rgba(0, 0, 0, 0.696);
+        font-weight: 700;
+        font-size: 18px;
+    }
+    .checkout_section .payment_section .desc p{
+        margin: 0;
+        padding: 0;
+        font-size: 15px;
+        color: rgba(0, 0, 0, 0.603);
+    }
+    .checkout_section .payment_section .order_table{
+        background-color: #f2f2f2;
+        padding: 10px;
+        color: rgb(0, 0, 0);
+        border-radius: 5px;
+    }
+    .checkout_section .payment_section .order_table ul{
+        padding: 0;
+        margin: 0;
+    }
+    .checkout_section .payment_section .order_table ul li{
+        list-style: none;
+        display: flex;
+        border-bottom: 0.5px solid rgba(149, 149, 149, 0.398);
+        padding: 0;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .checkout_section .payment_section .order_table ul li .part{
+        width: 50%;
+        font-weight: 600;
+        font-size: 14px;
+        color:rgba(0, 0, 0, 0.739);
+    }
+  /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+  @media (max-width: 1000px) {
+    .checkout_section{
+        padding: 130px 10px 10px 10px;
+      }
+      .checkout_section .whole_div{
+          width: 100%;
+          margin: auto;
+      }
+      .checkout_section .row {
+        padding-right: 0px;
+      }
+  }
+  @media (max-width: 800px) {
+    .checkout_section .row {
+          flex-direction: column;
+          /* flex-direction: column-reverse; */
+        }
+        .checkout_section .col-25 {
+            margin-bottom: 20px;
+        }
+        .checkout_section .col-50{
+      padding-top: 30px;
+    }
+    .checkout_section{
+      padding-top: 3rem;
+    }
+    .manual{
+      padding-top: 0rem;
+      padding: 10px 10px 10px 10px;
+    }
+
+  }
+
+  @media (max-width: 500px) {
+    .manual .container .btn_part{
+        display: block;
+    }
+    .manual .container .btn_part a{
+        width: 100%;
+    }
+}
+
+
+
+
+
+
