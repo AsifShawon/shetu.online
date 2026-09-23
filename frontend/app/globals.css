@@ -12,31 +12,75 @@ body {
 }
 
 :root {
+  /* Shetu Brand Green Hierarchy */
+  --shetu-green-950: #02351F;
+  --shetu-green-900: #03462A;
+  --shetu-green-800: #045330; /* Canonical Primary Brand Green */
+  --shetu-green-700: #09643C;
+  --shetu-green-600: #13764A;
+  --shetu-green-500: #1B8A57;
+  --shetu-green-100: #DDEFE5;
+  --shetu-green-50:  #F1F8F4;
+
+  /* Shetu Brand Accent Red */
+  --shetu-red:       #EB0310; /* Canonical Accent Red */
+  --shetu-red-dark:  #C8000C;
+  --shetu-red-soft:  #FDE9EA;
+
+  /* Neutral & Surface Foundations */
+  --shetu-ink:       #14231B;
+  --shetu-text:      #28362F;
+  --shetu-muted:     #64736B;
+  --shetu-border:    #DCE6E0;
+  --shetu-surface:   #F7FAF8;
+  --shetu-surface-card: #FFFFFF;
+  --shetu-white:     #FFFFFF;
+
+  /* Semantic Design Tokens */
+  --color-primary: var(--shetu-green-800);
+  --color-primary-hover: var(--shetu-green-900);
+  --color-primary-soft: var(--shetu-green-50);
+  --color-accent: var(--shetu-red);
+  --color-accent-hover: var(--shetu-red-dark);
+  --color-accent-soft: var(--shetu-red-soft);
+  --color-surface: var(--shetu-surface);
+  --color-surface-muted: var(--shetu-green-50);
+  --color-border: var(--shetu-border);
+  --color-text: var(--shetu-text);
+  --color-text-muted: var(--shetu-muted);
+  --color-focus: rgba(4, 83, 48, 0.22);
+  --color-success: #0f9d58;
+  --color-warning: #f59e0b;
+  --color-danger: #dc2626;
+
+  /* Standard Tailwind Theme Tokens mapped to Shetu */
   --background: 0 0% 100%;
-  --foreground: 230 24% 12%;
+  --foreground: 154 28% 16%;
   --card: 0 0% 100%;
-  --card-foreground: 230 24% 12%;
-  --primary: 215 55% 34%;
+  --card-foreground: 154 28% 16%;
+  --primary: 154 91% 17%; /* #045330 */
   --primary-foreground: 0 0% 100%;
-  --secondary: 360 84% 47%;
+  --secondary: 357 98% 47%; /* #EB0310 */
   --secondary-foreground: 0 0% 100%;
-  --muted: 210 20% 97%;
-  --muted-foreground: 219 18% 42%;
-  --accent: 208 90% 94%;
-  --accent-foreground: 230 24% 12%;
-  --border: 215 25% 87%;
-  --input: 215 25% 87%;
-  --ring: 215 55% 34%;
+  --muted: 144 33% 96%;
+  --muted-foreground: 152 10% 42%;
+  --accent: 144 45% 94%;
+  --accent-foreground: 154 28% 16%;
+  --border: 147 18% 88%;
+  --input: 147 18% 88%;
+  --ring: 154 91% 17%;
   --radius: 1rem;
-  --legacy-primary: #2b4b83;
-  --legacy-primary-soft: #0c4a6e;
-  --legacy-primary-bright: #47d9f6;
-  --legacy-secondary: #ee0404;
-  --legacy-light: #f2f6fb;
+
+  /* Legacy System Mappings */
+  --legacy-primary: var(--shetu-green-800);
+  --legacy-primary-soft: var(--shetu-green-900);
+  --legacy-primary-bright: var(--shetu-green-600);
+  --legacy-secondary: var(--shetu-red);
+  --legacy-light: var(--shetu-green-50);
   --legacy-surface: #ffffff;
-  --legacy-border: rgba(30, 41, 59, 0.12);
-  --legacy-text: #101828;
-  --legacy-muted: #5f6f89;
+  --legacy-border: var(--shetu-border);
+  --legacy-text: var(--shetu-text);
+  --legacy-muted: var(--shetu-muted);
   --legacy-success: #0f9d58;
 }
 
@@ -841,7 +885,7 @@ html {
 body {
   @apply bg-background text-foreground antialiased;
   font-family: var(--font-anek-bangla), var(--font-poppins), sans-serif;
-  background-color: #f5f8fc;
+  background-color: var(--shetu-surface);
 }
 
 a {
@@ -865,7 +909,7 @@ button {
 }
 
 ::selection {
-  background: rgba(71, 217, 246, 0.25);
+  background: rgba(4, 83, 48, 0.2);
 }
 
 .legacy-container {
@@ -1079,7 +1123,8 @@ button {
 }
 
 .legacy-site .top-header {
-  background: #32528c;
+  background: var(--shetu-surface, #F7FAF8);
+  border-bottom: 1px solid rgba(4, 83, 48, 0.08);
 }
 
 .legacy-site .top-container,
@@ -1096,7 +1141,7 @@ button {
   justify-content: space-between;
   gap: 1rem;
   padding: 4px 0;
-  color: #fff;
+  color: var(--shetu-ink, #0B1F16);
 }
 
 .legacy-site .top-header-content .left,
@@ -1111,14 +1156,19 @@ button {
 }
 
 .legacy-site .top-header-content a {
-  color: #202a3f;
+  color: #2D3748;
   font-size: 13px;
   font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.legacy-site .top-header-content a:hover {
+  color: #045330;
 }
 
 .legacy-site .top-header-content a i {
   margin-right: 4px;
-  color: #101828;
+  color: #045330;
 }
 
 .legacy-lang-dropdown {
@@ -1195,8 +1245,12 @@ button {
 
 .legacy-lang-menu-item:hover,
 .legacy-lang-menu-item.is-active {
-  background: #f3f6fb;
-  color: #101828;
+  background: #F1F8F4;
+  color: #045330;
+}
+
+.legacy-lang-menu-item.is-active i {
+  color: #045330;
 }
 
 .legacy-site .header_bar {
@@ -1207,8 +1261,8 @@ button {
 }
 
 .legacy-site .top-header {
-  background: #fff;
-  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  background: var(--shetu-surface, #F7FAF8);
+  border-bottom: 1px solid rgba(4, 83, 48, 0.08);
 }
 
 .legacy-site .top-header-content {
@@ -1217,7 +1271,7 @@ button {
   justify-content: space-between;
   gap: 0.85rem;
   padding: 0.4rem 0;
-  color: #202a3f;
+  color: var(--shetu-ink, #0B1F16);
 }
 
 .legacy-site .top-header-content .left,
@@ -1289,15 +1343,33 @@ button {
   font-size: 15px;
   font-weight: 500;
   padding: 0.35rem 0;
+  transition: color 0.15s ease;
 }
 
 .legacy-site .nav-link > a:hover {
-  color: #9f0b08;
+  color: #045330;
 }
 
-.legacy-site .nav-link > a.active-nav {
-  color: #06338d;
+.legacy-site .nav-link > a.active-nav,
+.legacy-site .nav-link > a.is-active {
+  color: #045330;
   font-weight: 700;
+  position: relative;
+}
+
+@media (min-width: 769px) {
+  .legacy-site .nav-link > a.active-nav::after,
+  .legacy-site .nav-link > a.is-active::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 18px;
+    height: 2.5px;
+    border-radius: 999px;
+    background: #EB0310;
+  }
 }
 
 .legacy-site .legacy-mobile-nav-backdrop,
@@ -1324,22 +1396,23 @@ button {
 
 .legacy-site .legacy-header-cta {
   display: inline-flex;
-  min-height: 48px;
+  min-height: 44px;
   align-items: center;
   justify-content: center;
-  padding: 0.8rem 1.5rem;
-  border-radius: 10px;
-  background: #b30a05;
+  padding: 0.65rem 1.4rem;
+  border-radius: 8px;
+  background: #045330;
   color: #fff;
-  font-size: 15px;
-  font-weight: 700;
-  box-shadow: 0 12px 24px rgba(179, 10, 5, 0.18);
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(4, 83, 48, 0.2);
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .legacy-site .legacy-header-cta:hover {
-  background: #96110d;
+  background: #03462A;
   transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(4, 83, 48, 0.28);
 }
 
 .legacy-site--home .top-container,
@@ -1348,8 +1421,8 @@ button {
 }
 
 .legacy-site--home .top-header {
-  background: rgba(255, 255, 255, 0.98);
-  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  background: var(--shetu-surface, #F7FAF8);
+  border-bottom: 1px solid rgba(4, 83, 48, 0.08);
 }
 
 .legacy-site--home .top-header-content {
@@ -1359,9 +1432,15 @@ button {
 
 .legacy-site--home .top-header-content a,
 .legacy-site--home .legacy-lang-trigger {
-  color: #111111;
+  color: #2D3748;
   font-size: 12px;
   font-weight: 600;
+  transition: color 0.15s ease;
+}
+
+.legacy-site--home .top-header-content a:hover,
+.legacy-site--home .legacy-lang-trigger:hover {
+  color: #045330;
 }
 
 .legacy-site--home .top-header-content .left {
@@ -1399,12 +1478,18 @@ button {
 
 .legacy-site--home .legacy-header-cta {
   min-height: 38px;
-  padding: 0.45rem 1.2rem;
+  padding: 0.45rem 1.25rem;
   border-radius: 8px;
-  background: #a30000;
-  box-shadow: none;
-  font-size: 15px;
-  font-weight: 700;
+  background: #045330;
+  box-shadow: 0 4px 12px rgba(4, 83, 48, 0.18);
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.legacy-site--home .legacy-header-cta:hover {
+  background: #03462A;
+  box-shadow: 0 6px 16px rgba(4, 83, 48, 0.26);
 }
 
 .legacy-site--home .legacy-site-main {
@@ -2054,11 +2139,16 @@ button {
   align-items: center;
   justify-content: center;
   border-radius: 6px;
-  background: #ff0000;
+  background: #045330;
   color: #fff;
   padding: 0.6rem 1rem;
   font-weight: 700;
   line-height: 1;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.legacy-site .legacy-request-btn:hover {
+  background: #03462A;
 }
 
 .legacy-site .legacy-country-pane {
@@ -2502,10 +2592,10 @@ button {
 .legacy-site .legacy-pricing-page {
   min-height: calc(100vh - 112px);
   background:
-    linear-gradient(rgba(238, 246, 255, 0.1), rgba(238, 246, 255, 0.1)),
+    linear-gradient(180deg, rgba(247, 250, 248, 0.88) 0%, rgba(241, 248, 244, 0.94) 100%),
     url("/legacy/Frontend/assets/img/page/pricing_page_bg.png") center bottom / cover no-repeat;
   padding: 4.35rem 1rem 4.8rem;
-  color: #071a44;
+  color: #0B1F16;
 }
 
 .legacy-site .legacy-pricing-shell {
@@ -2519,17 +2609,17 @@ button {
 
 .legacy-site .legacy-pricing-intro h1 {
   margin: 0;
-  color: #071a44;
+  color: #045330;
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 1.1;
   font-weight: 800;
-  letter-spacing: 0;
+  letter-spacing: -0.02em;
 }
 
 .legacy-site .legacy-pricing-intro p {
   width: min(760px, 100%);
   margin: 1rem auto 0;
-  color: #525b6a;
+  color: #4A5568;
   font-size: 0.95rem;
   line-height: 1.7;
   font-weight: 400;
@@ -2544,9 +2634,9 @@ button {
   align-items: center;
   padding: 2px;
   border-radius: 999px;
-  border: 1px solid #aebbd0;
-  background: rgba(232, 239, 250, 0.72);
-  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.08);
+  border: 1px solid #DDEFE5;
+  background: rgba(221, 239, 229, 0.55);
+  box-shadow: inset 0 1px 2px rgba(4, 83, 48, 0.08);
 }
 
 .legacy-site .legacy-pricing-toggle button {
@@ -2555,16 +2645,18 @@ button {
   border: 0;
   border-radius: 999px;
   background: transparent;
-  color: #3f4652;
+  color: #4A5568;
   font-size: 0.86rem;
   font-weight: 500;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .legacy-site .legacy-pricing-toggle button.is-active {
   background: #fff;
-  color: #071a44;
-  box-shadow: 0 2px 7px rgba(15, 23, 42, 0.24);
+  color: #045330;
+  font-weight: 700;
+  box-shadow: 0 2px 7px rgba(4, 83, 48, 0.16);
 }
 
 .legacy-site .legacy-pricing-grid {
@@ -2583,21 +2675,28 @@ button {
 
 .legacy-site .legacy-pricing-card.is-featured {
   padding-top: 32px;
-  border: 2px solid #06338d;
-  background: #9aaddd;
-  box-shadow: 0 24px 34px rgba(13, 43, 105, 0.22);
+  border: 2px solid #045330;
+  background: linear-gradient(180deg, #045330 0%, #03462A 100%);
+  box-shadow: 0 20px 35px rgba(4, 83, 48, 0.18);
 }
 
 .legacy-site .legacy-pricing-badge {
   position: absolute;
   top: 8px;
-  left: 0;
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #EB0310;
   color: #fff;
+  padding: 3px 14px;
+  border-radius: 999px;
   text-align: center;
-  font-size: 0.66rem;
+  font-size: 0.68rem;
   font-weight: 700;
   line-height: 1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(235, 3, 16, 0.35);
 }
 
 .legacy-site .legacy-pricing-card-body {
@@ -2607,7 +2706,8 @@ button {
   border-radius: 22px;
   background: #fff;
   padding: 1.55rem 1.55rem 1.55rem;
-  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 18px rgba(4, 83, 48, 0.08);
+  border: 1px solid #E2E8F0;
 }
 
 .legacy-site .legacy-pricing-card.is-featured .legacy-pricing-card-body {
@@ -2615,12 +2715,13 @@ button {
   border-top-right-radius: 22px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
+  border: none;
   box-shadow: none;
 }
 
 .legacy-site .legacy-pricing-card h2 {
   margin: 0;
-  color: #3a3a3a;
+  color: #0B1F16;
   font-size: 1.05rem;
   line-height: 1.25;
   font-weight: 700;
@@ -2628,7 +2729,7 @@ button {
 
 .legacy-site .legacy-pricing-audience {
   margin: 0.15rem 0 0;
-  color: #5a6270;
+  color: #64748B;
   font-size: 0.8rem;
   line-height: 1.3;
 }
@@ -2639,7 +2740,7 @@ button {
   align-items: baseline;
   gap: 0.25rem;
   margin-top: 1rem;
-  color: #071a44;
+  color: #045330;
 }
 
 .legacy-site .legacy-pricing-price > span {
@@ -2654,9 +2755,9 @@ button {
 }
 
 .legacy-site .legacy-pricing-price small {
-  color: #071a44;
+  color: #64748B;
   font-size: 0.96rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .legacy-site .legacy-pricing-features {
@@ -2671,41 +2772,56 @@ button {
   display: flex;
   align-items: flex-start;
   gap: 0.45rem;
-  color: #555f6d;
+  color: #4A5568;
   font-size: 0.79rem;
   line-height: 1.25;
 }
 
 .legacy-site .legacy-pricing-features i {
   margin-top: 0.05rem;
-  color: #0a3b91;
+  color: #045330;
   font-size: 0.77rem;
 }
 
 .legacy-site .legacy-pricing-button {
   width: 100%;
-  min-height: 34px;
+  min-height: 36px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   margin-top: auto;
-  border: 0;
-  border-radius: 7px;
-  background: #b7b7b7;
-  color: #fff;
+  border: 1.5px solid #045330;
+  border-radius: 8px;
+  background: #fff;
+  color: #045330;
   font-size: 0.86rem;
   font-weight: 700;
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.legacy-site .legacy-pricing-button:hover {
+  background: #F1F8F4;
+  color: #03462A;
+  border-color: #03462A;
 }
 
 .legacy-site .legacy-pricing-button.is-primary {
-  background: #06338d;
+  background: #045330;
+  color: #fff;
+  border-color: #045330;
+  box-shadow: 0 4px 12px rgba(4, 83, 48, 0.25);
+}
+
+.legacy-site .legacy-pricing-button.is-primary:hover {
+  background: #03462A;
+  border-color: #03462A;
 }
 
 .legacy-site .legacy-pricing-note {
   margin: 3.35rem 0 0;
   text-align: center;
-  color: #343b49;
+  color: #64748B;
   font-size: 0.82rem;
   line-height: 1.5;
 }
@@ -2714,16 +2830,16 @@ button {
   width: min(580px, 100%);
   margin: 0 auto;
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(119, 144, 190, 0.24);
-  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.08);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #DDEFE5;
+  box-shadow: 0 12px 26px rgba(4, 83, 48, 0.08);
   padding: 2rem;
   text-align: center;
 }
 
 .legacy-site .legacy-pricing-empty h2 {
   margin: 0;
-  color: #071a44;
+  color: #045330;
   font-size: 1.25rem;
   line-height: 1.3;
   font-weight: 800;
@@ -2731,14 +2847,14 @@ button {
 
 .legacy-site .legacy-pricing-empty p {
   margin: 0.65rem 0 0;
-  color: #556277;
+  color: #64748B;
   font-size: 0.92rem;
   line-height: 1.55;
 }
 
 .legacy-site .legacy-pricing-admin-hint {
   margin: 1rem auto 0;
-  color: #526071;
+  color: #64748B;
   text-align: center;
   font-size: 0.78rem;
   line-height: 1.45;
@@ -2969,8 +3085,8 @@ button {
     width: 86vw;
     max-width: 360px;
     height: 100dvh;
-    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
-    border-right: 1px solid rgba(226, 232, 240, 0.95);
+    background: linear-gradient(180deg, #ffffff 0%, #F1F8F4 100%);
+    border-right: 1px solid rgba(4, 83, 48, 0.12);
     border-radius: 0 1rem 1rem 0;
     box-shadow: 0 24px 48px rgba(15, 23, 42, 0.24);
     padding: 0.9rem 0.85rem 1rem;
@@ -2993,7 +3109,7 @@ button {
     justify-content: space-between;
     gap: 0.75rem;
     padding-bottom: 0.8rem;
-    border-bottom: 1px solid rgba(43, 75, 131, 0.12);
+    border-bottom: 1px solid rgba(4, 83, 48, 0.12);
     margin-bottom: 0.7rem;
   }
 
@@ -3010,8 +3126,8 @@ button {
     height: 46px;
     border: 0;
     border-radius: 999px;
-    background: rgba(16, 43, 99, 0.1);
-    color: #102b63;
+    background: rgba(4, 83, 48, 0.08);
+    color: #045330;
     font-size: 18px;
     cursor: pointer;
   }
@@ -3081,9 +3197,9 @@ button {
     gap: 0.6rem;
     border-radius: 0;
     border: 0;
-    border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+    border-bottom: 1px solid rgba(4, 83, 48, 0.12);
     background: transparent;
-    color: #102b63;
+    color: #1a2e22;
     box-shadow: none;
     padding: 0.1rem 0.15rem 0.55rem;
     text-decoration: none;
@@ -3102,7 +3218,7 @@ button {
 
   .legacy-site .legacy-mobile-menu-link__left i {
     width: 18px;
-    color: #0b1f4d;
+    color: #045330;
     text-align: center;
     flex-shrink: 0;
   }
@@ -3118,15 +3234,15 @@ button {
   .legacy-site .legacy-mobile-menu-link.is-active,
   .legacy-site .legacy-mobile-menu-link:hover {
     background: transparent;
-    border-bottom-color: rgba(11, 31, 77, 0.35);
-    color: #0b1f4d;
+    border-bottom-color: rgba(4, 83, 48, 0.35);
+    color: #045330;
   }
 
   .legacy-site .legacy-mobile-menu-link.is-active .legacy-mobile-menu-link__left i,
   .legacy-site .legacy-mobile-menu-link:hover .legacy-mobile-menu-link__left i,
   .legacy-site .legacy-mobile-menu-link.is-active > i:last-child,
   .legacy-site .legacy-mobile-menu-link:hover > i:last-child {
-    color: #0b1f4d;
+    color: #045330;
   }
 
   .legacy-site .legacy-mobile-menu-link--logout {
@@ -3207,18 +3323,18 @@ button {
   }
 
   .legacy-site .legacy-mobile-action--primary {
-    background: linear-gradient(135deg, #102b63, #264a96);
+    background: linear-gradient(135deg, #045330, #03462A);
   }
 
   .legacy-site .legacy-mobile-action--accent {
-    background: linear-gradient(135deg, #d4b700, #f0ce0d);
-    color: #102b63;
+    background: linear-gradient(135deg, #EB0310, #C8000C);
+    color: #fff;
   }
 
   .legacy-site .legacy-mobile-action--ghost {
-    border: 1px solid rgba(16, 43, 99, 0.16);
-    background: rgba(255, 255, 255, 0.8);
-    color: #102b63;
+    border: 1px solid rgba(4, 83, 48, 0.2);
+    background: rgba(255, 255, 255, 0.9);
+    color: #045330;
     box-shadow: none;
   }
 
@@ -3235,7 +3351,7 @@ button {
     padding: 0 0.85rem;
     border-radius: 12px;
     background: #ffffff;
-    border: 1px solid rgba(226, 232, 240, 0.95);
+    border: 1px solid rgba(4, 83, 48, 0.12);
     color: #25324d;
     font-size: 0.84rem;
     font-weight: 600;
@@ -3245,7 +3361,7 @@ button {
   .legacy-site .legacy-mobile-contact-link i {
     width: 16px;
     text-align: center;
-    color: #0b1f4d;
+    color: #045330;
   }
 
   .legacy-site .legacy-mobile-contact-link + .legacy-mobile-contact-link {
@@ -7841,14 +7957,14 @@ button {
 }
 
 .legacy-site .legacy-consultants-page-v2 {
-  background: #eef5ff;
+  background: var(--shetu-surface);
   overflow-x: clip;
 }
 
 .legacy-site .legacy-consultants-hero {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(5, 22, 67, 0.98) 0%, rgba(8, 29, 82, 0.97) 100%);
+  background: linear-gradient(180deg, #03462A 0%, #02351F 100%);
   padding: 2.8rem 0 2.5rem;
 }
 
@@ -7860,9 +7976,9 @@ button {
   width: 1860px;
   height: 920px;
   background:
-    radial-gradient(circle at center, rgba(117, 167, 255, 0.14) 0%, rgba(117, 167, 255, 0) 72%),
+    radial-gradient(circle at center, rgba(221, 239, 229, 0.12) 0%, rgba(221, 239, 229, 0) 72%),
     url("/legacy/Frontend/assets/img/consultants/bg-glove.png") center bottom / contain no-repeat;
-  opacity: 0.56;
+  opacity: 0.45;
   pointer-events: none;
   z-index: 0;
 }
@@ -7895,9 +8011,9 @@ button {
   height: 56px;
   border-radius: 999px;
   background: #fff;
-  color: #102a72;
+  color: #045330;
   font-size: 1.22rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 .legacy-site .legacy-consultants-hero__stat strong {
@@ -7908,7 +8024,7 @@ button {
 }
 
 .legacy-site .legacy-consultants-hero__stat span {
-  color: rgba(255, 255, 255, 0.84);
+  color: rgba(221, 239, 229, 0.88);
   font-size: 0.72rem;
   font-weight: 400;
   line-height: 1.2;
@@ -7921,10 +8037,10 @@ button {
   margin: 1.25rem auto 0;
   padding: 0.8rem 0.8rem 0.7rem;
   border-radius: 24px;
-  background: rgba(83, 109, 162, 0.36);
+  background: rgba(4, 83, 48, 0.38);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 24px 60px rgba(2, 12, 35, 0.26);
+  border: 1px solid rgba(221, 239, 229, 0.2);
+  box-shadow: 0 24px 60px rgba(2, 53, 31, 0.35);
 }
 
 .legacy-site .legacy-consultants-hero__search-form {
@@ -7946,8 +8062,14 @@ button {
   min-height: 52px;
   border-radius: 14px;
   background: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(221, 239, 229, 0.6);
   padding: 0 0.85rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.legacy-site .legacy-consultants-hero__keyword:focus-within {
+  border-color: #045330;
+  box-shadow: 0 0 0 3px rgba(4, 83, 48, 0.15);
 }
 
 .legacy-site .legacy-consultants-hero__keyword > i,
@@ -7961,14 +8083,14 @@ button {
   width: 100%;
   border: 0;
   background: transparent;
-  color: #24304a;
+  color: #0B1F16;
   font-size: 0.95rem;
   font-weight: 400;
   outline: none;
 }
 
 .legacy-site .legacy-consultants-hero__keyword input::placeholder {
-  color: #a3aab7;
+  color: #94A3B8;
   font-weight: 400;
 }
 
@@ -7991,8 +8113,8 @@ button {
   padding: 0.45rem;
   border-radius: 18px;
   background: #fff;
-  border: 1px solid rgba(187, 196, 216, 0.8);
-  box-shadow: 0 18px 38px rgba(8, 29, 82, 0.16);
+  border: 1px solid #DDEFE5;
+  box-shadow: 0 18px 38px rgba(4, 83, 48, 0.12);
   z-index: 5;
 }
 
@@ -8010,6 +8132,7 @@ button {
   font-size: 0.95rem;
   font-weight: 500;
   text-align: left;
+  transition: background 0.15s ease;
 }
 
 .legacy-site .legacy-consultants-hero__suggestion i {
@@ -8018,14 +8141,15 @@ button {
 }
 
 .legacy-site .legacy-consultants-hero__suggestion:hover {
-  background: #f4f7ff;
+  background: #F1F8F4;
+  color: #045330;
 }
 
 .legacy-site .legacy-consultants-hero__submit {
   min-height: 52px;
   border: 0;
   border-radius: 14px;
-  background: #091d58;
+  background: #045330;
   color: #fff;
   font-size: 0.94rem;
   font-weight: 600;
@@ -8033,7 +8157,13 @@ button {
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  box-shadow: 0 14px 28px rgba(6, 19, 62, 0.24);
+  box-shadow: 0 14px 28px rgba(2, 53, 31, 0.28);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.legacy-site .legacy-consultants-hero__submit:hover {
+  background: #03462A;
 }
 
 .legacy-site .legacy-consultants-hero__countries {
@@ -8045,7 +8175,7 @@ button {
 }
 
 .legacy-site .legacy-consultants-hero__countries > span {
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(221, 239, 229, 0.85);
   font-size: 0.82rem;
   font-weight: 500;
   min-width: 118px;
@@ -8061,18 +8191,22 @@ button {
 }
 
 .legacy-site .legacy-consultants-hero__chip {
-  border: 0;
+  border: 1px solid rgba(221, 239, 229, 0.25);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.12);
   color: #fff;
   padding: 0.38rem 0.66rem;
   font-size: 0.76rem;
   font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
 }
 
 .legacy-site .legacy-consultants-hero__chip.is-active,
 .legacy-site .legacy-consultants-hero__chip:hover {
-  background: rgba(255, 255, 255, 0.24);
+  background: rgba(221, 239, 229, 0.3);
+  border-color: #DDEFE5;
+  color: #fff;
 }
 
 .legacy-site .legacy-consultants-showcase {
@@ -8092,8 +8226,8 @@ button {
   font-size: clamp(2rem, 2.5vw, 2.7rem);
   line-height: 1.08;
   letter-spacing: -0.04em;
-  color: #273142;
-  font-weight: 650;
+  color: #045330;
+  font-weight: 750;
 }
 
 .legacy-site .legacy-consultants-showcase__header p {
@@ -8124,9 +8258,9 @@ button {
   gap: 0.8rem;
   padding: 0.92rem;
   border-radius: 16px;
-  background: linear-gradient(180deg, #dcebff 0%, #f9fbff 100%);
-  border: 1px solid rgba(128, 155, 206, 0.45);
-  box-shadow: 0 14px 30px rgba(76, 107, 169, 0.12);
+  background: linear-gradient(180deg, #F1F8F4 0%, #ffffff 100%);
+  border: 1px solid rgba(4, 83, 48, 0.14);
+  box-shadow: 0 10px 25px rgba(4, 83, 48, 0.06);
   width: 100%;
   max-width: 100%;
   min-width: 0;
@@ -8157,7 +8291,7 @@ button {
   object-fit: cover;
   border-radius: 999px;
   border: 2px solid #fff;
-  box-shadow: 0 8px 20px rgba(54, 80, 142, 0.18);
+  box-shadow: 0 8px 20px rgba(4, 83, 48, 0.12);
 }
 
 .legacy-site .legacy-consultant-card-v2__badge {
@@ -8165,13 +8299,15 @@ button {
   left: 50%;
   bottom: -6px;
   transform: translateX(-50%);
-  border-radius: 8px;
-  background: #0d215e;
+  border-radius: 999px;
+  background: #EB0310;
   color: #fff;
-  padding: 0.14rem 0.48rem;
-  font-size: 0.72rem;
+  padding: 0.15rem 0.55rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  box-shadow: 0 6px 14px rgba(13, 33, 94, 0.22);
+  box-shadow: 0 4px 10px rgba(235, 3, 16, 0.3);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .legacy-site .legacy-consultant-card-v2__meta {
@@ -8187,7 +8323,7 @@ button {
 
 .legacy-site .legacy-consultant-card-v2__name-row h3 {
   margin: 0;
-  color: #233046;
+  color: #0B1F16;
   font-size: 0.98rem;
   line-height: 1.2;
   font-weight: 700;
@@ -8195,13 +8331,13 @@ button {
 }
 
 .legacy-site .legacy-consultant-card-v2__name-row i {
-  color: #0b2a74;
+  color: #045330;
   font-size: 0.92rem;
 }
 
 .legacy-site .legacy-consultant-card-v2__subtitle {
   margin: 0.2rem 0 0;
-  color: #34435a;
+  color: #4A5568;
   font-size: 0.84rem;
   font-weight: 500;
   line-height: 1.3;
@@ -8264,7 +8400,7 @@ button {
   object-fit: cover;
   border-radius: 12px;
   border: 2px solid #fff;
-  box-shadow: 0 8px 18px rgba(89, 113, 163, 0.15);
+  box-shadow: 0 8px 18px rgba(4, 83, 48, 0.12);
 }
 
 .legacy-site .legacy-consultant-card-v2__flag i {
@@ -8274,8 +8410,8 @@ button {
   align-items: center;
   justify-content: center;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.8);
-  color: #18377f;
+  background: rgba(255, 255, 255, 0.85);
+  color: #045330;
 }
 
 .legacy-site .legacy-consultant-card-v2__metrics {
@@ -8284,8 +8420,8 @@ button {
   gap: 0.4rem;
   border-radius: 10px;
   overflow: hidden;
-  border: 1px solid rgba(117, 145, 194, 0.38);
-  background: rgba(255, 255, 255, 0.42);
+  border: 1px solid rgba(4, 83, 48, 0.12);
+  background: rgba(255, 255, 255, 0.65);
   padding: 0.45rem;
 }
 
@@ -8293,7 +8429,7 @@ button {
   padding: 0.5rem;
   border-right: 0;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.8);
   min-width: 0;
 }
 
@@ -8303,7 +8439,7 @@ button {
 
 .legacy-site .legacy-consultant-card-v2__metrics strong {
   display: block;
-  color: #273142;
+  color: #0B1F16;
   font-size: 0.82rem;
   font-weight: 650;
 }
@@ -8319,8 +8455,8 @@ button {
 .legacy-site .legacy-consultant-card-v2__details {
   padding: 0.68rem;
   border-radius: 12px;
-  border: 1px solid rgba(117, 145, 194, 0.38);
-  background: rgba(255, 255, 255, 0.42);
+  border: 1px solid rgba(4, 83, 48, 0.12);
+  background: rgba(255, 255, 255, 0.65);
 }
 
 .legacy-site .legacy-consultant-card-v2__tags {
@@ -8333,7 +8469,7 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  color: #475569;
+  color: #045330;
   font-size: 0.82rem;
   font-weight: 600;
 }
@@ -8351,7 +8487,8 @@ button {
   min-height: 28px;
   border-radius: 999px;
   padding: 0.3rem 0.64rem;
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid #DDEFE5;
   color: #516071;
   font-size: 0.72rem;
 }
@@ -8377,7 +8514,8 @@ button {
   gap: 0.55rem;
   padding: 0.45rem 0.5rem;
   border-radius: 10px;
-  background: rgba(234, 240, 251, 0.95);
+  background: rgba(241, 248, 244, 0.95);
+  border: 1px solid rgba(221, 239, 229, 0.7);
   min-width: 0;
   overflow: hidden;
 }
@@ -8398,7 +8536,7 @@ button {
 }
 
 .legacy-site .legacy-consultant-card-v2__service-meta strong {
-  color: #091d58;
+  color: #045330;
   font-size: 0.78rem;
   font-weight: 700;
   white-space: nowrap;
@@ -8423,6 +8561,13 @@ button {
   font-size: 0.74rem;
   font-weight: 700;
   white-space: nowrap;
+  background: #045330;
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+
+.legacy-site .legacy-consultant-card-v2 .legacy-request-btn:hover {
+  background: #03462A;
 }
 
 .legacy-site .legacy-consultant-card-v2 .legacy-view-profile {
@@ -8431,6 +8576,17 @@ button {
   border-radius: 9px;
   font-size: 0.75rem;
   white-space: nowrap;
+  border: 1px solid #045330;
+  color: #045330;
+  background: transparent;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.legacy-site .legacy-consultant-card-v2 .legacy-view-profile:hover {
+  background: #F1F8F4;
+  color: #03462A;
+  border-color: #03462A;
 }
 
 .legacy-site .legacy-consultants-showcase__state {
@@ -8444,7 +8600,7 @@ button {
   color: #516071;
   background: rgba(255, 255, 255, 0.72);
   border-radius: 22px;
-  border: 1px solid rgba(129, 152, 190, 0.2);
+  border: 1px solid rgba(4, 83, 48, 0.12);
 }
 
 .legacy-site .legacy-consultants-showcase__state i {
@@ -8471,12 +8627,14 @@ button {
   font-size: 0.88rem;
   font-weight: 500;
   box-shadow: none;
+  transition: all 0.15s ease;
 }
 
 .legacy-site .legacy-pagination--consultants .legacy-page-btn.is-active {
-  border-color: #a8b8d5;
-  background: #c6d5ee;
-  color: #24304a;
+  border-color: #045330;
+  background: #F1F8F4;
+  color: #045330;
+  font-weight: 700;
 }
 
 .legacy-site .legacy-pagination--consultants .legacy-page-btn:disabled {
@@ -8488,7 +8646,7 @@ button {
 }
 
 .legacy-site .legacy-consultant-profile-page {
-  background: #eef5ff;
+  background: var(--shetu-surface);
   padding: 3.25rem 0 4.25rem;
 }
 
@@ -8509,10 +8667,10 @@ button {
 
 .legacy-site .legacy-consultant-profile-page__intro h1 {
   margin: 0;
-  color: #1f2937;
+  color: #045330;
   font-size: clamp(1.8rem, 2.6vw, 2.35rem);
   line-height: 1.12;
-  font-weight: 650;
+  font-weight: 750;
 }
 
 .legacy-site .legacy-consultant-profile-page__intro p:last-child {
@@ -8532,10 +8690,17 @@ button {
   padding: 0 1.1rem;
   border-radius: 14px;
   background: #fff;
-  color: #0d215e;
+  color: #045330;
   font-weight: 600;
-  border: 1px solid rgba(13, 33, 94, 0.16);
-  box-shadow: 0 12px 24px rgba(106, 130, 175, 0.12);
+  border: 1px solid #DDEFE5;
+  box-shadow: 0 4px 14px rgba(4, 83, 48, 0.08);
+  transition: all 0.2s ease;
+}
+
+.legacy-site .legacy-consultant-profile-page__back:hover {
+  background: #F1F8F4;
+  color: #03462A;
+  border-color: #045330;
 }
 
 .legacy-site .legacy-consultant-profile-page__grid {
@@ -8549,8 +8714,8 @@ button {
 .legacy-site .legacy-consultant-profile-tabs {
   border-radius: 20px;
   background: #fff;
-  border: 1px solid rgba(129, 152, 190, 0.16);
-  box-shadow: 0 14px 34px rgba(85, 110, 158, 0.1);
+  border: 1px solid rgba(4, 83, 48, 0.12);
+  box-shadow: 0 10px 30px rgba(4, 83, 48, 0.06);
 }
 
 .legacy-site .legacy-consultant-profile-page__identity {
@@ -8564,7 +8729,7 @@ button {
   margin: 0 auto;
   padding: 6px;
   border-radius: 999px;
-  background: linear-gradient(180deg, #f7c721 0%, #ffcf32 100%);
+  background: linear-gradient(180deg, #045330 0%, #03462A 100%);
 }
 
 .legacy-site .legacy-consultant-profile-page__avatar-ring img {
@@ -8583,25 +8748,27 @@ button {
   min-height: 30px;
   padding: 0 0.8rem;
   border-radius: 999px;
-  background: #ffc928;
-  color: #1a1a1a;
-  font-size: 0.76rem;
+  background: #EB0310;
+  color: #fff;
+  font-size: 0.74rem;
   font-weight: 700;
+  letter-spacing: 0.04em;
+  box-shadow: 0 4px 10px rgba(235, 3, 16, 0.3);
 }
 
 .legacy-site .legacy-consultant-profile-page__identity h2 {
   margin: 1rem 0 0;
-  color: #1f2937;
+  color: #0B1F16;
   font-size: 1.45rem;
   line-height: 1.15;
-  font-weight: 650;
+  font-weight: 700;
 }
 
 .legacy-site .legacy-consultant-profile-page__verified {
   margin: 0.55rem 0 0;
-  color: #e44040;
+  color: #045330;
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .legacy-site .legacy-consultant-profile-page__stars {
@@ -8636,16 +8803,19 @@ button {
 }
 
 .legacy-site .legacy-consultant-profile-page__summary-card.is-blue {
-  background: #e9f1ff;
+  background: #F1F8F4;
+  border: 1px solid #DDEFE5;
 }
 
 .legacy-site .legacy-consultant-profile-page__summary-card.is-green {
-  background: #eefaf0;
+  background: #F1F8F4;
+  border: 1px solid #DDEFE5;
 }
 
 .legacy-site .legacy-consultant-profile-page__summary-card i {
   font-size: 1.1rem;
   margin-top: 0.15rem;
+  color: #045330;
 }
 
 .legacy-site .legacy-consultant-profile-page__summary-card span {
@@ -8655,9 +8825,9 @@ button {
 }
 
 .legacy-site .legacy-consultant-profile-page__summary-card strong {
-  color: #273142;
+  color: #0B1F16;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 650;
 }
 
 .legacy-site .legacy-consultant-profile-page__country-list {
@@ -8677,20 +8847,22 @@ button {
   padding: 0.8rem 0.95rem;
   border-radius: 14px;
   background: #fff;
-  border: 1px solid rgba(129, 152, 190, 0.24);
+  border: 1px solid #DDEFE5;
   color: #273142;
   font-size: 0.98rem;
   font-weight: 500;
-  box-shadow: 0 6px 16px rgba(99, 122, 168, 0.06);
+  box-shadow: 0 4px 12px rgba(4, 83, 48, 0.04);
   text-align: left;
   cursor: pointer;
   transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
 }
 
 .legacy-site .legacy-consultant-profile-page__country-item.is-active {
-  border-color: rgba(37, 99, 235, 0.28);
-  background: #f8fbff;
-  box-shadow: 0 10px 22px rgba(99, 122, 168, 0.1);
+  border-color: #045330;
+  background: #F1F8F4;
+  color: #045330;
+  box-shadow: 0 6px 18px rgba(4, 83, 48, 0.1);
+  font-weight: 600;
 }
 
 .legacy-site .legacy-consultant-profile-page__country-item i {
@@ -8700,8 +8872,8 @@ button {
   align-items: center;
   justify-content: center;
   border-radius: 12px;
-  background: #eef5ff;
-  color: #0d215e;
+  background: #F1F8F4;
+  color: #045330;
 }
 
 .legacy-site .legacy-consultant-profile-page__main {
@@ -8727,13 +8899,13 @@ button {
   align-items: center;
   gap: 0.55rem;
   margin: 0;
-  color: #132a65;
+  color: #045330;
   font-size: 1.12rem;
-  font-weight: 650;
+  font-weight: 700;
 }
 
 .legacy-site .legacy-consultant-profile-page__section-head h3 i {
-  color: #ef4444;
+  color: #045330;
 }
 
 .legacy-site .legacy-consultant-profile-page__section-head p {
@@ -8758,18 +8930,20 @@ button {
   min-height: 40px;
   padding: 0 0.8rem;
   border-radius: 999px;
-  border: 1px solid rgba(129, 152, 190, 0.2);
-  background: #f8fbff;
+  border: 1px solid #DDEFE5;
+  background: #fff;
   color: #516071;
   font-size: 0.88rem;
   font-weight: 500;
   cursor: pointer;
+  transition: all 0.15s ease;
 }
 
 .legacy-site .legacy-consultant-profile-page__country-tab.is-active {
-  background: #e8f0ff;
-  border-color: rgba(37, 99, 235, 0.24);
-  color: #1f3d7a;
+  background: #F1F8F4;
+  border-color: #045330;
+  color: #045330;
+  font-weight: 600;
 }
 
 .legacy-site .legacy-consultant-profile-page__country-tab img {
@@ -8780,7 +8954,7 @@ button {
 }
 
 .legacy-site .legacy-consultant-profile-page__country-tab i {
-  color: #1f3d7a;
+  color: #045330;
 }
 
 .legacy-site .legacy-consultant-profile-page__service-grid {
@@ -8796,7 +8970,7 @@ button {
   padding: 1rem;
   border-radius: 16px;
   background: #fff;
-  border: 1px solid rgba(129, 152, 190, 0.2);
+  border: 1px solid rgba(4, 83, 48, 0.12);
 }
 
 .legacy-site .legacy-consultant-profile-page__service-meta {
@@ -8808,7 +8982,7 @@ button {
 
 .legacy-site .legacy-consultant-profile-page__service-meta strong {
   display: block;
-  color: #1f2937;
+  color: #0B1F16;
   font-size: 0.98rem;
   font-weight: 600;
 }
@@ -8823,7 +8997,7 @@ button {
 }
 
 .legacy-site .legacy-consultant-profile-page__service-meta em {
-  color: #16a34a;
+  color: #045330;
   font-style: normal;
   font-size: 0.96rem;
   font-weight: 650;
@@ -8846,12 +9020,18 @@ button {
   min-width: 110px;
   min-height: 40px;
   border-radius: 10px;
-  background: #ef4444;
+  background: #045330;
+  color: #fff;
   padding: 0 1rem;
   font-size: 0.88rem;
   font-weight: 600;
   text-align: center;
   line-height: 1;
+  transition: background-color 0.2s ease;
+}
+
+.legacy-site .legacy-consultant-profile-page .legacy-request-btn:hover {
+  background: #03462A;
 }
 
 .legacy-site .legacy-consultant-profile-tabs {
@@ -8862,7 +9042,7 @@ button {
   display: flex;
   align-items: center;
   gap: 1.1rem;
-  border-bottom: 1px solid rgba(129, 152, 190, 0.24);
+  border-bottom: 1px solid #DDEFE5;
 }
 
 .legacy-site .legacy-consultant-profile-tabs__tab {
@@ -8873,10 +9053,12 @@ button {
   font-size: 0.94rem;
   font-weight: 600;
   padding: 0 0 1rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
 }
 
 .legacy-site .legacy-consultant-profile-tabs__tab.is-active {
-  color: #ef4444;
+  color: #045330;
 }
 
 .legacy-site .legacy-consultant-profile-tabs__tab.is-active::after {
@@ -8887,7 +9069,7 @@ button {
   bottom: -1px;
   height: 3px;
   border-radius: 999px;
-  background: #ef4444;
+  background: #EB0310;
 }
 
 .legacy-site .legacy-consultant-profile-tabs__body {
@@ -8906,9 +9088,9 @@ button {
 
 .legacy-site .legacy-consultant-profile-tabs__block h3 {
   margin: 0 0 0.85rem;
-  color: #233046;
+  color: #045330;
   font-size: 0.96rem;
-  font-weight: 600;
+  font-weight: 650;
 }
 
 .legacy-site .legacy-consultant-profile-tabs__chips,
@@ -8929,13 +9111,15 @@ button {
 }
 
 .legacy-site .legacy-consultant-profile-tabs__chips.is-lilac .legacy-consultant-profile-tabs__chip {
-  background: #f1e7ff;
-  color: #8b5cf6;
+  background: #F1F8F4;
+  color: #045330;
+  border: 1px solid #DDEFE5;
 }
 
 .legacy-site .legacy-consultant-profile-tabs__chips.is-blue .legacy-consultant-profile-tabs__chip {
-  background: #deebff;
-  color: #2563eb;
+  background: #F1F8F4;
+  color: #045330;
+  border: 1px solid #DDEFE5;
 }
 
 .legacy-site .legacy-consultant-profile-tabs__country {
@@ -8945,8 +9129,8 @@ button {
   min-height: 42px;
   padding: 0.45rem 0.8rem;
   border-radius: 14px;
-  background: #f8fbff;
-  border: 1px solid rgba(129, 152, 190, 0.22);
+  background: #F7FAF8;
+  border: 1px solid #DDEFE5;
   color: #334155;
   font-size: 0.86rem;
   font-weight: 500;
@@ -8959,8 +9143,8 @@ button {
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  background: #eef5ff;
-  color: #0d215e;
+  background: #F1F8F4;
+  color: #045330;
 }
 
 .legacy-site .legacy-consultant-profile-tabs__info {

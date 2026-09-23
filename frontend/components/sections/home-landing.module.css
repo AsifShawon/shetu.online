@@ -1,25 +1,25 @@
 .page {
-  --navy: #213c7b;
-  --navy-deep: #1a3063;
-  --blue-soft: #eff4ff;
-  --blue-mist: #dfeaff;
+  --navy: #045330;
+  --navy-deep: #02351F;
+  --blue-soft: #F1F8F4;
+  --blue-mist: #DDEFE5;
   --split-globe-width: min(920px, 58vw);
   --hero-stage-width: min(1512px, 100%);
   --hero-grid-width: min(1386px, calc(100% - 7.875rem));
   --hero-search-width: min(800px, calc(100% - 2rem));
-  --ink: #3a3a3a;
-  --muted: #667289;
-  --border: rgba(33, 60, 123, 0.12);
-  --border-strong: rgba(33, 60, 123, 0.22);
+  --ink: #0B1F16;
+  --muted: #4A5568;
+  --border: rgba(4, 83, 48, 0.12);
+  --border-strong: rgba(4, 83, 48, 0.22);
   --surface: rgba(255, 255, 255, 0.88);
   --surface-strong: #ffffff;
-  --shadow-sm: 0 16px 30px rgba(24, 48, 99, 0.08);
-  --shadow-md: 0 26px 60px rgba(22, 40, 86, 0.14);
-  --shadow-lg: 0 40px 90px rgba(19, 36, 78, 0.18);
+  --shadow-sm: 0 16px 30px rgba(4, 83, 48, 0.08);
+  --shadow-md: 0 26px 60px rgba(4, 83, 48, 0.14);
+  --shadow-lg: 0 40px 90px rgba(4, 83, 48, 0.18);
   position: relative;
   overflow: hidden;
   background:
-    linear-gradient(180deg, #ffffff 0%, #ffffff 10%, #eaf3ff 34%, #d9e8fb 62%, #f7fbff 100%);
+    linear-gradient(180deg, #ffffff 0%, #ffffff 10%, #F1F8F4 34%, #E5F2EC 62%, #F7FAF8 100%);
   color: var(--ink);
 }
 
@@ -70,9 +70,9 @@
 
 .primaryButton {
   background: #ffffff;
-  color: #173b88;
-  border-color: rgba(96, 138, 204, 0.38);
-  box-shadow: 0 10px 0 #dce7f7;
+  color: #045330;
+  border-color: rgba(4, 83, 48, 0.38);
+  box-shadow: 0 10px 0 #DDEFE5;
 }
 
 .primaryButton:hover {
@@ -81,37 +81,37 @@
 
 .secondaryButton {
   background: #ffffff;
-  color: #112b66;
-  border-color: rgba(17, 43, 102, 0.38);
-  box-shadow: 8px 8px 0 #143b86;
+  color: #045330;
+  border-color: rgba(4, 83, 48, 0.38);
+  box-shadow: 8px 8px 0 #045330;
 }
 
 .secondaryButton:hover {
   background: #ffffff;
-  border-color: rgba(33, 60, 123, 0.24);
+  border-color: rgba(4, 83, 48, 0.24);
 }
 
 .darkButton {
-  background: #173b88;
+  background: #045330;
   color: #ffffff;
-  border-color: rgba(23, 59, 136, 0.6);
-  box-shadow: 0 14px 32px rgba(23, 59, 136, 0.18);
+  border-color: rgba(4, 83, 48, 0.6);
+  box-shadow: 0 14px 32px rgba(4, 83, 48, 0.18);
 }
 
 .darkButton:hover {
-  background: #163678;
+  background: #03462A;
 }
 
 .ghostButton {
   background: #ffffff;
-  color: #112b66;
-  border-color: rgba(17, 43, 102, 0.24);
-  box-shadow: 0 10px 24px rgba(20, 42, 92, 0.08);
+  color: #045330;
+  border-color: rgba(4, 83, 48, 0.24);
+  box-shadow: 0 10px 24px rgba(4, 83, 48, 0.08);
 }
 
 .ghostButton:hover {
-  background: #f8fbff;
-  border-color: rgba(33, 60, 123, 0.24);
+  background: #F1F8F4;
+  border-color: rgba(4, 83, 48, 0.24);
 }
 
 .lightGhostButton {
@@ -592,14 +592,14 @@
   font-size: clamp(2rem, 2.4vw, 2.2rem);
   line-height: 1.12;
   letter-spacing: -0.035em;
-  color: #0c245b;
+  color: #045330;
 }
 
 .countryWrap .sectionHeader p {
   max-width: 44ch;
   font-size: 0.94rem;
   line-height: 1.6;
-  color: #536b94;
+  color: #4A5568;
 }
 
 .countryRail {
@@ -776,7 +776,7 @@
   position: absolute;
   inset: auto 0 0;
   height: 220px;
-  background: linear-gradient(180deg, rgba(224, 236, 255, 0.5), transparent);
+  background: linear-gradient(180deg, rgba(221, 239, 229, 0.4), transparent);
   clip-path: ellipse(62% 80% at 50% 100%);
   pointer-events: none;
 }
@@ -791,7 +791,7 @@
 .studyBody {
   margin: 0;
   max-width: 28rem;
-  color: #4f6182;
+  color: #4A5568;
   line-height: 1.8;
   font-size: 1rem;
 }
@@ -810,12 +810,19 @@
   gap: 1rem;
   min-height: 160px;
   border-radius: 28px;
-  background: linear-gradient(180deg, #f8fbff, #f3f6fb);
-  border: 1px solid rgba(33, 60, 123, 0.04);
+  background: linear-gradient(180deg, #ffffff, #F1F8F4);
+  border: 1px solid rgba(4, 83, 48, 0.08);
   text-decoration: none;
   color: var(--ink);
   padding: 1.8rem 1rem 1.2rem;
   box-shadow: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.studyCard:hover {
+  transform: translateY(-2px);
+  border-color: rgba(4, 83, 48, 0.24);
+  box-shadow: 0 10px 24px rgba(4, 83, 48, 0.08);
 }
 
 .studyIconWrap {
@@ -902,7 +909,7 @@
 .guidanceSection {
   overflow: hidden;
   background:
-    linear-gradient(180deg, rgba(234, 243, 255, 0.95) 0%, rgba(73, 101, 165, 0.96) 34%, rgba(24, 46, 98, 1) 100%);
+    linear-gradient(180deg, #03462A 0%, #02351F 100%);
   padding-block: clamp(3.25rem, 6vw, 5.25rem);
 }
 
@@ -953,9 +960,9 @@
   overflow: hidden;
   padding-block: clamp(3.9rem, 5.3vw, 5.4rem);
   background:
-    radial-gradient(circle at 22% 18%, rgba(183, 204, 248, 0.18), transparent 32%),
-    radial-gradient(circle at 78% 18%, rgba(189, 209, 248, 0.16), transparent 28%),
-    linear-gradient(180deg, #243f82 0%, #324d93 18%, #cbdaf3 62%, #f8fbff 82%, #ffffff 100%);
+    radial-gradient(circle at 22% 18%, rgba(221, 239, 229, 0.22), transparent 32%),
+    radial-gradient(circle at 78% 18%, rgba(221, 239, 229, 0.18), transparent 28%),
+    linear-gradient(180deg, #045330 0%, #03462A 20%, #DDEFE5 65%, #F7FAF8 84%, #ffffff 100%);
 }
 
 .aboutSection::before,
@@ -1116,9 +1123,9 @@
   gap: 0.35rem;
   min-width: 156px;
   border-radius: 24px 24px 24px 42px;
-  background: linear-gradient(180deg, rgba(198, 216, 247, 0.98), rgba(179, 203, 242, 0.94));
+  background: linear-gradient(180deg, rgba(221, 239, 229, 0.98), rgba(198, 226, 210, 0.94));
   padding: 1.6rem 1.45rem 1.3rem;
-  box-shadow: 0 22px 44px rgba(21, 43, 98, 0.14);
+  box-shadow: 0 22px 44px rgba(4, 83, 48, 0.14);
   z-index: 3;
 }
 
@@ -1126,13 +1133,13 @@
   font-size: 3.6rem;
   line-height: 0.95;
   letter-spacing: -0.045em;
-  color: #0d2f4b;
+  color: #045330;
 }
 
 .aboutMetricCard span {
-  color: #0d2f4b;
+  color: #045330;
   font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .aboutButton {
@@ -1141,13 +1148,13 @@
   padding: 0.72rem 1.35rem;
   width: fit-content;
   margin-top: 0.65rem;
-  background: #0b1d4b;
-  border-color: rgba(11, 29, 75, 0.88);
+  background: #045330;
+  border-color: #045330;
   box-shadow: none;
 }
 
 .aboutButton:hover {
-  background: #0a183d;
+  background: #03462A;
 }
 
 .aboutCopy .eyebrow {
@@ -1174,7 +1181,7 @@
   width: 240px;
   height: 240px;
   border-radius: 999px;
-  background: radial-gradient(circle, rgba(204, 221, 255, 0.3), transparent 70%);
+  background: radial-gradient(circle, rgba(221, 239, 229, 0.35), transparent 70%);
   pointer-events: none;
 }
 
@@ -1192,8 +1199,8 @@
   gap: 1.05rem;
   min-height: 388px;
   border-radius: 30px;
-  background: linear-gradient(180deg, rgba(248, 251, 255, 0.96), rgba(228, 238, 255, 0.94));
-  border: 1px solid rgba(33, 60, 123, 0.12);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(241, 248, 244, 0.95));
+  border: 1px solid rgba(4, 83, 48, 0.12);
   padding: 1.15rem 1.25rem 1rem;
   cursor: pointer;
   transition:
@@ -1201,20 +1208,20 @@
     box-shadow 0.18s ease,
     border-color 0.18s ease;
   box-shadow:
-    0 22px 40px rgba(18, 41, 88, 0.08),
+    0 22px 40px rgba(4, 83, 48, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.72);
 }
 
 .consultantCard:hover {
   transform: translateY(-3px);
-  border-color: rgba(33, 60, 123, 0.22);
+  border-color: rgba(4, 83, 48, 0.28);
   box-shadow:
-    0 28px 52px rgba(18, 41, 88, 0.12),
+    0 28px 52px rgba(4, 83, 48, 0.12),
     inset 0 1px 0 rgba(255, 255, 255, 0.76);
 }
 
 .consultantCard:focus-visible {
-  outline: 3px solid rgba(23, 59, 136, 0.22);
+  outline: 3px solid rgba(4, 83, 48, 0.25);
   outline-offset: 4px;
 }
 
@@ -1258,8 +1265,8 @@
 .consultantAvatarFallback {
   display: grid;
   place-items: center;
-  background: linear-gradient(145deg, var(--navy), #a4bff0);
-  color: #ffffff;
+  background: linear-gradient(145deg, #045330, #DDEFE5);
+  color: #045330;
   font-weight: 800;
 }
 
@@ -1274,7 +1281,7 @@
   display: flex;
   align-items: center;
   gap: 0.35rem;
-  color: #0f214d;
+  color: #0B1F16;
 }
 
 .consultantNameRow strong {
@@ -1290,7 +1297,7 @@
 }
 
 .consultantRoleRow span {
-  color: #1a3971;
+  color: #045330;
   font-size: 0.82rem;
   font-weight: 500;
 }
@@ -1308,14 +1315,14 @@
   height: 34px;
   border-radius: 999px;
   background: #ffffff;
-  box-shadow: 0 6px 12px rgba(19, 31, 70, 0.1);
+  box-shadow: 0 6px 12px rgba(4, 83, 48, 0.1);
 }
 
 .consultantCountryName {
   font-size: 0.58rem;
   line-height: 1.1;
   font-weight: 700;
-  color: #163263;
+  color: #0B1F16;
   text-align: center;
 }
 
@@ -1334,12 +1341,12 @@
   font-size: 0.84rem;
   font-weight: 500;
   line-height: 1.25;
-  color: #22395e;
+  color: #2D3748;
 }
 
 .consultantServiceItem svg {
   flex-shrink: 0;
-  color: #2d4677;
+  color: #045330;
 }
 
 .consultantDescription {
@@ -1361,7 +1368,7 @@
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #234071;
+  color: #045330;
 }
 
 .consultantOfferingList {
@@ -1378,12 +1385,12 @@
   min-height: 30px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.84);
-  border: 1px solid rgba(33, 60, 123, 0.14);
+  border: 1px solid rgba(4, 83, 48, 0.14);
   padding: 0.42rem 0.78rem;
   font-size: 0.78rem;
   font-weight: 600;
   line-height: 1.2;
-  color: #1d3767;
+  color: #045330;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
 }
 
@@ -1412,8 +1419,8 @@
   align-items: center;
   justify-content: center;
   background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(33, 60, 123, 0.12);
-  color: #40577f;
+  border: 1px solid rgba(4, 83, 48, 0.12);
+  color: #045330;
   padding: 0;
   cursor: pointer;
   text-decoration: none;
@@ -1427,7 +1434,7 @@
 
 .consultantIconAction:hover:not(:disabled) {
   transform: translateY(-1px);
-  border-color: rgba(33, 60, 123, 0.22);
+  border-color: rgba(4, 83, 48, 0.28);
   background: rgba(255, 255, 255, 0.92);
 }
 
@@ -1437,9 +1444,9 @@
 }
 
 .consultantIconActionSaved {
-  background: rgba(23, 59, 136, 0.1);
-  border-color: rgba(23, 59, 136, 0.28);
-  color: #173b88;
+  background: rgba(4, 83, 48, 0.1);
+  border-color: rgba(4, 83, 48, 0.28);
+  color: #045330;
 }
 
 .consultantIconActionBusy {
@@ -1457,8 +1464,8 @@
   overflow: hidden;
   padding-block: clamp(4rem, 6vw, 5.3rem);
   background:
-    radial-gradient(circle at 18% 26%, rgba(188, 219, 255, 0.22), transparent 26%),
-    linear-gradient(180deg, rgba(248, 251, 255, 0.98), rgba(239, 247, 255, 0.98));
+    radial-gradient(circle at 18% 26%, rgba(221, 239, 229, 0.25), transparent 26%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(241, 248, 244, 0.98));
 }
 
 .postsSection::after {
@@ -1467,12 +1474,12 @@
   inset: auto -8% -6% -8%;
   height: 310px;
   background:
-    radial-gradient(circle at 8% 58%, rgba(195, 221, 255, 0.28) 0, transparent 48%),
-    radial-gradient(circle at 24% 48%, rgba(180, 210, 248, 0.25) 0, transparent 44%),
-    radial-gradient(circle at 42% 55%, rgba(190, 217, 248, 0.24) 0, transparent 44%),
-    radial-gradient(circle at 60% 49%, rgba(170, 205, 245, 0.22) 0, transparent 43%),
-    radial-gradient(circle at 80% 54%, rgba(181, 213, 248, 0.25) 0, transparent 44%),
-    radial-gradient(circle at 96% 58%, rgba(194, 220, 252, 0.28) 0, transparent 46%);
+    radial-gradient(circle at 8% 58%, rgba(221, 239, 229, 0.28) 0, transparent 48%),
+    radial-gradient(circle at 24% 48%, rgba(221, 239, 229, 0.25) 0, transparent 44%),
+    radial-gradient(circle at 42% 55%, rgba(221, 239, 229, 0.24) 0, transparent 44%),
+    radial-gradient(circle at 60% 49%, rgba(221, 239, 229, 0.22) 0, transparent 43%),
+    radial-gradient(circle at 80% 54%, rgba(221, 239, 229, 0.25) 0, transparent 44%),
+    radial-gradient(circle at 96% 58%, rgba(221, 239, 229, 0.28) 0, transparent 46%);
   opacity: 0.95;
   pointer-events: none;
 }
@@ -1499,13 +1506,13 @@
   font-size: clamp(3.1rem, 5vw, 5rem);
   line-height: 0.98;
   letter-spacing: -0.045em;
-  color: #0a245d;
+  color: #045330;
 }
 
 .postsCopy p {
   margin: 0;
   max-width: 25ch;
-  color: #1f3b73;
+  color: #4A5568;
   line-height: 1.24;
   font-size: 0.95rem;
 }
@@ -1526,11 +1533,11 @@
   gap: 1.35rem;
   min-height: 490px;
   border-radius: 8px;
-  background: #071b4d;
+  background: #03462A;
   color: #ffffff;
   padding: 2rem 2rem 1.8rem;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 30px 54px rgba(12, 28, 66, 0.16);
+  box-shadow: 0 30px 54px rgba(4, 83, 48, 0.16);
 }
 
 .postCard:first-child {
@@ -1617,7 +1624,7 @@
   justify-content: center;
   border-radius: 999px;
   width: 100%;
-  background: rgba(122, 137, 178, 0.38);
+  background: rgba(255, 255, 255, 0.16);
   color: #ffffff;
   text-decoration: none;
   padding: 0.95rem 1rem;
@@ -1625,13 +1632,17 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  transition: all 0.2s ease;
+}
+
+.postButton:hover {
+  background: #ffffff;
+  color: #045330;
 }
 
 .agencySection {
   position: relative;
-  background:
-    linear-gradient(180deg, rgba(26, 74, 124, 0.44), rgba(138, 192, 235, 0.24)),
-    linear-gradient(180deg, #2f77ad 0%, #95c4e6 54%, #cbe4f4 100%);
+  background: linear-gradient(180deg, #03462A 0%, #02351F 100%);
   overflow: hidden;
   padding-block: 0;
 }
@@ -1641,7 +1652,7 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(18, 52, 90, 0.28), rgba(18, 52, 90, 0.08)),
+    linear-gradient(180deg, rgba(2, 53, 31, 0.35), rgba(2, 53, 31, 0.15)),
     url("/legacy/Frontend/assets/img/page/country_bg.png") center/cover;
   opacity: 0.42;
   pointer-events: none;
@@ -1730,9 +1741,9 @@
   flex-direction: column;
   min-height: 430px;
   border-radius: 22px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(241, 247, 255, 0.95));
-  border: 1px solid rgba(196, 215, 240, 0.9);
-  box-shadow: 0 18px 36px rgba(17, 52, 93, 0.12);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(241, 248, 244, 0.95));
+  border: 1px solid rgba(4, 83, 48, 0.15);
+  box-shadow: 0 18px 36px rgba(4, 83, 48, 0.1);
   padding: 0.95rem 0.95rem 1.05rem;
   scroll-snap-align: start;
   flex-shrink: 0;
@@ -1760,7 +1771,7 @@
   border: 6px solid rgba(255, 255, 255, 0.96);
   object-fit: cover;
   background: #ffffff;
-  box-shadow: 0 12px 24px rgba(18, 41, 88, 0.18);
+  box-shadow: 0 12px 24px rgba(4, 83, 48, 0.18);
 }
 
 .agencyContent {
@@ -1774,12 +1785,12 @@
 
 .agencyContent strong {
   font-size: 1.1rem;
-  color: #10295c;
+  color: #0B1F16;
 }
 
 .agencyContent p {
   margin: 0;
-  color: #7c8fa8;
+  color: #4A5568;
   max-width: 23ch;
   margin-inline: auto;
   line-height: 1.28;
@@ -1805,13 +1816,13 @@
   font-size: 0.7rem;
   line-height: 1.2;
   font-weight: 700;
-  color: #163d83;
+  color: #045330;
 }
 
 .agencyStat svg {
   width: 15px;
   height: 15px;
-  color: #1d4a93;
+  color: #045330;
 }
 
 .agencyNavButton {
@@ -1843,7 +1854,7 @@
 .reviewsSection {
   position: relative;
   overflow: hidden;
-  background: #f0f8ff;
+  background: var(--shetu-surface, #F7FAF8);
   padding-block: clamp(4.2rem, 6vw, 5.8rem);
 }
 
@@ -1852,8 +1863,8 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 12% 62%, rgba(187, 212, 250, 0.18), transparent 24%),
-    radial-gradient(circle at 87% 18%, rgba(176, 211, 255, 0.2), transparent 20%);
+    radial-gradient(circle at 12% 62%, rgba(221, 239, 229, 0.22), transparent 24%),
+    radial-gradient(circle at 87% 18%, rgba(221, 239, 229, 0.2), transparent 20%);
   pointer-events: none;
 }
 
@@ -1887,7 +1898,7 @@
   font-size: clamp(3rem, 4.4vw, 4.2rem);
   font-weight: 800;
   letter-spacing: -0.045em;
-  color: rgba(89, 116, 188, 0.42);
+  color: rgba(4, 83, 48, 0.18);
 }
 
 .reviewsStage {
@@ -1912,7 +1923,7 @@
   aspect-ratio: 5 / 7;
   object-fit: cover;
   border-radius: 2px;
-  box-shadow: 0 18px 36px rgba(31, 56, 104, 0.1);
+  box-shadow: 0 18px 36px rgba(4, 83, 48, 0.1);
 }
 
 .reviewContent {
@@ -1931,7 +1942,7 @@
   line-height: 1;
   font-weight: 700;
   letter-spacing: -0.05em;
-  color: rgba(120, 147, 214, 0.56);
+  color: rgba(4, 83, 48, 0.3);
 }
 
 .reviewContent h2 {
@@ -1939,14 +1950,14 @@
   font-size: clamp(3rem, 4vw, 4.1rem);
   line-height: 0.95;
   letter-spacing: -0.045em;
-  color: #0a245d;
+  color: #045330;
 }
 
 .reviewContent p {
   margin: 0;
   max-width: 32ch;
-  color: #7d7d7d;
-  line-height: 1.08;
+  color: #4A5568;
+  line-height: 1.25;
   font-size: 0.96rem;
 }
 
@@ -1982,7 +1993,7 @@
   border-radius: 2px;
   object-fit: cover;
   display: block;
-  box-shadow: 0 12px 24px rgba(38, 61, 106, 0.08);
+  box-shadow: 0 12px 24px rgba(4, 83, 48, 0.08);
 }
 
 .reviewNav {
@@ -2001,9 +2012,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(94, 123, 180, 0.54);
-  background: rgba(255, 255, 255, 0.2);
-  color: #7a93be;
+  border: 1px solid rgba(4, 83, 48, 0.25);
+  background: rgba(255, 255, 255, 0.8);
+  color: #045330;
   cursor: pointer;
   transition:
     transform 0.2s ease,
@@ -2014,9 +2025,9 @@
 
 .reviewNavButton:hover {
   transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.45);
-  border-color: rgba(70, 106, 180, 0.7);
-  color: #385b9e;
+  background: #ffffff;
+  border-color: #045330;
+  color: #045330;
 }
 
 @keyframes reviewFadeUp {
@@ -2043,7 +2054,7 @@
   border-radius: 28px;
   overflow: hidden;
   background:
-    linear-gradient(90deg, rgba(18, 32, 61, 0.72), rgba(18, 32, 61, 0.48)),
+    linear-gradient(90deg, rgba(4, 83, 48, 0.88), rgba(2, 53, 31, 0.68)),
     url("/legacy/Frontend/assets/img/page/training_banner.png") center/cover;
   padding: clamp(1.6rem, 3vw, 2.2rem);
   box-shadow: var(--shadow-lg);
@@ -2132,7 +2143,7 @@
   bottom: 1rem;
   width: 220px;
   height: 220px;
-  background: radial-gradient(circle at 50% 50%, rgba(170, 204, 255, 0.22), transparent 70%);
+  background: radial-gradient(circle at 50% 50%, rgba(221, 239, 229, 0.35), transparent 70%);
   border-radius: 999px;
   pointer-events: none;
 }
@@ -2155,6 +2166,7 @@
   font-size: clamp(2.4rem, 4vw, 4rem);
   line-height: 1;
   letter-spacing: -0.03em;
+  color: #045330;
 }
 
 .faqCopy p {
@@ -2182,7 +2194,7 @@
 
 .faqItem {
   border: 0;
-  border-bottom: 1px solid rgba(33, 60, 123, 0.12);
+  border-bottom: 1px solid rgba(4, 83, 48, 0.12);
   background: transparent;
   text-align: left;
   padding: 0 0 1rem;
@@ -2190,7 +2202,7 @@
 }
 
 .faqItemOpen {
-  border-color: rgba(33, 60, 123, 0.26);
+  border-color: rgba(4, 83, 48, 0.32);
 }
 
 .faqHead {
@@ -2204,7 +2216,7 @@
 .faqHead strong {
   font-size: 1.1rem;
   line-height: 1.35;
-  color: #444444;
+  color: #0B1F16;
 }
 
 .faqHead span {

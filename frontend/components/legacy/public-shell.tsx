@@ -94,7 +94,7 @@ function ShellContent({ children }: PropsWithChildren) {
 
   const phone = settings?.phone ?? legacySite.phone;
   const email = settings?.email ?? legacySite.email;
-  const logoSrc = "/shetu_logo.jpeg";
+  const logoSrc = "/shetu_logo_transparent.png";
 
   const dashboardHref = getDashboardPath(user?.role);
   const profileHref = getProfilePath(user?.role);
@@ -119,7 +119,7 @@ function ShellContent({ children }: PropsWithChildren) {
   const closeMobileMenu = () => setMobileOpen(false);
 
   return (
-    <div className={`legacy-site min-h-screen bg-[#f7fafd] text-[var(--legacy-text)] ${isHome ? "legacy-site--home" : ""} ${mobileOpen ? "legacy-site--mobile-nav-open" : ""}`}>
+    <div className={`legacy-site min-h-screen bg-[var(--shetu-surface,#F7FAF8)] text-[var(--legacy-text)] ${isHome ? "legacy-site--home" : ""} ${mobileOpen ? "legacy-site--mobile-nav-open" : ""}`}>
       <header id="fixtNavbar" className="legacy-fixed-header">
         <div className="top-header">
           <div className="top-container">
@@ -194,7 +194,7 @@ function ShellContent({ children }: PropsWithChildren) {
                         >
                           <Link
                             href={item.href as Route}
-                            className={`legacy-mobile-menu-link ${isActive(pathname, item.activeHref) ? "is-active" : ""}`}
+                            className={`legacy-mobile-menu-link ${isActive(pathname, item.activeHref) ? "is-active active-nav" : ""}`}
                             onClick={closeMobileMenu}
                           >
                             <span className="legacy-mobile-menu-link__left">

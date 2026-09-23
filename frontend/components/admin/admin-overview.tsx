@@ -22,23 +22,23 @@ const accentStyles: Record<
   { card: string; footer: string; text: string }
 > = {
   info: {
-    card: "bg-[#17a2b8]",
-    footer: "bg-[#1497ad]",
+    card: "bg-[#045330]",
+    footer: "bg-[#03462A]",
     text: "text-white",
   },
   success: {
-    card: "bg-[#28a745]",
-    footer: "bg-[#23923d]",
+    card: "bg-[#09643C]",
+    footer: "bg-[#045330]",
     text: "text-white",
   },
   warning: {
-    card: "bg-[#ffc107]",
-    footer: "bg-[#ecb100]",
-    text: "text-slate-900",
+    card: "bg-[#D97706]",
+    footer: "bg-[#B45309]",
+    text: "text-white",
   },
   danger: {
-    card: "bg-[#dc3545]",
-    footer: "bg-[#c92f3f]",
+    card: "bg-[#EB0310]",
+    footer: "bg-[#C4020D]",
     text: "text-white",
   },
 };
@@ -97,7 +97,7 @@ function DashboardChart({
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-center gap-2 text-sm text-slate-500">
-        <span className="h-3 w-8 rounded border border-[#58abef] bg-[#d9ecfd]" />
+        <span className="h-3 w-8 rounded border border-[#045330] bg-[#DDEFE5]" />
         <span>{legend}</span>
       </div>
 
@@ -127,7 +127,7 @@ function DashboardChart({
                 {safeValues.map((value, index) => (
                   <div className="flex h-full flex-1 items-end justify-center" key={`${labels[index]}-${index}`}>
                     <div
-                      className="w-[58%] rounded-t-sm border border-[#58abef] bg-[#d9ecfd]"
+                      className="w-[58%] rounded-t-sm border border-[#045330] bg-[#DDEFE5]"
                       style={{ height: `${(value / maxValue) * 100}%` }}
                     />
                   </div>

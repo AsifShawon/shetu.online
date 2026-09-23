@@ -66,7 +66,7 @@ export default function ForgotPasswordPage() {
 
         <button
           type="submit"
-          className="h-12 w-full rounded-[10px] bg-[#0c245f] text-sm font-semibold text-white shadow-[0_14px_28px_rgba(12,36,95,0.18)] transition hover:bg-[#132f73] disabled:cursor-not-allowed disabled:opacity-70"
+          className="h-12 w-full rounded-[10px] bg-[#045330] text-sm font-semibold text-white shadow-[0_10px_24px_rgba(4,83,48,0.22)] transition hover:bg-[#03462A] disabled:cursor-not-allowed disabled:opacity-70"
           disabled={loading}
         >
           {loading ? "Sending OTP…" : "Send Reset OTP"}
@@ -74,7 +74,7 @@ export default function ForgotPasswordPage() {
 
         <p className="text-center text-sm text-[#5f6b84]">
           Remember your password?{" "}
-          <Link href="/login" className="font-semibold text-[#10245a] transition hover:underline">
+          <Link href="/login" className="font-semibold text-[#045330] transition hover:text-[#03462A] hover:underline">
             Back to Login
           </Link>
         </p>

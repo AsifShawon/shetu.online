@@ -458,7 +458,7 @@ export function AdminResourceManager({
     if (isFileField(key) && typeof value === "string" && value) {
       return (
         <a
-          className="inline-flex items-center gap-2 text-sm font-medium text-[#1f8bff] underline-offset-2 hover:underline"
+          className="inline-flex items-center gap-2 text-sm font-medium text-[#045330] underline-offset-2 hover:underline"
           href={getMediaUrl(value) ?? value}
           rel="noreferrer"
           target="_blank"
@@ -509,7 +509,7 @@ export function AdminResourceManager({
     if (field.type === "textarea" || field.type === "json") {
       return (
         <textarea
-          className="min-h-[120px] rounded-md border border-slate-300 px-3 py-3 text-sm outline-none transition focus:border-[#1f8bff]"
+          className="min-h-[120px] rounded-md border border-slate-300 px-3 py-3 text-sm outline-none transition focus:border-[#045330] focus:ring-1 focus:ring-[#045330]"
           onChange={(event) => handleChange(field, event.target.value)}
           placeholder={field.placeholder}
           rows={field.rows ?? 4}
@@ -521,7 +521,7 @@ export function AdminResourceManager({
     if (field.type === "select") {
       return (
         <select
-          className="h-11 rounded-md border border-slate-300 px-3 text-sm outline-none transition focus:border-[#1f8bff]"
+          className="h-11 rounded-md border border-slate-300 px-3 text-sm outline-none transition focus:border-[#045330] focus:ring-1 focus:ring-[#045330]"
           onChange={(event) => handleChange(field, event.target.value)}
           value={String(value ?? "")}
         >
@@ -567,7 +567,7 @@ export function AdminResourceManager({
           </div>
           <input
             accept={field.accept}
-            className="block w-full text-sm text-slate-600 file:mr-3 file:rounded-md file:border-0 file:bg-[#1f8bff] file:px-3 file:py-2 file:text-sm file:font-medium file:text-white"
+            className="block w-full text-sm text-slate-600 file:mr-3 file:rounded-md file:border-0 file:bg-[#045330] file:px-3 file:py-2 file:text-sm file:font-medium file:text-white hover:file:bg-[#03462A]"
             onChange={(event) => handleChange(field, event.target.files?.[0] ?? null)}
             type="file"
           />
@@ -586,7 +586,7 @@ export function AdminResourceManager({
 
     return (
       <input
-        className="h-11 rounded-md border border-slate-300 px-3 text-sm outline-none transition focus:border-[#1f8bff]"
+        className="h-11 rounded-md border border-slate-300 px-3 text-sm outline-none transition focus:border-[#045330] focus:ring-1 focus:ring-[#045330]"
         onChange={(event) => handleChange(field, event.target.value)}
         placeholder={field.placeholder}
         type={inputType}
@@ -612,7 +612,7 @@ export function AdminResourceManager({
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               {resources.length > 1 ? (
                 <select
-                  className="h-10 rounded-md border border-slate-300 px-3 text-sm outline-none transition focus:border-[#1f8bff]"
+                  className="h-10 rounded-md border border-slate-300 px-3 text-sm outline-none transition focus:border-[#045330] focus:ring-1 focus:ring-[#045330]"
                   onChange={(event) => handleResourceChange(event.target.value)}
                   value={activeResource.key}
                 >
@@ -626,14 +626,14 @@ export function AdminResourceManager({
 
               <form className="flex gap-2" onSubmit={handleSearch}>
                 <input
-                  className="h-10 min-w-[220px] rounded-md border border-slate-300 px-3 text-sm outline-none transition focus:border-[#1f8bff]"
+                  className="h-10 min-w-[220px] rounded-md border border-slate-300 px-3 text-sm outline-none transition focus:border-[#045330] focus:ring-1 focus:ring-[#045330]"
                   onChange={(event) => setSearchDraft(event.target.value)}
                   placeholder={`Search ${activeResource.singularLabel.toLowerCase()}...`}
                   value={searchDraft}
                 />
                 {search ? (
                   <button
-                    className="rounded-md border border-[#1f8bff] px-4 text-sm font-medium text-[#1f8bff]"
+                    className="rounded-md border border-[#045330] px-4 text-sm font-medium text-[#045330] transition hover:bg-[#F1F8F4]"
                     onClick={() => {
                       setSearch("");
                       setSearchDraft("");
@@ -644,7 +644,7 @@ export function AdminResourceManager({
                   </button>
                 ) : null}
                 <button
-                  className="rounded-md border border-[#1f8bff] px-4 text-sm font-medium text-[#1f8bff]"
+                  className="rounded-md border border-[#045330] bg-[#045330] px-4 text-sm font-medium text-white transition hover:bg-[#03462A]"
                   type="submit"
                 >
                   Search
@@ -653,7 +653,7 @@ export function AdminResourceManager({
 
               {canCreate ? (
                 <button
-                  className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-[#1f8bff] px-4 text-sm font-medium text-[#1f8bff]"
+                  className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-[#045330] bg-[#045330] px-4 text-sm font-medium text-white transition hover:bg-[#03462A]"
                   onClick={openCreateForm}
                   type="button"
                 >
@@ -733,7 +733,7 @@ export function AdminResourceManager({
 
                         {canEdit ? (
                           <button
-                            className="inline-flex h-8 w-8 items-center justify-center rounded border border-[#1f8bff] text-[#1f8bff]"
+                            className="inline-flex h-8 w-8 items-center justify-center rounded border border-[#045330] text-[#045330] transition hover:bg-[#F1F8F4]"
                             onClick={(event) => {
                               event.stopPropagation();
                               openEditForm(record);
@@ -800,7 +800,7 @@ export function AdminResourceManager({
                 {isEditing ? `Edit ${activeResource.singularLabel}` : `Create a new ${activeResource.singularLabel}`}
               </h2>
               <button
-                className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-[#1f8bff] text-[#1f8bff]"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-[#045330] text-[#045330] transition hover:bg-[#F1F8F4]"
                 onClick={resetView}
                 type="button"
               >
@@ -880,7 +880,7 @@ export function AdminResourceManager({
                 </button>
               ) : null}
               <button
-                className="inline-flex items-center gap-2 rounded-md bg-[#1f8bff] px-4 py-2 text-sm font-medium text-white"
+                className="inline-flex items-center gap-2 rounded-md bg-[#045330] px-4 py-2 text-sm font-medium text-white transition hover:bg-[#03462A]"
                 disabled={saving}
                 type="submit"
               >
@@ -898,7 +898,7 @@ export function AdminResourceManager({
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <h2 className="text-xl font-medium text-slate-900">{activeResource.singularLabel} Details</h2>
               <button
-                className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-[#1f8bff] text-[#1f8bff]"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-[#045330] text-[#045330] transition hover:bg-[#F1F8F4]"
                 onClick={resetView}
                 type="button"
               >

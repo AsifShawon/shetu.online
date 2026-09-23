@@ -89,7 +89,7 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={() => setShowPassword((value) => !value)}
-              className="rounded-full p-0.5 transition hover:text-[#10245a]"
+              className="rounded-full p-0.5 transition hover:text-[#045330]"
               aria-label={showPassword ? "Hide password" : "Show password"}
             >
               {showPassword ? <EyeOff className="h-[17px] w-[17px]" /> : <Eye className="h-[17px] w-[17px]" />}
@@ -100,19 +100,19 @@ export default function LoginPage() {
         <button
           type="submit"
           disabled={loading}
-          className="mt-2 h-12 w-full rounded-[10px] bg-[#0c245f] text-sm font-semibold text-white shadow-[0_14px_28px_rgba(12,36,95,0.18)] transition hover:bg-[#132f73] disabled:cursor-not-allowed disabled:opacity-70"
+          className="mt-2 h-12 w-full rounded-[10px] bg-[#045330] text-sm font-semibold text-white shadow-[0_10px_24px_rgba(4,83,48,0.22)] transition hover:bg-[#03462A] disabled:cursor-not-allowed disabled:opacity-70"
         >
           {loading ? "Logging In..." : "Log In"}
         </button>
 
         <p className="pt-1 text-center text-sm text-[#5f6b84]">
-          <Link href="/forgot-password" className="transition hover:text-[#10245a] hover:underline">
+          <Link href="/forgot-password" className="transition hover:text-[#045330] hover:underline">
             Forgot password?
           </Link>
         </p>
         <p className="text-center text-sm text-[#5f6b84]">
           Don&apos;t have account?
-          <Link href="/register" className="ml-2 font-semibold text-[#10245a] transition hover:underline">
+          <Link href="/register" className="ml-2 font-semibold text-[#045330] transition hover:text-[#03462A] hover:underline">
             Create
           </Link>
         </p>
