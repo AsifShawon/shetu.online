@@ -145,7 +145,7 @@ export function AdminProfilePage({ mode }: AdminProfilePageProps) {
               {mode === "view" ? "Admin Profile" : "Update Profile"}
             </h2>
             <Link
-              className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-[#1f8bff] px-4 text-sm font-medium text-[#1f8bff]"
+              className="inline-flex h-10 items-center justify-center gap-2 rounded-md border border-[#045330] px-4 text-sm font-medium text-[#045330] transition hover:bg-[#F1F8F4]"
               href={(mode === "view" ? "/admin/profile/edit" : "/admin/profile") as Route}
             >
               <i className={`fa-solid ${mode === "view" ? "fa-pen-to-square" : "fa-eye"}`} />
@@ -210,7 +210,7 @@ export function AdminProfilePage({ mode }: AdminProfilePageProps) {
                     <label className="grid gap-2">
                       <span className="text-sm font-semibold text-slate-800">Name</span>
                       <input
-                        className="h-11 rounded-md border border-slate-300 px-3 text-sm outline-none transition focus:border-[#1f8bff]"
+                        className="h-11 rounded-md border border-slate-300 px-3 text-sm outline-none transition focus:border-[#045330] focus:ring-1 focus:ring-[#045330]"
                         onChange={(event) => setName(event.target.value)}
                         value={name}
                       />
@@ -218,7 +218,7 @@ export function AdminProfilePage({ mode }: AdminProfilePageProps) {
                     <label className="grid gap-2">
                       <span className="text-sm font-semibold text-slate-800">Email</span>
                       <input
-                        className="h-11 rounded-md border border-slate-300 px-3 text-sm outline-none transition focus:border-[#1f8bff]"
+                        className="h-11 rounded-md border border-slate-300 px-3 text-sm outline-none transition focus:border-[#045330] focus:ring-1 focus:ring-[#045330]"
                         onChange={(event) => setEmail(event.target.value)}
                         type="email"
                         value={email}
@@ -227,7 +227,7 @@ export function AdminProfilePage({ mode }: AdminProfilePageProps) {
                     <label className="grid gap-2">
                       <span className="text-sm font-semibold text-slate-800">Phone</span>
                       <input
-                        className="h-11 rounded-md border border-slate-300 px-3 text-sm outline-none transition focus:border-[#1f8bff]"
+                        className="h-11 rounded-md border border-slate-300 px-3 text-sm outline-none transition focus:border-[#045330] focus:ring-1 focus:ring-[#045330]"
                         onChange={(event) => setPhone(event.target.value)}
                         value={phone}
                       />
@@ -245,7 +245,7 @@ export function AdminProfilePage({ mode }: AdminProfilePageProps) {
                     </div>
                     <input
                       accept="image/*"
-                      className="block w-full text-sm text-slate-600 file:mr-3 file:rounded-md file:border-0 file:bg-[#1f8bff] file:px-3 file:py-2 file:text-sm file:font-medium file:text-white"
+                      className="block w-full text-sm text-slate-600 file:mr-3 file:rounded-md file:border-0 file:bg-[#045330] file:px-3 file:py-2 file:text-sm file:font-medium file:text-white hover:file:bg-[#03462A]"
                       onChange={(event) => setImageFile(event.target.files?.[0] ?? null)}
                       type="file"
                     />
@@ -262,7 +262,7 @@ export function AdminProfilePage({ mode }: AdminProfilePageProps) {
                     <label className="grid gap-2">
                       <span className="text-sm font-semibold text-slate-800">New Password</span>
                       <input
-                        className="h-11 rounded-md border border-slate-300 px-3 text-sm outline-none transition focus:border-[#1f8bff]"
+                        className="h-11 rounded-md border border-slate-300 px-3 text-sm outline-none transition focus:border-[#045330] focus:ring-1 focus:ring-[#045330]"
                         onChange={(event) => setPassword(event.target.value)}
                         placeholder="Leave blank to keep current password"
                         type="password"
@@ -272,7 +272,7 @@ export function AdminProfilePage({ mode }: AdminProfilePageProps) {
                     <label className="grid gap-2">
                       <span className="text-sm font-semibold text-slate-800">Confirm Password</span>
                       <input
-                        className="h-11 rounded-md border border-slate-300 px-3 text-sm outline-none transition focus:border-[#1f8bff]"
+                        className="h-11 rounded-md border border-slate-300 px-3 text-sm outline-none transition focus:border-[#045330] focus:ring-1 focus:ring-[#045330]"
                         onChange={(event) => setRepassword(event.target.value)}
                         type="password"
                         value={repassword}
@@ -288,14 +288,14 @@ export function AdminProfilePage({ mode }: AdminProfilePageProps) {
 
             <div className="mt-6 flex justify-end gap-3">
               <Link
-                className="inline-flex items-center gap-2 rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700"
+                className="inline-flex items-center gap-2 rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100"
                 href={"/admin/profile" as Route}
               >
                 <i className="fa-solid fa-reply" />
                 <span>Back</span>
               </Link>
               <button
-                className="inline-flex items-center gap-2 rounded-md bg-[#1f8bff] px-4 py-2 text-sm font-medium text-white"
+                className="inline-flex items-center gap-2 rounded-md bg-[#045330] px-4 py-2 text-sm font-medium text-white transition hover:bg-[#03462A]"
                 disabled={saving}
                 type="submit"
               >

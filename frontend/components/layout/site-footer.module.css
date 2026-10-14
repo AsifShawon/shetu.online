@@ -1,7 +1,7 @@
 .footerSection {
   --footer-content-width: min(1238px, calc(100% - 2rem));
   position: relative;
-  background: linear-gradient(180deg, #10275b 0%, #0b1e49 100%);
+  background: linear-gradient(180deg, #03462A 0%, #02351F 100%);
   color: #ffffff;
   overflow: hidden;
 }
@@ -33,8 +33,8 @@
   height: auto;
   background: #ffffff;
   border-radius: 8px;
-  padding: 4px 8px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  padding: 6px 10px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
 }
 
 .footerIntro h2 {
@@ -90,11 +90,18 @@
   border: 0;
   border-radius: 6px;
   background: #ffffff;
-  color: #0f2456;
+  color: #045330;
   padding: 0.82rem 1.25rem;
   font-weight: 700;
   cursor: pointer;
   margin-top: 0.35rem;
+  transition: all 0.2s ease;
+}
+
+.footerSubmit:hover {
+  background: #F1F8F4;
+  color: #03462A;
+  transform: translateY(-1px);
 }
 
 .footerColumns {
@@ -120,7 +127,7 @@
   font-size: 0.82rem;
   text-transform: none;
   letter-spacing: 0.01em;
-  color: rgba(180, 213, 242, 0.82);
+  color: rgba(221, 239, 229, 0.85);
 }
 
 .footerColumn a,
@@ -129,6 +136,12 @@
   color: rgba(255, 255, 255, 0.92);
   font-size: 0.92rem;
   line-height: 1.5;
+  transition: color 0.15s ease;
+}
+
+.footerColumn a:hover {
+  color: #ffffff;
+  text-decoration: underline;
 }
 
 .footerBottom {
@@ -161,6 +174,11 @@
   justify-content: center;
   background: transparent;
   color: #ffffff;
+  transition: color 0.15s ease;
+}
+
+.footerSocials a:hover {
+  color: #EB0310;
 }
 
 .scrollTop {

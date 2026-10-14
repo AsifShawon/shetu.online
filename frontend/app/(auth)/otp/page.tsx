@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Plane } from "lucide-react";
 
-import { AuthBrand } from "@/components/auth/auth-split-shell";
 import { useAuth } from "@/components/layout/auth-provider";
 import { ApiError } from "@/lib/api/client";
 import { resendOtp, verifyOtp } from "@/lib/api/auth";
@@ -45,27 +44,86 @@ export default function OtpPage() {
 
   const timeLeftDisplay = `${String(Math.floor(timeLeft / 60)).padStart(2, "0")}.${String(Math.floor(timeLeft % 60)).padStart(2, "0")}s`;
 
+  const handlePaste = (index: number, e: React.ClipboardEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const pastedText = e.clipboardData?.getData("text") || "";
+    const digits = pastedText.replace(/\D/g, "");
+    if (!digits) return;
+
+    if (digits.length >= 4) {
+      // 4-digit code: prefer populating the entire OTP from the first box
+      const fourDigits = digits.slice(0, 4).split("");
+      setOtpParts(fourDigits);
+      setTimeout(() => {
+        inputsRef.current[3]?.focus();
+      }, 0);
+    } else {
+      // Less than 4 digits: fill logically starting from current index
+      setOtpParts((prev) => {
+        const next = [...prev];
+        for (let i = 0; i < digits.length && index + i < 4; i++) {
+          next[index + i] = digits[i];
+        }
+        return next;
+      });
+      const nextFocus = Math.min(3, index + digits.length);
+      setTimeout(() => {
+        inputsRef.current[nextFocus]?.focus();
+      }, 0);
+    }
+  };
+
   const handlePartChange = (index: number, value: string) => {
-    const digit = value.replace(/\D/g, "").slice(-1);
+    const digits = value.replace(/\D/g, "");
+    if (!digits) {
+      setOtpParts((prev) => {
+        const next = [...prev];
+        next[index] = "";
+        return next;
+      });
+      return;
+    }
+
+    if (digits.length >= 4) {
+      const fourDigits = digits.slice(0, 4).split("");
+      setOtpParts(fourDigits);
+      setTimeout(() => {
+        inputsRef.current[3]?.focus();
+      }, 0);
+      return;
+    }
+
+    let digit = digits.slice(-1);
+    if (otpParts[index] && digits.length === 2) {
+      const added = value.replace(otpParts[index], "").replace(/\D/g, "");
+      if (added) {
+        digit = added.slice(-1);
+      }
+    }
+
     setOtpParts((prev) => {
       const next = [...prev];
       next[index] = digit;
       return next;
     });
-    if (digit && index < inputsRef.current.length - 1) {
-      setTimeout(() => inputsRef.current[index + 1]?.focus(), 0);
+    if (digit && index < 3) {
+      setTimeout(() => {
+        inputsRef.current[index + 1]?.focus();
+      }, 0);
     }
   };
 
   const handlePartKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Backspace") {
       if (otpParts[index]) {
+        e.preventDefault();
         setOtpParts((prev) => {
           const next = [...prev];
           next[index] = "";
           return next;
         });
       } else if (index > 0) {
+        e.preventDefault();
         inputsRef.current[index - 1]?.focus();
         setOtpParts((prev) => {
           const next = [...prev];
@@ -73,6 +131,24 @@ export default function OtpPage() {
           return next;
         });
       }
+    } else if (e.key === "ArrowLeft") {
+      if (index > 0) {
+        e.preventDefault();
+        inputsRef.current[index - 1]?.focus();
+      }
+    } else if (e.key === "ArrowRight") {
+      if (index < 3) {
+        e.preventDefault();
+        inputsRef.current[index + 1]?.focus();
+      }
+    } else if (
+      !e.ctrlKey &&
+      !e.metaKey &&
+      !e.altKey &&
+      e.key.length === 1 &&
+      !/\d/.test(e.key)
+    ) {
+      e.preventDefault();
     }
   };
 
@@ -158,12 +234,12 @@ export default function OtpPage() {
       {/* Logo */}
       <div className="mb-5 flex items-center justify-center">
         <Image
-          src="/shetu_logo.jpeg"
+          src="/shetu_logo_transparent.png"
           alt="Shetu"
           width={160}
           height={98}
           priority
-          className="h-12 w-auto rounded-xl bg-white p-1.5 object-contain shadow-md"
+          className="h-12 w-auto object-contain"
         />
       </div>
 
@@ -181,8 +257,8 @@ export default function OtpPage() {
 
       <form className="w-full max-w-[460px]" onSubmit={handleSubmit}>
         {/* OTP card */}
-        <div className="rounded-[22px] border border-[#c8d8ef]/60 bg-[#dbe5f2]/55 px-6 py-8 text-center shadow-[0_18px_50px_rgba(18,46,104,0.13)] backdrop-blur-sm sm:px-10">
-          <h2 className="mb-8 text-[1.1rem] font-bold text-[#17264c] sm:text-[1.15rem]">
+        <div className="rounded-[22px] border border-[#c8ded0] bg-[#F1F8F4]/80 px-6 py-8 text-center shadow-[0_18px_50px_rgba(4,83,48,0.1)] backdrop-blur-sm sm:px-10">
+          <h2 className="mb-8 text-[1.1rem] font-bold text-[#045330] sm:text-[1.15rem]">
             Enter the OTP from your mail
           </h2>
 
@@ -190,18 +266,25 @@ export default function OtpPage() {
             {[0, 1, 2, 3].map((i) => (
               <input
                 key={i}
-                ref={(el) => { inputsRef.current[i] = el; }}
+                ref={(el) => {
+                  inputsRef.current[i] = el;
+                }}
+                type="text"
                 inputMode="numeric"
-                maxLength={1}
-                className="h-14 w-14 rounded-[10px] border border-[#cdd8eb] bg-white text-center text-2xl font-bold text-[#10245a] outline-none shadow-sm transition focus:border-[#2f61cf] focus:ring-2 focus:ring-[#dce8ff] sm:h-16 sm:w-16"
+                pattern="[0-9]*"
+                autoComplete={i === 0 ? "one-time-code" : "off"}
+                aria-label={`OTP digit ${i + 1}`}
+                className="h-14 w-14 rounded-[10px] border border-[#c8ded0] bg-white text-center text-2xl font-bold text-[#045330] outline-none shadow-sm transition focus:border-[#045330] focus:ring-2 focus:ring-[#DDEFE5] sm:h-16 sm:w-16"
                 value={otpParts[i]}
                 onChange={(e) => handlePartChange(i, e.target.value)}
                 onKeyDown={(e) => handlePartKeyDown(i, e)}
+                onPaste={(e) => handlePaste(i, e)}
+                onFocus={(e) => e.target.select()}
               />
             ))}
           </div>
 
-          <p className="text-xs text-[#8a96a8]">
+          <p className="text-xs text-[#4A5568]">
             Remaining time :{" "}
             <span className="font-medium">{timeLeftDisplay}</span>
           </p>
@@ -212,14 +295,14 @@ export default function OtpPage() {
           <button
             type="button"
             onClick={() => router.back()}
-            className="h-12 flex-1 rounded-[10px] border border-[#9aa6b9] bg-white text-sm font-semibold text-[#485468] transition hover:border-[#6f819b] hover:bg-gray-50"
+            className="h-12 flex-1 rounded-[10px] border border-[#c8ded0] bg-white text-sm font-semibold text-[#4A5568] transition hover:border-[#045330] hover:text-[#045330] hover:bg-[#F1F8F4]"
           >
             Back
           </button>
           <button
             type="submit"
             disabled={loading || timeLeft <= 0}
-            className="h-12 flex-1 rounded-[10px] bg-[#0f255f] text-sm font-semibold text-white shadow-[0_10px_24px_rgba(15,37,95,0.22)] transition hover:bg-[#142d72] disabled:cursor-not-allowed disabled:opacity-60"
+            className="h-12 flex-1 rounded-[10px] bg-[#045330] text-sm font-semibold text-white shadow-[0_10px_24px_rgba(4,83,48,0.22)] transition hover:bg-[#03462A] disabled:cursor-not-allowed disabled:opacity-60"
           >
             {loading ? "Submitting…" : "Submit"}
           </button>
@@ -232,7 +315,7 @@ export default function OtpPage() {
             type="button"
             onClick={handleResend}
             disabled={resending}
-            className="ml-1 font-bold text-[#10245a] transition hover:underline disabled:opacity-60"
+            className="ml-1 font-bold text-[#045330] transition hover:text-[#03462A] hover:underline disabled:opacity-60"
           >
             {resending ? "Resending…" : "Resend"}
           </button>

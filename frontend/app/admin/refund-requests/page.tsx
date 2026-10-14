@@ -130,7 +130,7 @@ export default function AdminRefundRequestsPage() {
                   </div>
                   <button
                     type="button"
-                    className="mt-4 rounded-md bg-[#1f8bff] px-4 py-2 text-sm font-medium text-white"
+                    className="mt-4 rounded-md bg-[#045330] px-4 py-2 text-sm font-medium text-white transition hover:bg-[#03462A]"
                     disabled={busyId === id}
                     onClick={() => handleSave(id)}
                   >

@@ -129,8 +129,8 @@ function RegisterPageContent() {
                 className={cn(
                   "flex cursor-pointer items-center gap-2 border-b-2 pb-1 text-[0.95rem] font-medium transition",
                   checked
-                    ? "border-[#10245a] text-[#10245a]"
-                    : "border-transparent text-[#5f6b84] hover:text-[#10245a]"
+                    ? "border-[#045330] text-[#045330]"
+                    : "border-transparent text-[#5f6b84] hover:text-[#045330]"
                 )}
               >
                 <input
@@ -139,7 +139,7 @@ function RegisterPageContent() {
                   value={item}
                   checked={checked}
                   onChange={() => setRole(item)}
-                  className="h-3.5 w-3.5 accent-[#10245a]"
+                  className="h-3.5 w-3.5 accent-[#045330]"
                 />
                 <span>{item}</span>
               </label>
@@ -194,7 +194,7 @@ function RegisterPageContent() {
             <button
               type="button"
               onClick={() => setShowPassword((value) => !value)}
-              className="rounded-full p-0.5 transition hover:text-[#10245a]"
+              className="rounded-full p-0.5 transition hover:text-[#045330]"
               aria-label={showPassword ? "Hide password" : "Show password"}
             >
               {showPassword ? <EyeOff className="h-[17px] w-[17px]" /> : <Eye className="h-[17px] w-[17px]" />}
@@ -214,7 +214,7 @@ function RegisterPageContent() {
             <button
               type="button"
               onClick={() => setShowConfirmPassword((value) => !value)}
-              className="rounded-full p-0.5 transition hover:text-[#10245a]"
+              className="rounded-full p-0.5 transition hover:text-[#045330]"
               aria-label={showConfirmPassword ? "Hide confirm password" : "Show confirm password"}
             >
               {showConfirmPassword ? <EyeOff className="h-[17px] w-[17px]" /> : <Eye className="h-[17px] w-[17px]" />}
@@ -225,7 +225,7 @@ function RegisterPageContent() {
         <button
           type="submit"
           disabled={loading}
-          className="mt-2 h-12 w-full rounded-[10px] bg-[#0c245f] text-sm font-semibold text-white shadow-[0_14px_28px_rgba(12,36,95,0.18)] transition hover:bg-[#132f73] disabled:cursor-not-allowed disabled:opacity-70"
+          className="mt-2 h-12 w-full rounded-[10px] bg-[#045330] text-sm font-semibold text-white shadow-[0_10px_24px_rgba(4,83,48,0.22)] transition hover:bg-[#03462A] disabled:cursor-not-allowed disabled:opacity-70"
         >
           {loading ? "Creating Account..." : "Sign Up"}
         </button>

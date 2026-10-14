@@ -118,7 +118,9 @@ export function AdminShell({ section, title, description, resourceKey, showIntro
         <li className="nav-item" key={item.key}>
           <button
             className={`flex w-full items-center justify-between rounded-md px-3 py-2 text-left text-[15px] transition ${
-              active ? "bg-[#1f8bff] text-white" : "text-slate-200 hover:bg-white/10"
+              active
+                ? "relative bg-[#045330] text-white font-semibold shadow-sm after:content-[''] after:absolute after:right-2.5 after:h-2 after:w-2 after:rounded-full after:bg-[#EB0310]"
+                : "text-slate-300 hover:bg-white/10 hover:text-white"
             }`}
             onClick={() => {
               if (sidebarCollapsed) {
@@ -146,7 +148,9 @@ export function AdminShell({ section, title, description, resourceKey, showIntro
                   <li key={child.key}>
                     <Link
                       className={`flex items-center gap-3 rounded-md px-3 py-2 text-[14px] transition ${
-                        childActive ? "bg-white text-[#1f8bff]" : "text-slate-300 hover:bg-white/10"
+                        childActive
+                          ? "relative bg-white text-[#045330] font-semibold shadow-sm after:content-[''] after:absolute after:right-2.5 after:h-1.5 after:w-1.5 after:rounded-full after:bg-[#EB0310]"
+                          : "text-slate-300 hover:bg-white/10 hover:text-white"
                       }`}
                       href={(child.href ?? "/admin") as Route}
                     >
@@ -166,7 +170,9 @@ export function AdminShell({ section, title, description, resourceKey, showIntro
       <li className="nav-item" key={item.key}>
         <Link
           className={`flex items-center gap-3 rounded-md px-3 py-2 text-[15px] transition ${
-            active ? "bg-[#1f8bff] text-white" : "text-slate-200 hover:bg-white/10"
+            active
+              ? "relative bg-[#045330] text-white font-semibold shadow-sm after:content-[''] after:absolute after:right-2.5 after:h-2 after:w-2 after:rounded-full after:bg-[#EB0310]"
+              : "text-slate-300 hover:bg-white/10 hover:text-white"
           }`}
           href={(item.href ?? "/admin") as Route}
           title={sidebarCollapsed ? item.label : undefined}
@@ -179,7 +185,7 @@ export function AdminShell({ section, title, description, resourceKey, showIntro
   };
 
   return (
-    <div className="min-h-screen bg-[#edf1f7] text-slate-800">
+    <div className="min-h-screen bg-[#F7FAF8] text-slate-800">
       {sidebarOpen ? (
         <button
           aria-label="Close sidebar"
@@ -190,15 +196,15 @@ export function AdminShell({ section, title, description, resourceKey, showIntro
       ) : null}
 
       <aside
-        className={`fixed inset-y-0 left-0 z-40 flex flex-col border-r border-slate-700 bg-[#343a40] text-white shadow-xl transition-all duration-300 ${
+        className={`fixed inset-y-0 left-0 z-40 flex flex-col border-r border-[#045330]/30 bg-gradient-to-b from-[#0B1F16] to-[#02351F] text-white shadow-xl transition-all duration-300 ${
           sidebarCollapsed ? "w-[74px]" : "w-[250px]"
         } ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} lg:translate-x-0`}
       >
         <Link
-          className="flex min-h-[72px] items-center gap-3 border-b border-slate-600 px-4 text-white"
+          className="flex min-h-[72px] items-center gap-3 border-b border-[#045330]/30 px-4 text-white"
           href="/admin"
         >
-          <img src="/shetu_logo.jpeg" alt="Shetu" className="h-9 w-auto rounded-md bg-white p-0.5 object-contain" />
+          <img src="/shetu_logo.jpeg" alt="Shetu" className="h-9 w-auto rounded-lg bg-white p-1 object-contain shadow-sm" />
           {!sidebarCollapsed ? <span className="truncate text-[15px] font-semibold tracking-wide">সেতু (Shetu)</span> : null}
         </Link>
 
@@ -226,7 +232,7 @@ export function AdminShell({ section, title, description, resourceKey, showIntro
                 <i className="fa-solid fa-bars" />
               </button>
               <Link
-                className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-[#17a2b8] text-white"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-md bg-[#045330] text-white transition hover:bg-[#03462A]"
                 href="/"
                 target="_blank"
               >
@@ -297,8 +303,8 @@ export function AdminShell({ section, title, description, resourceKey, showIntro
           <main className="flex-1 px-4 py-6 sm:px-6">
             {showIntro ? (
               <section className="mb-5 rounded-lg border border-slate-200 bg-white px-5 py-4 shadow-sm">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">Admin Panel</p>
-                <h1 className="mt-2 text-2xl font-semibold text-slate-900">{title}</h1>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#045330]">Admin Panel</p>
+                <h1 className="mt-2 text-2xl font-bold text-[#0B1F16]">{title}</h1>
                 <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-500">{description}</p>
               </section>
             ) : null}
@@ -308,7 +314,7 @@ export function AdminShell({ section, title, description, resourceKey, showIntro
           <footer className="border-t border-slate-200 bg-white px-4 py-4 text-sm text-slate-600 sm:px-6">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
               <p>
-                <strong>Copyright &copy; 2024-2025 Work With Mahadi.</strong> All rights reserved.
+                <strong>Copyright &copy; {new Date().getFullYear()} Shetu.</strong> All rights reserved.
               </p>
               <p>
                 <strong>Version</strong> 1.0

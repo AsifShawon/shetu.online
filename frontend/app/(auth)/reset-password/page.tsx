@@ -137,7 +137,7 @@ function ResetPasswordContent() {
               onChange={(event) => setEmail(event.target.value)}
             />
             <input
-              className="h-12 w-full rounded-[12px] border border-[#93a9d7] bg-white px-4 text-center text-lg font-semibold tracking-[0.35em] text-[#17264c] outline-none transition duration-200 placeholder:text-center placeholder:tracking-[0.08em] focus:border-[#2f61cf] focus:ring-4 focus:ring-[#dce8ff]"
+              className="h-12 w-full rounded-[12px] border border-[#c8ded0] bg-white px-4 text-center text-lg font-semibold tracking-[0.35em] text-[#0B1F16] outline-none transition duration-200 placeholder:text-center placeholder:tracking-[0.08em] focus:border-[#045330] focus:ring-4 focus:ring-[#DDEFE5]"
               type="text"
               placeholder="Enter OTP"
               required
@@ -147,14 +147,14 @@ function ResetPasswordContent() {
             />
             <button
               type="submit"
-              className="h-12 w-full rounded-[10px] bg-[#0c245f] text-sm font-semibold text-white shadow-[0_14px_28px_rgba(12,36,95,0.18)] transition hover:bg-[#132f73] disabled:cursor-not-allowed disabled:opacity-70"
+              className="h-12 w-full rounded-[10px] bg-[#045330] text-sm font-semibold text-white shadow-[0_10px_24px_rgba(4,83,48,0.22)] transition hover:bg-[#03462A] disabled:cursor-not-allowed disabled:opacity-70"
               disabled={loading}
             >
               {loading ? "Verifying…" : "Verify OTP"}
             </button>
             <button
               type="button"
-              className="h-12 w-full rounded-[10px] border border-[#cad8f4] bg-white text-sm font-semibold text-[#17337d] transition hover:border-[#9fb4df] hover:bg-[#f7faff] disabled:cursor-not-allowed disabled:opacity-70"
+              className="h-12 w-full rounded-[10px] border border-[#c8ded0] bg-white text-sm font-semibold text-[#045330] transition hover:border-[#045330] hover:bg-[#F1F8F4] disabled:cursor-not-allowed disabled:opacity-70"
               onClick={handleResend}
               disabled={resending}
             >
@@ -175,7 +175,7 @@ function ResetPasswordContent() {
                 <button
                   type="button"
                   onClick={() => setShowPassword((v) => !v)}
-                  className="rounded-full p-0.5 transition hover:text-[#10245a]"
+                  className="rounded-full p-0.5 transition hover:text-[#045330]"
                   aria-label={showPassword ? "Hide password" : "Show password"}
                 >
                   {showPassword ? <EyeOff className="h-[17px] w-[17px]" /> : <Eye className="h-[17px] w-[17px]" />}
@@ -194,7 +194,7 @@ function ResetPasswordContent() {
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword((v) => !v)}
-                  className="rounded-full p-0.5 transition hover:text-[#10245a]"
+                  className="rounded-full p-0.5 transition hover:text-[#045330]"
                   aria-label={showConfirmPassword ? "Hide password" : "Show password"}
                 >
                   {showConfirmPassword ? <EyeOff className="h-[17px] w-[17px]" /> : <Eye className="h-[17px] w-[17px]" />}
@@ -203,7 +203,7 @@ function ResetPasswordContent() {
             />
             <button
               type="submit"
-              className="h-12 w-full rounded-[10px] bg-[#0c245f] text-sm font-semibold text-white shadow-[0_14px_28px_rgba(12,36,95,0.18)] transition hover:bg-[#132f73] disabled:cursor-not-allowed disabled:opacity-70"
+              className="h-12 w-full rounded-[10px] bg-[#045330] text-sm font-semibold text-white shadow-[0_10px_24px_rgba(4,83,48,0.22)] transition hover:bg-[#03462A] disabled:cursor-not-allowed disabled:opacity-70"
               disabled={loading}
             >
               {loading ? "Resetting…" : "Reset Password"}
@@ -212,7 +212,7 @@ function ResetPasswordContent() {
         )}
 
         <p className="text-center text-sm text-[#5f6b84]">
-          <Link href="/login" className="font-semibold text-[#10245a] transition hover:underline">
+          <Link href="/login" className="font-semibold text-[#045330] transition hover:text-[#03462A] hover:underline">
             ← Back to Login
           </Link>
         </p>
