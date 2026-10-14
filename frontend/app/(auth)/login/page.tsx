@@ -2,8 +2,8 @@
 
 import type { Route } from "next";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
 import { Eye, EyeOff, LockKeyhole, Mail } from "lucide-react";
 
 import { AuthField, AuthSplitShell } from "@/components/auth/auth-split-shell";
@@ -17,9 +17,21 @@ function getDashboardPath(role?: string): Route {
   return "/dashboard/student";
 }
 
-export default function LoginPage() {
+function sanitizeReturnTo(returnTo: string | null): Route | null {
+  if (!returnTo) return null;
+  // Ensure relative path starting with / and not starting with // or /\ (prevents open redirects)
+  if (returnTo.startsWith("/") && !returnTo.startsWith("//") && !returnTo.startsWith("/\\")) {
+    return returnTo as Route;
+  }
+  return null;
+}
+
+function LoginForm() {
   const { login, user, isLoading } = useAuth();
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const returnTo = sanitizeReturnTo(searchParams.get("returnTo"));
+
   const [showPassword, setShowPassword] = useState(false);
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
@@ -28,8 +40,9 @@ export default function LoginPage() {
 
   useEffect(() => {
     if (isLoading || !user) return;
-    router.replace(getDashboardPath(user.role));
-  }, [isLoading, router, user]);
+    const destination = returnTo ?? getDashboardPath(user.role);
+    router.replace(destination);
+  }, [isLoading, router, user, returnTo]);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -38,7 +51,8 @@ export default function LoginPage() {
 
     try {
       const user = await login(identifier.trim(), password);
-      router.push(getDashboardPath(user.role));
+      const destination = returnTo ?? getDashboardPath(user.role);
+      router.push(destination);
     } catch (err) {
       if (err instanceof ApiError) {
         const body = err.body as Record<string, unknown>;
@@ -54,6 +68,8 @@ export default function LoginPage() {
       setLoading(false);
     }
   };
+
+  const registerHref = returnTo ? `/register?returnTo=${encodeURIComponent(returnTo)}` : "/register";
 
   return (
     <AuthSplitShell
@@ -112,11 +128,19 @@ export default function LoginPage() {
         </p>
         <p className="text-center text-sm text-[#5f6b84]">
           Don&apos;t have account?
-          <Link href="/register" className="ml-2 font-semibold text-[#045330] transition hover:text-[#03462A] hover:underline">
+          <Link href={registerHref as Route} className="ml-2 font-semibold text-[#045330] transition hover:text-[#03462A] hover:underline">
             Create
           </Link>
         </p>
       </form>
     </AuthSplitShell>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={null}>
+      <LoginForm />
+    </Suspense>
   );
 }

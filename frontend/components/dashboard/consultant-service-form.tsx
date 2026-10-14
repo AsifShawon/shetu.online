@@ -3,7 +3,7 @@
 import type { Route } from "next";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { MultiSuggestionInput, SuggestionInput } from "@/components/form/suggestion-fields";
 import { useToast } from "@/components/layout/toast-provider";
@@ -18,6 +18,7 @@ import {
 import { getApiErrorMessage } from "@/lib/api/client";
 import {
   createConsultantService,
+  createConsultantServicesBulk,
   getConsultantServices,
   getConsultantSubjects,
   updateConsultantService,
@@ -101,23 +102,24 @@ export function ConsultantServiceForm({ editId = null }: { editId?: number | nul
   const [studyLevels, setStudyLevels] = useState<StudyLevel[]>([]);
   const [subjects, setSubjects] = useState<Subject[]>([]);
   const [loading, setLoading] = useState(true);
+  const [catalogError, setCatalogError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [form, setForm] = useState<ServiceFormState>(createBlankForm());
 
   const isEditing = typeof editId === "number" && Number.isFinite(editId);
 
   const countrySuggestions = useMemo(
-    () => getCountrySuggestionList(countries.map((item) => item.name)),
+    () => getCountrySuggestionList(countries.map((item) => item.name), { authoritativeOnly: true }),
     [countries],
   );
 
   const serviceSuggestions = useMemo(
-    () => getServiceSuggestionList(serviceCategories.map((item) => item.name)),
+    () => getServiceSuggestionList(serviceCategories.map((item) => item.name), { authoritativeOnly: true }),
     [serviceCategories],
   );
 
   const studyLevelSuggestions = useMemo(
-    () => getStudyLevelSuggestionList(studyLevels.map((item) => item.name)),
+    () => getStudyLevelSuggestionList(studyLevels.map((item) => item.name), { authoritativeOnly: true }),
     [studyLevels],
   );
 
@@ -141,87 +143,93 @@ export function ConsultantServiceForm({ editId = null }: { editId?: number | nul
     [studyLevels],
   );
 
-  useEffect(() => {
+  const loadCatalogData = useCallback(async () => {
     setLoading(true);
+    setCatalogError(null);
 
-    Promise.allSettled([
-      getConsultantServices({ scope: "mine" }),
-      getCountries(),
-      getServices(),
-      getStudyLevels(),
-      getConsultantSubjects(),
-    ])
-      .then(([serviceResult, countryResult, categoryResult, studyLevelResult, subjectResult]) => {
-        const serviceData = takeFulfilledValue(serviceResult) ?? [];
-        const countryData = takeFulfilledValue(countryResult) ?? [];
-        const categoryData = takeFulfilledValue(categoryResult) ?? [];
-        const studyLevelData = takeFulfilledValue(studyLevelResult) ?? [];
-        const subjectData = takeFulfilledValue(subjectResult) ?? [];
+    try {
+      const [serviceResult, countryResult, categoryResult, studyLevelResult, subjectResult] =
+        await Promise.allSettled([
+          getConsultantServices({ scope: "mine" }),
+          getCountries(),
+          getServices(),
+          getStudyLevels(),
+          getConsultantSubjects(),
+        ]);
 
-        const activeCategories = categoryData.filter((item) => item.status === "active");
-        const activeStudyLevels = studyLevelData.filter((item) => item.status === "active");
+      const serviceData = takeFulfilledValue(serviceResult) ?? [];
+      const countryData = takeFulfilledValue(countryResult);
+      const categoryData = takeFulfilledValue(categoryResult);
+      const studyLevelData = takeFulfilledValue(studyLevelResult);
+      const subjectData = takeFulfilledValue(subjectResult);
 
-        setCountries(countryData);
-        setServiceCategories(activeCategories);
-        setStudyLevels(activeStudyLevels);
-        setSubjects(subjectData);
+      const failedKeys = [
+        countryResult.status === "rejected" ? "countries" : null,
+        categoryResult.status === "rejected" ? "service categories" : null,
+        studyLevelResult.status === "rejected" ? "study levels" : null,
+        subjectResult.status === "rejected" ? "subjects" : null,
+      ].filter((item): item is string => Boolean(item));
 
-        if (isEditing) {
-          const targetService = serviceData.find((item) => item.id === editId);
+      if (failedKeys.length > 0) {
+        setCatalogError(`Some authoritative catalog records could not be loaded: ${failedKeys.join(", ")}.`);
+        showToast({
+          variant: "warning",
+          title: "Catalog sync incomplete",
+          message: `Unable to load catalog records for ${failedKeys.join(", ")}. Please use retry.`,
+        });
+      }
 
-          if (targetService) {
-            const serviceNames = targetService.service_category_names?.length
-              ? targetService.service_category_names
-              : resolveNamesFromIds(targetService.service_categories, activeCategories);
+      const activeCategories = (categoryData ?? []).filter((item) => item.status === "active");
+      const activeStudyLevels = (studyLevelData ?? []).filter((item) => item.status === "active");
 
-            const levelNames = targetService.study_level_names?.length
-              ? targetService.study_level_names
-              : resolveNamesFromIds(targetService.study_levels, activeStudyLevels);
+      setCountries(countryData ?? []);
+      setServiceCategories(activeCategories);
+      setStudyLevels(activeStudyLevels);
+      setSubjects(subjectData ?? []);
 
-            setForm({
-              title: targetService.title,
-              description: targetService.description,
-              country_input: targetService.country_name ?? "",
-              status: targetService.status,
-              service_names: serviceNames,
-              service_metrics: serviceNames.map((serviceName) => ({
-                service_name: serviceName,
-                price: targetService.price ?? "",
-                duration: targetService.duration,
-              })),
-              study_level_names: levelNames,
-              subject_names: targetService.subject_names ?? [],
-            });
-          } else {
-            setForm(createBlankForm());
-            showToast({
-              variant: "warning",
-              title: "Service not found",
-              message: "The requested service could not be loaded for editing.",
-            });
-          }
+      if (isEditing) {
+        const targetService = serviceData.find((item) => item.id === editId);
+
+        if (targetService) {
+          const serviceNames = targetService.service_category_names?.length
+            ? targetService.service_category_names
+            : resolveNamesFromIds(targetService.service_categories, activeCategories);
+
+          const levelNames = targetService.study_level_names?.length
+            ? targetService.study_level_names
+            : resolveNamesFromIds(targetService.study_levels, activeStudyLevels);
+
+          setForm({
+            title: targetService.title,
+            description: targetService.description,
+            country_input: targetService.country_name ?? "",
+            status: targetService.status,
+            service_names: serviceNames,
+            service_metrics: serviceNames.map((serviceName) => ({
+              service_name: serviceName,
+              price: targetService.price ?? "",
+              duration: targetService.duration,
+            })),
+            study_level_names: levelNames,
+            subject_names: targetService.subject_names ?? [],
+          });
         } else {
           setForm(createBlankForm());
-        }
-
-        const failedKeys = [
-          serviceResult.status === "rejected" ? "services" : null,
-          countryResult.status === "rejected" ? "countries" : null,
-          categoryResult.status === "rejected" ? "service categories" : null,
-          studyLevelResult.status === "rejected" ? "study levels" : null,
-          subjectResult.status === "rejected" ? "subjects" : null,
-        ].filter((item): item is string => Boolean(item));
-
-        if (failedKeys.length > 0) {
           showToast({
             variant: "warning",
-            title: "Some suggestions could not sync",
-            message: `Using fallback suggestions while ${failedKeys.join(", ")} are unavailable from the API.`,
+            title: "Service not found",
+            message: "The requested service could not be loaded for editing.",
           });
         }
-      })
-      .finally(() => setLoading(false));
+      }
+    } finally {
+      setLoading(false);
+    }
   }, [editId, isEditing, showToast]);
+
+  useEffect(() => {
+    void loadCatalogData();
+  }, [loadCatalogData]);
 
   const updateForm = (
     field: "title" | "description" | "country_input" | "status",
@@ -377,31 +385,31 @@ export function ConsultantServiceForm({ editId = null }: { editId?: number | nul
           service_categories: [primaryService.serviceId],
         });
 
-        for (const serviceEntry of additionalServices) {
-          await createConsultantService({
+        if (additionalServices.length > 0) {
+          const bulkPayloads = additionalServices.map((serviceEntry) => ({
             ...payloadBase,
             price: serviceEntry.price,
             duration: serviceEntry.duration,
             service_categories: [serviceEntry.serviceId],
-          });
+          }));
+          await createConsultantServicesBulk(bulkPayloads);
         }
       } else {
-        for (const serviceEntry of selectedServiceEntries) {
-          await createConsultantService({
-            ...payloadBase,
-            price: serviceEntry.price,
-            duration: serviceEntry.duration,
-            service_categories: [serviceEntry.serviceId],
-          });
-        }
+        const bulkPayloads = selectedServiceEntries.map((serviceEntry) => ({
+          ...payloadBase,
+          price: serviceEntry.price,
+          duration: serviceEntry.duration,
+          service_categories: [serviceEntry.serviceId],
+        }));
+        await createConsultantServicesBulk(bulkPayloads);
       }
 
       showToast({
         variant: "success",
         title: isEditing ? "Services updated" : "Services published",
         message: isEditing
-          ? "Your service changes were saved service-wise."
-          : `${selectedServiceEntries.length} consultant service${selectedServiceEntries.length > 1 ? "s were" : " was"} published successfully.`,
+          ? "Your service changes were saved successfully."
+          : `${selectedServiceEntries.length} consultant service${selectedServiceEntries.length > 1 ? "s were" : " was"} published atomically.`,
       });
 
       router.push("/dashboard/consultant/services");
@@ -410,7 +418,7 @@ export function ConsultantServiceForm({ editId = null }: { editId?: number | nul
       showToast({
         variant: "error",
         title: "Service save failed",
-        message: getApiErrorMessage(error, "Unable to save this service."),
+        message: getApiErrorMessage(error, "Unable to save services. No duplicate partial records were created."),
       });
     } finally {
       setSubmitting(false);
@@ -441,6 +449,22 @@ export function ConsultantServiceForm({ editId = null }: { editId?: number | nul
             Back to Services
           </Link>
         </div>
+
+        {catalogError ? (
+          <div className="mx-6 mt-4 flex items-center justify-between rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900">
+            <div className="flex items-center gap-2">
+              <i className="fa-solid fa-triangle-exclamation text-amber-600" />
+              <span>{catalogError}</span>
+            </div>
+            <button
+              type="button"
+              onClick={() => void loadCatalogData()}
+              className="rounded-lg bg-amber-600 px-3 py-1.5 text-xs font-semibold text-white shadow-sm hover:bg-amber-700"
+            >
+              Retry Sync
+            </button>
+          </div>
+        ) : null}
 
         {loading ? (
           <p className="sd-loading">Loading service form...</p>

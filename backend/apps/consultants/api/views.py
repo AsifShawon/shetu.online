@@ -1,10 +1,14 @@
+from django.db import transaction
 from django.db.models import Avg, Case, Count, DecimalField, Q, Sum, Value, When
 from django.db.models.functions import Coalesce
-from rest_framework import permissions, viewsets
+from rest_framework import permissions, status, viewsets
+from rest_framework.decorators import action
+from rest_framework.exceptions import PermissionDenied, ValidationError
 from rest_framework.parsers import FormParser, JSONParser, MultiPartParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from apps.accounts.models import User, UserRole
 from apps.assessments.models import Assessment, Review
 from apps.consultants.api.serializers import (
     ConsultantServiceSerializer,
@@ -12,10 +16,12 @@ from apps.consultants.api.serializers import (
     PersonalTrainingSerializer,
     ProPackageSerializer,
     ProSubscriptionSerializer,
+    PublicConsultantProfileSerializer,
     QualificationSerializer,
     SubjectSerializer,
     TrainingSerializer,
 )
+
 from apps.consultants.models import (
     ConsultantService,
     Experience,
@@ -180,6 +186,28 @@ class ConsultantServiceViewSet(viewsets.ModelViewSet):
         instance.delete()
         consultant.recalculate_profile_completion()
 
+    @action(detail=False, methods=["post"], url_path="bulk", permission_classes=[IsConsultant])
+    def bulk(self, request):
+        items = request.data if isinstance(request.data, list) else request.data.get("services", [])
+        if not items or not isinstance(items, list):
+            raise ValidationError("A non-empty list of services is required.")
+
+        serializers = []
+        for item in items:
+            serializer = self.get_serializer(data=item)
+            serializer.is_valid(raise_exception=True)
+            serializers.append(serializer)
+
+        created_instances = []
+        with transaction.atomic():
+            for serializer in serializers:
+                instance = serializer.save(consultant=request.user)
+                created_instances.append(instance)
+            request.user.recalculate_profile_completion()
+
+        response_serializer = self.get_serializer(created_instances, many=True)
+        return Response(response_serializer.data, status=status.HTTP_201_CREATED)
+
 
 class ProPackageViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = ProPackage.objects.all()
@@ -303,3 +331,22 @@ class ConsultantDashboardSummaryView(APIView):
             ],
         }
         return Response(data)
+
+
+class PublicConsultantProfileDetailView(APIView):
+    permission_classes = [permissions.AllowAny]
+
+    def get(self, request, pk=None):
+        try:
+            consultant = (
+                User.objects.filter(id=pk, role=UserRole.CONSULTANT, is_active=True)
+                .first()
+            )
+        except (ValueError, TypeError):
+            consultant = None
+
+        if not consultant:
+            return Response({"detail": "Consultant profile not found."}, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = PublicConsultantProfileSerializer(consultant, context={"request": request})
+        return Response(serializer.data)

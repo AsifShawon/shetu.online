@@ -48,6 +48,10 @@ export async function apiDownload(path: string): Promise<{ blob: Blob; filename?
 
 export function getMediaUrl(path?: string | null): string | null {
   if (!path) return null;
+  if (path.includes("backend:8000")) {
+    const apiBaseUrl = getBrowserApiBaseUrl();
+    return path.replace(/https?:\/\/backend:8000/, apiBaseUrl);
+  }
   if (path.startsWith("http://") || path.startsWith("https://")) return path;
   if (path.startsWith("/legacy/")) return path;
   const apiBaseUrl = getBrowserApiBaseUrl();

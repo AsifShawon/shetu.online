@@ -1,6 +1,7 @@
 from decimal import Decimal
 from uuid import uuid4
 
+from django.db import transaction
 from django.db.models import Sum
 from django.utils import timezone
 from rest_framework import permissions, status, viewsets
@@ -9,6 +10,7 @@ from rest_framework.exceptions import PermissionDenied, ValidationError
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from apps.accounts.models import User
 from apps.payments.api.serializers import (
     AssessmentSettlementSerializer,
     ConsultantPayoutMethodSerializer,
@@ -24,18 +26,22 @@ from apps.payments.models import (
     ConsultantPayoutMethod,
     CourseEnrollment,
     CourseOrder,
+    DeliveryStatus,
     Order,
+    PaymentStatus,
     RefundRequest,
     SettlementStatus,
+    TransactionType,
     WalletTransaction,
     WithdrawalRequest,
+    WithdrawalStatus,
 )
-from common.permissions.roles import IsAdmin
-from common.services.payment import SurjoPayService
-from common.permissions.roles import IsConsultant
+from common.permissions.roles import IsAdmin, IsConsultant
+from common.services.payment import PaymentConfigurationError, PaymentVerificationError, SurjoPayService
 
 
 MINIMUM_RESERVE = Decimal("2000.00")
+
 
 
 def get_withdrawable_balance(user) -> Decimal:
@@ -87,14 +93,31 @@ class WithdrawalRequestViewSet(viewsets.ModelViewSet):
         )
 
     def perform_create(self, serializer):
-        balance = get_withdrawable_balance(self.request.user)
+        with transaction.atomic():
+            user = User.objects.select_for_update().get(id=self.request.user.id)
+            amount = serializer.validated_data["amount"]
+            if amount <= Decimal("0"):
+                raise ValidationError({"amount": "Withdrawal amount must be greater than zero."})
 
-        if serializer.validated_data["amount"] > balance:
-            raise PermissionDenied("Withdrawal amount exceeds available balance.")
-        if (balance - serializer.validated_data["amount"]) < MINIMUM_RESERVE:
-            raise PermissionDenied("Withdrawal would breach the minimum reserve of 2000 Taka.")
+            balance = get_withdrawable_balance(user)
+            if amount > balance:
+                raise PermissionDenied("Withdrawal amount exceeds available balance.")
+            if (balance - amount) < MINIMUM_RESERVE:
+                raise PermissionDenied(f"Withdrawal would breach the minimum reserve of {MINIMUM_RESERVE} Taka.")
 
-        serializer.save(consultant=self.request.user)
+            serializer.save(consultant=user, status=WithdrawalStatus.PENDING)
+
+    def update(self, request, *args, **kwargs):
+        raise PermissionDenied("Withdrawal requests cannot be modified once submitted.")
+
+    def partial_update(self, request, *args, **kwargs):
+        raise PermissionDenied("Withdrawal requests cannot be modified once submitted.")
+
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        if instance.status != WithdrawalStatus.PENDING:
+            raise PermissionDenied("Only pending withdrawal requests may be cancelled.")
+        return super().destroy(request, *args, **kwargs)
 
     @action(detail=False, methods=["get"], url_path="balance-summary")
     def balance_summary(self, request):
@@ -126,32 +149,63 @@ class OrderViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return Order.objects.filter(user=self.request.user)
 
+    def update(self, request, *args, **kwargs):
+        raise PermissionDenied("Orders cannot be modified by clients.")
+
+    def partial_update(self, request, *args, **kwargs):
+        raise PermissionDenied("Orders cannot be modified by clients.")
+
+    def destroy(self, request, *args, **kwargs):
+        raise PermissionDenied("Orders cannot be deleted.")
+
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        assessment = serializer.validated_data.get("assessment")
-        subtotal = serializer.validated_data.get("subtotal")
-        total = serializer.validated_data.get("total")
-        if assessment:
-            amount = assessment.assessment_charge or Decimal("0")
-            subtotal = subtotal or amount
-            total = total or amount
-        if not subtotal or not total:
-            raise ValidationError("Subtotal and total are required.")
+        subtotal = serializer.validated_data["subtotal"]
+        total = serializer.validated_data["total"]
+        order_number = f"ORD-{uuid4().hex[:12].upper()}"
+
         order = serializer.save(
             user=request.user,
-            order_number=serializer.validated_data.get("order_number") or f"ASMT-{uuid4().hex[:12].upper()}",
+            order_number=order_number,
             subtotal=subtotal,
             total=total,
+            payment_status=PaymentStatus.UNPAID,
+            delivery_status=DeliveryStatus.PENDING,
         )
-        session = SurjoPayService().create_session(
-            amount=str(order.total),
-            reference=order.order_number,
-            return_url=request.build_absolute_uri("/payments/callback"),
-        )
+
+        surjo_service = SurjoPayService()
+        payment_configured = surjo_service.is_configured()
+
         payload = self.get_serializer(order).data
-        payload.update({"checkout_url": session.checkout_url, "payment_reference": session.reference})
+        payload["payment_configured"] = payment_configured
+
+        if payment_configured:
+            try:
+                session = surjo_service.create_session(
+                    amount=str(order.total),
+                    reference=order.order_number,
+                    return_url=request.build_absolute_uri("/api/payments/callback/"),
+                    customer_name=f"{request.user.first_name} {request.user.last_name}".strip() or "Customer",
+                    customer_email=request.user.email,
+                    customer_phone=request.user.phone or "01700000000",
+                )
+                payload.update({
+                    "checkout_url": session.checkout_url,
+                    "payment_reference": session.reference,
+                })
+            except Exception as exc:
+                payload["checkout_url"] = None
+                payload["payment_error"] = str(exc)
+        else:
+            payload["checkout_url"] = None
+            payload["payment_message"] = (
+                "SurjoPay payment gateway credentials are not configured. "
+                "Online payment is currently unavailable."
+            )
+
         return Response(payload, status=status.HTTP_201_CREATED)
+
 
 
 class CourseOrderViewSet(viewsets.ReadOnlyModelViewSet):
@@ -205,35 +259,111 @@ class AssessmentSettlementViewSet(viewsets.ReadOnlyModelViewSet):
 class PaymentCallbackView(APIView):
     permission_classes = [permissions.AllowAny]
 
+    def get(self, request):
+        return self._process_callback(request)
+
     def post(self, request):
-        reference = request.data.get("reference")
-        status_value = (request.data.get("status") or "success").lower()
-        payment_method = request.data.get("payment_method", "surjopay")
-        if not reference:
-            raise ValidationError("Missing payment reference.")
+        return self._process_callback(request)
 
-        order = Order.objects.filter(order_number=reference).first()
-        if order:
-            order.payment_status = "success" if status_value == "success" else "unpaid"
-            order.payment_method = payment_method
-            order.bank_transaction_id = request.data.get("bank_transaction_id", order.bank_transaction_id)
-            order.invoice_number = request.data.get("invoice_number", order.invoice_number)
-            order.save()
-            return Response(OrderSerializer(order).data)
+    def _process_callback(self, request):
+        data = request.data if request.method == "POST" and request.data else request.query_params
+        provider_ref = (
+            data.get("order_id")
+            or data.get("sp_order_id")
+            or data.get("reference")
+        )
+        if not provider_ref:
+            raise ValidationError({"detail": "Missing provider payment reference (order_id)."})
 
-        course_order = CourseOrder.objects.filter(order_number=reference).first()
-        if course_order:
-            course_order.payment_status = "success" if status_value == "success" else "unpaid"
-            course_order.payment_method = payment_method
-            course_order.bank_transaction_id = request.data.get("bank_transaction_id", course_order.bank_transaction_id)
-            course_order.invoice_number = request.data.get("invoice_number", course_order.invoice_number)
-            course_order.save()
-            if course_order.payment_status == "success":
+        surjo = SurjoPayService()
+        if not surjo.is_configured():
+            raise ValidationError({
+                "detail": "SurjoPay credentials are not configured. Unverified payments are rejected.",
+                "verified": False,
+            })
+
+        try:
+            verification = surjo.verify_payment(provider_ref)
+        except Exception as exc:
+            raise ValidationError({
+                "detail": f"Server-side payment verification failed: {exc}",
+                "verified": False,
+            })
+
+        if not verification.get("is_successful"):
+            customer_ref = verification.get("customer_order_id") or provider_ref
+            order = Order.objects.filter(order_number=customer_ref).first()
+            if order:
+                order.payment_status = PaymentStatus.UNPAID
+                order.save(update_fields=["payment_status", "updated_at"])
+            raise ValidationError({
+                "detail": "Payment was not marked successful by provider verification.",
+                "verification": verification,
+            })
+
+        customer_ref = verification.get("customer_order_id")
+        verified_amount = Decimal(str(verification.get("amount", "0")))
+
+        with transaction.atomic():
+            order = Order.objects.select_for_update().filter(order_number=customer_ref).first()
+            if order:
+                if order.total != verified_amount:
+                    raise ValidationError({
+                        "detail": f"Amount mismatch: expected {order.total}, provider verified {verified_amount}."
+                    })
+
+                # Idempotent processing: if already successful, return early
+                if order.payment_status == PaymentStatus.SUCCESS:
+                    return Response(OrderSerializer(order).data, status=status.HTTP_200_OK)
+
+                order.payment_status = PaymentStatus.SUCCESS
+                order.payment_method = verification.get("method") or "surjopay"
+                order.bank_transaction_id = verification.get("bank_trx_id") or ""
+                order.invoice_number = verification.get("invoice_no") or ""
+                order.save()
+
+                WalletTransaction.objects.create(
+                    user=order.user,
+                    amount=order.total,
+                    transaction_type=TransactionType.CASH_IN,
+                    bank_transaction_id=order.bank_transaction_id,
+                    invoice_number=order.invoice_number,
+                    payment_method=order.payment_method,
+                    gateway_reference=provider_ref,
+                )
+
+                if not order.assessment:
+                    order.user.balance = (order.user.balance or Decimal("0")) + order.total
+                    order.user.save(update_fields=["balance"])
+                else:
+                    if order.assessment.status == "created":
+                        order.assessment.status = "in_progress"
+                        order.assessment.save(update_fields=["status", "updated_at"])
+
+                return Response(OrderSerializer(order).data, status=status.HTTP_200_OK)
+
+            course_order = CourseOrder.objects.select_for_update().filter(order_number=customer_ref).first()
+            if course_order:
+                if course_order.price != verified_amount:
+                    raise ValidationError({
+                        "detail": f"Amount mismatch: expected {course_order.price}, provider verified {verified_amount}."
+                    })
+
+                if course_order.payment_status == PaymentStatus.SUCCESS:
+                    return Response(CourseOrderSerializer(course_order).data, status=status.HTTP_200_OK)
+
+                course_order.payment_status = PaymentStatus.SUCCESS
+                course_order.payment_method = verification.get("method") or "surjopay"
+                course_order.bank_transaction_id = verification.get("bank_trx_id") or ""
+                course_order.invoice_number = verification.get("invoice_no") or ""
+                course_order.save()
+
                 CourseEnrollment.objects.get_or_create(
                     user=course_order.user,
                     training=course_order.training,
                     defaults={"access_enabled": True, "enrollment_type": "paid"},
                 )
-            return Response(CourseOrderSerializer(course_order).data)
+                return Response(CourseOrderSerializer(course_order).data, status=status.HTTP_200_OK)
 
-        raise ValidationError("Unknown payment reference.")
+        raise ValidationError({"detail": f"Unknown payment reference '{customer_ref}'."})
+

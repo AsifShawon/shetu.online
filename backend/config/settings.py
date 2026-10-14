@@ -150,3 +150,10 @@ EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", "true").lower() == "true"
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD", "")
 DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", "Shetu Support <noreply@shetu.online>")
+
+# Payment Gateway (SurjoPay)
+SURJOPAY_BASE_URL = os.getenv("SURJOPAY_BASE_URL", "https://sandbox.shurjopayment.com").rstrip("/")
+SURJOPAY_MERCHANT_USERNAME = os.getenv("SURJOPAY_MERCHANT_USERNAME", "")
+SURJOPAY_MERCHANT_PASSWORD = os.getenv("SURJOPAY_MERCHANT_PASSWORD", "")
+SURJOPAY_MERCHANT_PREFIX = os.getenv("SURJOPAY_MERCHANT_PREFIX", "NOK")
+

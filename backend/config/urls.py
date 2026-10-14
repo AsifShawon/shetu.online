@@ -1,6 +1,8 @@
+from django.conf import settings
 from django.contrib import admin
 from django.http import JsonResponse
-from django.urls import include, path
+from django.urls import include, path, re_path
+from django.views.static import serve
 
 
 def health(_request):
@@ -22,4 +24,6 @@ urlpatterns = [
     path("api/agencies/", include("apps.agencies.api.urls")),
     path("api/marketplace/", include("apps.marketplace.api.urls")),
     path("api/admin/", include("apps.admin_portal.api.urls")),
+    re_path(r"^media/(?P<path>.*)$", serve, {"document_root": settings.MEDIA_ROOT}),
 ]
+

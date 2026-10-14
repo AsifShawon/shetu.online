@@ -1,8 +1,11 @@
 "use client";
 
+import type { Route } from "next";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
+import { useAuth } from "@/components/layout/auth-provider";
+import { ConsultantShareModal } from "@/components/ui/consultant-share-modal";
 import { formatDurationDays } from "@/lib/formatters";
 
 type Review = {
@@ -32,6 +35,7 @@ type CountryGroup = {
 };
 
 type ConsultantProfileShellProps = {
+  consultantId: number;
   name: string;
   image: string;
   isPro: boolean;
@@ -41,6 +45,8 @@ type ConsultantProfileShellProps = {
   experience: string;
   countryGroups: CountryGroup[];
   reviews: Review[];
+  bio?: string;
+  countryName?: string;
 };
 
 function formatPrice(value: string | null | undefined) {
@@ -87,6 +93,7 @@ function getDeliveryLabel(services: CountryService[]) {
 }
 
 export function ConsultantProfileShell({
+  consultantId,
   name,
   image,
   isPro,
@@ -96,18 +103,31 @@ export function ConsultantProfileShell({
   experience,
   countryGroups,
   reviews,
+  bio,
+  countryName,
 }: ConsultantProfileShellProps) {
+  const { user } = useAuth();
+  const [shareOpen, setShareOpen] = useState(false);
   const [activeCountryKey, setActiveCountryKey] = useState(countryGroups[0]?.key ?? "");
   const [activeInfoTab, setActiveInfoTab] = useState<"about" | "reviews">("about");
 
   const activeCountry = useMemo(
-    () => countryGroups.find((group) => group.key === activeCountryKey) ?? countryGroups[0],
+    () => countryGroups.find((group) => group.key === activeCountryKey) ?? countryGroups[0] ?? null,
     [activeCountryKey, countryGroups],
   );
 
-  if (!activeCountry) {
-    return null;
-  }
+  const profileUrl =
+    typeof window !== "undefined"
+      ? window.location.href
+      : `/consultants-profile-details-view/${consultantId}`;
+
+  const getRequestHref = (serviceId: number): Route => {
+    const directPath = `/dashboard/student/direct-request?service_id=${serviceId}`;
+    if (user && user.role === "student") {
+      return directPath as Route;
+    }
+    return `/login?returnTo=${encodeURIComponent(directPath)}` as Route;
+  };
 
   return (
     <div className="legacy-consultant-profile-page__grid">
@@ -123,6 +143,12 @@ export function ConsultantProfileShell({
               <i className="fa-solid fa-circle-check" /> Verified Consultant
             </p>
           ) : null}
+          {countryName ? (
+            <p className="text-xs font-medium text-slate-500 mb-2">
+              <i className="fa-solid fa-location-dot mr-1" />
+              {countryName}
+            </p>
+          ) : null}
           <div className="legacy-consultant-profile-page__stars">
             {renderStars(avgRating)}
           </div>
@@ -134,7 +160,7 @@ export function ConsultantProfileShell({
             <article className="legacy-consultant-profile-page__summary-card is-blue">
               <i className="fa-regular fa-clock" />
               <span>Delivery</span>
-              <strong>{getDeliveryLabel(activeCountry.services)}</strong>
+              <strong>{activeCountry ? getDeliveryLabel(activeCountry.services) : "N/A"}</strong>
             </article>
             <article className="legacy-consultant-profile-page__summary-card is-green">
               <i className="fa-solid fa-award" />
@@ -143,23 +169,34 @@ export function ConsultantProfileShell({
             </article>
           </div>
 
-          <div className="legacy-consultant-profile-page__country-list">
-            {countryGroups.map((country) => (
-              <button
-                key={country.key}
-                type="button"
-                className={`legacy-consultant-profile-page__country-item ${country.key === activeCountry.key ? "is-active" : ""}`}
-                onClick={() => setActiveCountryKey(country.key)}
-              >
-                {country.countryImage ? (
-                  <img src={country.countryImage} alt={country.countryName} />
-                ) : (
-                  <i className="fa-solid fa-globe" />
-                )}
-                <span>{country.countryName}</span>
-              </button>
-            ))}
-          </div>
+          <button
+            type="button"
+            onClick={() => setShareOpen(true)}
+            className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-slate-50"
+          >
+            <i className="fa-solid fa-share-nodes text-slate-500" />
+            <span>Share Profile</span>
+          </button>
+
+          {countryGroups.length > 0 ? (
+            <div className="legacy-consultant-profile-page__country-list mt-4">
+              {countryGroups.map((country) => (
+                <button
+                  key={country.key}
+                  type="button"
+                  className={`legacy-consultant-profile-page__country-item ${country.key === activeCountry?.key ? "is-active" : ""}`}
+                  onClick={() => setActiveCountryKey(country.key)}
+                >
+                  {country.countryImage ? (
+                    <img src={country.countryImage} alt={country.countryName} />
+                  ) : (
+                    <i className="fa-solid fa-globe" />
+                  )}
+                  <span>{country.countryName}</span>
+                </button>
+              ))}
+            </div>
+          ) : null}
         </div>
       </aside>
 
@@ -169,7 +206,10 @@ export function ConsultantProfileShell({
             <h3>
               <i className="fa-solid fa-bell-concierge" /> Services
             </h3>
-            <p>{activeCountry.services.length} service{activeCountry.services.length > 1 ? "s" : ""} available</p>
+            <p>
+              {activeCountry ? activeCountry.services.length : 0} service
+              {(activeCountry ? activeCountry.services.length : 0) === 1 ? "" : "s"} available
+            </p>
           </div>
 
           {countryGroups.length > 1 ? (
@@ -179,8 +219,8 @@ export function ConsultantProfileShell({
                   key={country.key}
                   type="button"
                   role="tab"
-                  aria-selected={country.key === activeCountry.key}
-                  className={`legacy-consultant-profile-page__country-tab ${country.key === activeCountry.key ? "is-active" : ""}`}
+                  aria-selected={country.key === activeCountry?.key}
+                  className={`legacy-consultant-profile-page__country-tab ${country.key === activeCountry?.key ? "is-active" : ""}`}
                   onClick={() => setActiveCountryKey(country.key)}
                 >
                   {country.countryImage ? <img src={country.countryImage} alt={country.countryName} /> : <i className="fa-solid fa-globe" />}
@@ -190,25 +230,35 @@ export function ConsultantProfileShell({
             </div>
           ) : null}
 
-          <div className="legacy-consultant-profile-page__service-grid">
-            {activeCountry.services.map((service) => (
-              <article key={service.id} className="legacy-consultant-profile-page__service-card">
-                <div className="legacy-consultant-profile-page__service-meta">
-                  <div>
-                    <strong>{service.label}</strong>
-                    <span>{service.description || formatDurationDays(service.duration)}</span>
+          {activeCountry && activeCountry.services.length > 0 ? (
+            <div className="legacy-consultant-profile-page__service-grid">
+              {activeCountry.services.map((service) => (
+                <article key={service.id} className="legacy-consultant-profile-page__service-card">
+                  <div className="legacy-consultant-profile-page__service-meta">
+                    <div>
+                      <strong>{service.label}</strong>
+                      <span>{service.description || formatDurationDays(service.duration)}</span>
+                    </div>
+                    <em>{formatPrice(service.price)}</em>
                   </div>
-                  <em>{formatPrice(service.price)}</em>
-                </div>
-                <div className="legacy-consultant-profile-page__service-footer">
-                  <small>{formatDurationDays(service.duration)}</small>
-                  <Link href="/login" className="legacy-request-btn">
-                    Request
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
+                  <div className="legacy-consultant-profile-page__service-footer">
+                    <small>{formatDurationDays(service.duration)}</small>
+                    <Link href={getRequestHref(service.id)} className="legacy-request-btn">
+                      Request
+                    </Link>
+                  </div>
+                </article>
+              ))}
+            </div>
+          ) : (
+            <div className="rounded-2xl border border-dashed border-slate-200 bg-white p-8 text-center shadow-sm">
+              <i className="fa-solid fa-briefcase text-3xl text-slate-300 mb-3 block" />
+              <h4 className="text-base font-semibold text-slate-700">No active services currently published</h4>
+              <p className="mt-1 text-sm text-slate-500">
+                This consultant has not published public consultation services yet. Check back soon.
+              </p>
+            </div>
+          )}
         </section>
 
         <section className="legacy-consultant-profile-tabs">
@@ -225,7 +275,7 @@ export function ConsultantProfileShell({
               className={`legacy-consultant-profile-tabs__tab ${activeInfoTab === "reviews" ? "is-active" : ""}`}
               onClick={() => setActiveInfoTab("reviews")}
             >
-              Reviews
+              Reviews ({reviews.length})
             </button>
           </div>
 
@@ -235,7 +285,7 @@ export function ConsultantProfileShell({
                 <div className="legacy-consultant-profile-tabs__block">
                   <h3>Subjects</h3>
                   <div className="legacy-consultant-profile-tabs__chips is-lilac">
-                    {activeCountry.subjects.length > 0 ? (
+                    {activeCountry && activeCountry.subjects.length > 0 ? (
                       activeCountry.subjects.map((subject) => (
                         <span key={subject} className="legacy-consultant-profile-tabs__chip">
                           {subject}
@@ -250,7 +300,7 @@ export function ConsultantProfileShell({
                 <div className="legacy-consultant-profile-tabs__block">
                   <h3>Study Levels</h3>
                   <div className="legacy-consultant-profile-tabs__chips is-blue">
-                    {activeCountry.studyLevels.length > 0 ? (
+                    {activeCountry && activeCountry.studyLevels.length > 0 ? (
                       activeCountry.studyLevels.map((level) => (
                         <span key={level} className="legacy-consultant-profile-tabs__chip">
                           {level}
@@ -267,7 +317,7 @@ export function ConsultantProfileShell({
                 <div className="legacy-consultant-profile-tabs__block">
                   <h3>Consultant Information</h3>
                   <p className="legacy-consultant-profile-tabs__info">
-                    {activeCountry.consultantInfo || "This consultant has not added a profile summary yet."}
+                    {bio || activeCountry?.consultantInfo || "This consultant has not added a profile summary yet."}
                   </p>
                 </div>
               </div>
@@ -301,6 +351,13 @@ export function ConsultantProfileShell({
           )}
         </section>
       </div>
+
+      <ConsultantShareModal
+        consultantName={name}
+        open={shareOpen}
+        onClose={() => setShareOpen(false)}
+        profileUrl={profileUrl}
+      />
     </div>
   );
 }

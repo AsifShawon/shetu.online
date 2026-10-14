@@ -644,6 +644,10 @@ class ReviewViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         queryset = Review.objects.select_related("student", "consultant", "assessment", "consultant_service")
+        consultant_id = self.request.query_params.get("consultant_id")
+        if consultant_id:
+            return queryset.filter(consultant_id=consultant_id)
+
         user = self.request.user
         if not user.is_authenticated:
             return queryset.none()

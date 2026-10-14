@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 
 import { ConsultantProfileShell } from "@/components/legacy/consultant-profile-shell";
 import { SERVER_API_BASE_URL } from "@/lib/api/server";
-import type { ConsultantService } from "@/lib/api/consultants";
+import type { ConsultantService, PublicConsultantProfile } from "@/lib/api/consultants";
+import { getMediaUrl } from "@/lib/api/client";
 
 interface Review {
   id: number;
@@ -14,13 +15,20 @@ interface Review {
   created_at?: string;
 }
 
-async function fetchJson<T>(path: string): Promise<T> {
+type FetchResult<T> =
+  | { success: true; data: T }
+  | { success: false; status: number; message: string };
+
+async function fetchServerJson<T>(path: string): Promise<FetchResult<T>> {
   try {
-    const res = await fetch(`${SERVER_API_BASE_URL}${path}`, { next: { revalidate: 60 } });
-    if (!res.ok) return [] as unknown as T;
-    return res.json();
-  } catch {
-    return [] as unknown as T;
+    const res = await fetch(`${SERVER_API_BASE_URL}${path}`, { cache: "no-store" });
+    if (!res.ok) {
+      return { success: false, status: res.status, message: `Request failed with status ${res.status}` };
+    }
+    const data = await res.json();
+    return { success: true, data };
+  } catch (error) {
+    return { success: false, status: 503, message: error instanceof Error ? error.message : "Service Unavailable" };
   }
 }
 
@@ -28,14 +36,11 @@ function uniqueStrings(items: string[]) {
   return [...new Set(items.filter(Boolean))];
 }
 
-function formatExperience(value: string | null | undefined) {
-  if (!value) return "0 yrs";
-  const parsed = new Date(value);
-  if (Number.isNaN(parsed.getTime())) return "0 yrs";
-  const diffMs = Date.now() - parsed.getTime();
-  const years = Math.max(0, diffMs / (365.25 * 24 * 60 * 60 * 1000));
-  if (years < 1) return "<1 yr";
-  return `${Math.floor(years)} yrs`;
+function formatExperience(yearsCount?: number) {
+  if (typeof yearsCount === "number" && yearsCount > 0) {
+    return `${yearsCount} yrs`;
+  }
+  return "<1 yr";
 }
 
 function getServiceLabel(service: ConsultantService) {
@@ -50,31 +55,74 @@ export default async function ConsultantProfilePage({
   const { id } = await params;
   const consultantId = Number(id);
 
-  const [allServices, reviews] = await Promise.all([
-    fetchJson<ConsultantService[]>("/api/consultants/services/?scope=public"),
-    fetchJson<Review[]>("/api/assessments/reviews/"),
-  ]);
-
-  const services = allServices.filter(
-    (service) => service.consultant_id === consultantId && service.status === "active",
-  );
-
-  if (services.length === 0) {
+  if (!Number.isFinite(consultantId) || consultantId <= 0) {
     notFound();
   }
 
-  const first = services[0];
-  const name = first.consultant_name ?? "Shetu Consultant";
-  const image = first.consultant_image ?? "/legacy/no-profile-img.png";
-  const isVerified = first.consultant_verification_status === "accepted";
-  const isPro = first.consultant_subscription_status === "pro";
-  const consultantReviews = reviews.filter((review) => review.consultant_id === consultantId);
-  const avgRating =
-    consultantReviews.length > 0
-      ? consultantReviews.reduce((sum, review) => sum + review.review_rating, 0) / consultantReviews.length
-      : first.consultant_rating ?? 0;
+  // 1. Fetch consultant identity independently
+  const consultantResult = await fetchServerJson<PublicConsultantProfile>(
+    `/api/consultants/public/${consultantId}/`
+  );
 
-  const experience = formatExperience(first.consultant_joined_at ?? null);
+  if (!consultantResult.success) {
+    if (consultantResult.status === 404) {
+      notFound();
+    }
+    // Return explicit error state for server outages instead of pretending the consultant doesn't exist
+    return (
+      <section className="legacy-consultant-profile-page">
+        <div className="legacy-shell-container py-12 text-center">
+          <div className="mx-auto max-w-md rounded-2xl border border-red-200 bg-red-50 p-6 text-red-800 shadow-sm">
+            <h2 className="text-lg font-bold">Failed to load consultant profile</h2>
+            <p className="mt-2 text-sm text-red-600">
+              We encountered a temporary server error while fetching this profile. Please try refreshing the page.
+            </p>
+            <div className="mt-4 flex justify-center gap-3">
+              <Link
+                href={`/consultants-profile-details-view/${consultantId}`}
+                className="rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700"
+              >
+                Retry
+              </Link>
+              <Link
+                href="/consultants"
+                className="rounded-lg border border-red-300 px-4 py-2 text-sm font-semibold text-red-700 hover:bg-red-100"
+              >
+                Back to Consultants
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  const profile = consultantResult.data;
+
+  // 2. Fetch only relevant services and reviews for this consultant
+  const [servicesResult, reviewsResult] = await Promise.all([
+    fetchServerJson<ConsultantService[]>(
+      `/api/consultants/services/?scope=public&consultant_id=${consultantId}`
+    ),
+    fetchServerJson<Review[]>(`/api/assessments/reviews/?consultant_id=${consultantId}`),
+  ]);
+
+  const services = servicesResult.success
+    ? servicesResult.data.filter((s) => s.status === "active")
+    : [];
+  const reviews = reviewsResult.success ? reviewsResult.data : [];
+
+  const name = profile.name || `${profile.first_name} ${profile.last_name}`.trim() || "Consultant";
+  const image = getMediaUrl(profile.image_url || profile.image) ?? "/legacy/no-profile-img.png";
+  const isVerified = profile.verification_status === "accepted";
+  const isPro = profile.role === "consultant" && (profile as any).subscription_status === "pro";
+  const avgRating =
+    reviews.length > 0
+      ? reviews.reduce((sum, r) => sum + r.review_rating, 0) / reviews.length
+      : profile.average_rating ?? 0;
+  const reviewCount = reviews.length > 0 ? reviews.length : profile.total_reviews ?? 0;
+  const experience = formatExperience(profile.experience_count);
+
   const groupedByCountry = Array.from(
     services.reduce((map, service) => {
       const key = `${service.country_id}:${service.country_name ?? "Country"}`;
@@ -83,7 +131,7 @@ export default async function ConsultantProfilePage({
       }
       map.get(key)?.push(service);
       return map;
-    }, new Map<string, ConsultantService[]>()),
+    }, new Map<string, ConsultantService[]>())
   );
 
   const countryGroups = groupedByCountry.map(([key, countryServices]) => {
@@ -91,7 +139,7 @@ export default async function ConsultantProfilePage({
     return {
       key,
       countryName: country.country_name ?? "Country",
-      countryImage: country.country_image ?? null,
+      countryImage: getMediaUrl(country.country_image) ?? null,
       services: countryServices.map((service) => ({
         id: service.id,
         label: getServiceLabel(service),
@@ -104,10 +152,11 @@ export default async function ConsultantProfilePage({
         countryServices.flatMap((service) => [
           ...(service.subject_names ?? []),
           ...(service.subject_names_input ?? []),
-        ]),
+        ])
       ),
       consultantInfo:
         uniqueStrings(countryServices.map((service) => service.description)).join(" ") ||
+        profile.experience_summary ||
         "This consultant has not added a detailed profile summary yet.",
     };
   });
@@ -127,15 +176,18 @@ export default async function ConsultantProfilePage({
         </div>
 
         <ConsultantProfileShell
+          consultantId={consultantId}
           name={name}
           image={image}
           isPro={isPro}
           isVerified={isVerified}
           avgRating={avgRating}
-          reviewCount={consultantReviews.length}
+          reviewCount={reviewCount}
           experience={experience}
           countryGroups={countryGroups}
-          reviews={consultantReviews}
+          reviews={reviews}
+          bio={profile.experience_summary}
+          countryName={profile.country?.name}
         />
       </div>
     </section>

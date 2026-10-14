@@ -1,7 +1,9 @@
 from rest_framework import serializers
 
+from apps.accounts.models import User
 from apps.catalog.models import Country, ServiceCategory, StudyLevel
 from apps.consultants.models import (
+    ConsultantProfile,
     ConsultantService,
     Experience,
     PersonalTraining,
@@ -11,6 +13,7 @@ from apps.consultants.models import (
     Subject,
     Training,
 )
+
 
 
 class EmptyDateStringMixin:
@@ -266,3 +269,105 @@ class ProSubscriptionSerializer(serializers.ModelSerializer):
             "created_at",
             "updated_at",
         ]
+
+
+class PublicConsultantProfileSerializer(serializers.ModelSerializer):
+    name = serializers.SerializerMethodField()
+    full_name = serializers.SerializerMethodField()
+    image = serializers.SerializerMethodField()
+    image_url = serializers.SerializerMethodField()
+    joined_at = serializers.DateTimeField(source="date_joined", read_only=True)
+    avg_rating = serializers.SerializerMethodField()
+    review_count = serializers.SerializerMethodField()
+    years_of_experience = serializers.SerializerMethodField()
+    assessment_time_value = serializers.SerializerMethodField()
+    assessment_time_unit = serializers.SerializerMethodField()
+    assessment_types = serializers.SerializerMethodField()
+    qualifications = QualificationSerializer(many=True, read_only=True)
+    experiences = ExperienceSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = User
+        fields = [
+            "id",
+            "first_name",
+            "last_name",
+            "name",
+            "full_name",
+            "email",
+            "phone",
+            "gender",
+            "image",
+            "image_url",
+            "present_address",
+            "present_city",
+            "present_country",
+            "occupation",
+            "skill_languages",
+            "experience_summary",
+            "verification_status",
+            "subscription_status",
+            "profile_completion",
+            "joined_at",
+            "avg_rating",
+            "review_count",
+            "years_of_experience",
+            "assessment_time_value",
+            "assessment_time_unit",
+            "assessment_types",
+            "qualifications",
+            "experiences",
+        ]
+
+    def _build_url(self, field_file):
+        if not field_file:
+            return None
+        request = self.context.get("request")
+        if request:
+            host = request.get_host()
+            if "backend" in host:
+                return field_file.url
+            return request.build_absolute_uri(field_file.url)
+        return field_file.url
+
+    def get_name(self, obj):
+        return f"{obj.first_name} {obj.last_name}".strip() or obj.email
+
+    def get_full_name(self, obj):
+        return self.get_name(obj)
+
+    def get_image(self, obj):
+        return self._build_url(obj.image)
+
+    def get_image_url(self, obj):
+        return self._build_url(obj.image)
+
+    def get_avg_rating(self, obj):
+        value = getattr(obj, "calculated_avg_rating", None)
+        return round(float(value), 1) if value is not None else 0.0
+
+    def get_review_count(self, obj):
+        return getattr(obj, "calculated_review_count", 0) or 0
+
+    def _consultant_profile(self, obj):
+        try:
+            return obj.consultant_profile
+        except Exception:
+            return None
+
+    def get_years_of_experience(self, obj):
+        profile = self._consultant_profile(obj)
+        return profile.years_of_experience if profile else None
+
+    def get_assessment_time_value(self, obj):
+        profile = self._consultant_profile(obj)
+        return profile.assessment_time_value if profile else None
+
+    def get_assessment_time_unit(self, obj):
+        profile = self._consultant_profile(obj)
+        return profile.assessment_time_unit if profile else ""
+
+    def get_assessment_types(self, obj):
+        profile = self._consultant_profile(obj)
+        return profile.assessment_types if profile else []
+

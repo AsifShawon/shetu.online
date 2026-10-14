@@ -15,7 +15,7 @@ import {
   type ServiceCategory,
   type StudyLevel,
 } from "@/lib/api/catalog";
-import { getApiErrorMessage } from "@/lib/api/client";
+import { getApiErrorMessage, getMediaUrl } from "@/lib/api/client";
 import { getConsultantServices, type ConsultantService } from "@/lib/api/consultants";
 import { getStudentChoices, type StudentChoice } from "@/lib/api/students";
 import { getCountrySuggestionList } from "@/lib/shared-suggestion-catalog";
@@ -301,7 +301,7 @@ export function StudentConsultantsOfEduWise() {
     [studyLevels],
   );
   const countryOptions = useMemo(
-    () => getCountrySuggestionList(countries.map((item) => item.name)),
+    () => getCountrySuggestionList(countries.map((item) => item.name), { authoritativeOnly: true }),
     [countries],
   );
   const serviceOptions = useMemo(
@@ -587,7 +587,7 @@ export function StudentConsultantsOfEduWise() {
                     <div className="legacy-consultant-card-v2__identity">
                       <div className="legacy-consultant-card-v2__avatar-wrap">
                         <img
-                          src={consultant.consultantImage ?? "/legacy/no-profile-img.png"}
+                          src={getMediaUrl(consultant.consultantImage) ?? "/legacy/no-profile-img.png"}
                           alt={consultant.consultantName}
                           className="legacy-consultant-card-v2__avatar"
                         />
@@ -620,7 +620,7 @@ export function StudentConsultantsOfEduWise() {
 
                     <div className="legacy-consultant-card-v2__flag" aria-label={consultant.countryName}>
                       <img
-                        src={consultant.countryImage ?? getCountryFlagUrl(consultant.countryName)}
+                        src={getMediaUrl(consultant.countryImage) ?? getCountryFlagUrl(consultant.countryName)}
                         alt={consultant.countryName}
                       />
                       <span>{consultant.countryName}</span>

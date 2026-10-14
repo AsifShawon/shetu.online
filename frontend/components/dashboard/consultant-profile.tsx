@@ -18,9 +18,10 @@ import {
 
 import { useAuth } from "@/components/layout/auth-provider";
 import { useToast } from "@/components/layout/toast-provider";
+import { ConfirmDialog } from "@/components/ui/confirm-dialog";
 import { cn } from "@/lib/utils";
 import { updateCurrentUser } from "@/lib/api/auth";
-import { getApiErrorMessage } from "@/lib/api/client";
+import { getApiErrorMessage, getMediaUrl } from "@/lib/api/client";
 import { getCities, getUniversities, type City, type University } from "@/lib/api/catalog";
 import {
   createExperience,
@@ -317,7 +318,7 @@ export function ConsultantProfile() {
     return () => URL.revokeObjectURL(nextUrl);
   }, [profileImageFile]);
 
-  const displayImage = profileImagePreview || user?.image_url || "/legacy/no-profile-img.png";
+  const displayImage = profileImagePreview || getMediaUrl(user?.image_url) || "/legacy/no-profile-img.png";
   const displayName = personalForm.full_name || user?.full_name || user?.email || "Consultant";
   const completion = user?.profile_completion ?? 0;
   const profileDisabled = !editMode;
@@ -528,48 +529,45 @@ export function ConsultantProfile() {
     }
   };
 
-  const handleDeleteQualification = async (id: number) => {
-    if (!window.confirm("Delete this education record?")) {
-      return;
-    }
+  const [deleteTarget, setDeleteTarget] = useState<{
+    type: "qualification" | "experience";
+    id: number;
+  } | null>(null);
 
-    try {
-      await deleteQualification(id);
-      await refresh();
-      await load();
-      showToast({
-        variant: "success",
-        title: "Education deleted",
-        message: "The selected education record was removed.",
-      });
-    } catch (error) {
-      showToast({
-        variant: "error",
-        title: "Delete failed",
-        message: getApiErrorMessage(error, "Unable to delete this education record."),
-      });
-    }
+  const handleDeleteQualification = (id: number) => {
+    setDeleteTarget({ type: "qualification", id });
   };
 
-  const handleDeleteExperience = async (id: number) => {
-    if (!window.confirm("Delete this experience record?")) {
-      return;
-    }
+  const handleDeleteExperience = (id: number) => {
+    setDeleteTarget({ type: "experience", id });
+  };
 
+  const handleConfirmDelete = async () => {
+    if (!deleteTarget) return;
     try {
-      await deleteExperience(id);
+      if (deleteTarget.type === "qualification") {
+        await deleteQualification(deleteTarget.id);
+        showToast({
+          variant: "success",
+          title: "Education deleted",
+          message: "The selected education record was removed.",
+        });
+      } else {
+        await deleteExperience(deleteTarget.id);
+        showToast({
+          variant: "success",
+          title: "Experience deleted",
+          message: "The selected experience record was removed.",
+        });
+      }
+      setDeleteTarget(null);
       await refresh();
       await load();
-      showToast({
-        variant: "success",
-        title: "Experience deleted",
-        message: "The selected experience record was removed.",
-      });
     } catch (error) {
       showToast({
         variant: "error",
         title: "Delete failed",
-        message: getApiErrorMessage(error, "Unable to delete this experience record."),
+        message: getApiErrorMessage(error, "Unable to delete this record."),
       });
     }
   };
@@ -1126,6 +1124,20 @@ export function ConsultantProfile() {
           )}
         </div>
       </ProfileEditShell>
+
+      <ConfirmDialog
+        open={deleteTarget !== null}
+        title={deleteTarget?.type === "qualification" ? "Delete Education Record" : "Delete Experience Record"}
+        message={
+          deleteTarget?.type === "qualification"
+            ? "Are you sure you want to remove this education record? This cannot be undone."
+            : "Are you sure you want to remove this experience record? This cannot be undone."
+        }
+        confirmText="Delete"
+        variant="danger"
+        onConfirm={handleConfirmDelete}
+        onClose={() => setDeleteTarget(null)}
+      />
     </section>
   );
 }

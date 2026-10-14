@@ -336,11 +336,23 @@ export function mergeSuggestionSources(...sources: Array<Array<string | null | u
   return buildSuggestionList(sources.flat());
 }
 
-export function getCountrySuggestionList(values: Array<string | null | undefined> = []) {
+export function getCountrySuggestionList(
+  values: Array<string | null | undefined> = [],
+  options?: { authoritativeOnly?: boolean }
+) {
+  if (options?.authoritativeOnly) {
+    return buildSuggestionList(values);
+  }
   return mergeSuggestionSources(values, [...LEGACY_COUNTRY_SUGGESTIONS]);
 }
 
-export function getServiceSuggestionList(values: Array<string | null | undefined> = []) {
+export function getServiceSuggestionList(
+  values: Array<string | null | undefined> = [],
+  options?: { authoritativeOnly?: boolean }
+) {
+  if (options?.authoritativeOnly) {
+    return buildSuggestionList(values);
+  }
   return mergeSuggestionSources(values, [...LEGACY_SERVICE_SUGGESTIONS]);
 }
 
@@ -348,6 +360,12 @@ export function getSubjectSuggestionList(values: Array<string | null | undefined
   return mergeSuggestionSources(values, [...LEGACY_SUBJECT_SUGGESTIONS]);
 }
 
-export function getStudyLevelSuggestionList(values: Array<string | null | undefined> = []) {
+export function getStudyLevelSuggestionList(
+  values: Array<string | null | undefined> = [],
+  options?: { authoritativeOnly?: boolean }
+) {
+  if (options?.authoritativeOnly) {
+    return buildSuggestionList(values);
+  }
   return mergeSuggestionSources(values, [...LEGACY_STUDY_LEVEL_SUGGESTIONS]);
 }

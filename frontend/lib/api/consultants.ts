@@ -53,6 +53,33 @@ export interface ConsultantDashboardSummary {
   recent_posts: ConsultantOpportunityPost[];
 }
 
+export interface PublicConsultantProfile {
+  id: number;
+  first_name: string;
+  last_name: string;
+  name: string;
+  email: string;
+  role: string;
+  image: string | null;
+  image_url: string | null;
+  country: {
+    id: number;
+    name: string;
+    slug: string;
+  } | null;
+  present_city?: string;
+  present_country?: string;
+  experience_summary?: string;
+  assessment_price?: string | null;
+  assessment_duration?: string;
+  verification_status: string;
+  profile_completion: number;
+  average_rating: number;
+  total_reviews: number;
+  experience_count: number;
+  qualification_count: number;
+}
+
 export interface Qualification {
   id: number;
   user_id: number;
@@ -194,10 +221,21 @@ export async function getConsultantDashboardSummary(): Promise<ConsultantDashboa
   return apiRequest<ConsultantDashboardSummary>("/api/consultants/dashboard-summary/");
 }
 
+export async function getPublicConsultantProfile(id: number): Promise<PublicConsultantProfile> {
+  return apiRequest<PublicConsultantProfile>(`/api/consultants/public/${id}/`);
+}
+
 export async function createConsultantService(data: Partial<ConsultantService>): Promise<ConsultantService> {
   return apiRequest<ConsultantService>("/api/consultants/services/", {
     method: "POST",
     body: JSON.stringify(data)
+  });
+}
+
+export async function createConsultantServicesBulk(services: Partial<ConsultantService>[]): Promise<ConsultantService[]> {
+  return apiRequest<ConsultantService[]>("/api/consultants/services/bulk/", {
+    method: "POST",
+    body: JSON.stringify(services)
   });
 }
 

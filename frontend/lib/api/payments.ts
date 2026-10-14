@@ -191,3 +191,15 @@ export async function createRefundRequest(data: Partial<RefundRequest>): Promise
 export async function getAssessmentSettlements(): Promise<AssessmentSettlement[]> {
   return apiRequest<AssessmentSettlement[]>("/api/payments/settlements/");
 }
+
+export interface TopupResponse extends Order {
+  payment_configured?: boolean;
+  message?: string;
+}
+
+export async function createTopupOrder(amount: number | string): Promise<TopupResponse> {
+  return apiRequest<TopupResponse>("/api/payments/orders/", {
+    method: "POST",
+    body: JSON.stringify({ topup_amount: String(amount) }),
+  });
+}

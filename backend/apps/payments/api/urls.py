@@ -25,5 +25,6 @@ router.register("settlements", AssessmentSettlementViewSet, basename="settlement
 
 urlpatterns = [
     path("callback/", PaymentCallbackView.as_view(), name="payment-callback"),
+    path("orders/payment-callback/", PaymentCallbackView.as_view(), name="order-payment-callback"),
     *router.urls,
 ]

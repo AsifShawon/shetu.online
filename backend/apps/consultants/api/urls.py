@@ -8,6 +8,7 @@ from apps.consultants.api.views import (
     PersonalTrainingViewSet,
     ProPackageViewSet,
     ProSubscriptionViewSet,
+    PublicConsultantProfileDetailView,
     QualificationViewSet,
     SubjectViewSet,
     TrainingViewSet,
@@ -24,6 +25,7 @@ router.register("pro-packages", ProPackageViewSet, basename="pro-packages")
 router.register("pro-subscriptions", ProSubscriptionViewSet, basename="pro-subscriptions")
 
 urlpatterns = [
+    path("public/<int:pk>/", PublicConsultantProfileDetailView.as_view(), name="public-consultant-detail"),
     path("dashboard-summary/", ConsultantDashboardSummaryView.as_view(), name="consultant-dashboard-summary"),
     *router.urls,
 ]
