@@ -40,18 +40,19 @@ function formatCurrency(value: string | number, locale: string) {
 
 function formatDate(value: string | undefined, locale: string) {
   if (!value) {
-    return new Intl.DateTimeFormat(locale, {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-    }).format(new Date("2026-02-08"));
+    return "—";
+  }
+
+  const parsed = new Date(value);
+  if (isNaN(parsed.getTime())) {
+    return "—";
   }
 
   return new Intl.DateTimeFormat(locale, {
     day: "2-digit",
     month: "short",
     year: "numeric",
-  }).format(new Date(value));
+  }).format(parsed);
 }
 
 function buildWalletSnapshot(transactions: WalletTransaction[]): WalletSnapshot {
@@ -156,22 +157,23 @@ export function ConsultantOverview() {
   const locale = isBangla ? "bn-BD" : "en-BD";
   const copy = isBangla
     ? {
-      loading: "?????????? ?????????? ??? ?????...",
-      profileProgress: "????? ?????????? ???????",
+      loading: "লোড হচ্ছে...",
+      profileProgress: "আপনার প্রোফাইল অগ্রগতি",
       updateProfile: t("consultant_update_profile"),
-      totalIncome: "??? ??",
-      totalDeposited: "??? ???",
-      totalWithdrawal: "??? ???????",
+      totalIncome: "মোট আয়",
+      totalDeposited: "মোট জমা",
+      totalWithdrawal: "মোট উত্তোলন",
       balance: t("dash_balance_label"),
-      addMoney: "???? ??? ????",
-      recentActivity: "?????????? ?????????",
-      viewAll: "?? ?????",
-      names: "???",
-      date: "?????",
-      activity: "????????????",
-      transaction: "??????",
-      status: "?????????",
-      totalReview: "??? ?????",
+      manageBalance: "ব্যালেন্স দেখুন",
+      recentActivity: "সাম্প্রতিক কার্যক্রম",
+      noRecentActivity: "এখনো কোনো সাম্প্রতিক কার্যক্রম নেই।",
+      viewAll: "সব দেখুন",
+      names: "নাম",
+      date: "তারিখ",
+      activity: "কার্যক্রম",
+      transaction: "লেনদেন",
+      status: "অবস্থা",
+      totalReview: "মোট রিভিউ",
     }
     : {
       loading: "Loading consultant workspace...",
@@ -181,8 +183,9 @@ export function ConsultantOverview() {
       totalDeposited: "Total Deposited",
       totalWithdrawal: "Total Withdrawal",
       balance: "Balance",
-      addMoney: "Add Money",
+      manageBalance: "Manage Balance",
       recentActivity: "Recent Activity",
+      noRecentActivity: "No recent activity yet.",
       viewAll: "View all",
       names: "Names",
       date: "Date",
@@ -194,25 +197,25 @@ export function ConsultantOverview() {
 
   const statusLabels: Record<string, string> = isBangla
     ? {
-      Completed: "???????",
-      Running: "?????",
-      Incomplete: "?????????",
-      Pending: "?????????",
-      pending: "?????????",
-      accepted: "?????",
-      approved: "????????",
-      rejected: "????????????",
-      revision_requested: "?????? ????? ?????",
+      Completed: "সম্পন্ন",
+      Running: "চলমান",
+      Incomplete: "অসম্পূর্ণ",
+      Pending: "অপেক্ষমাণ",
+      pending: "অপেক্ষমাণ",
+      accepted: "গৃহীত",
+      approved: "অনুমোদিত",
+      rejected: "বাতিল",
+      revision_requested: "সংশোধন অনুরোধ",
     }
     : {};
 
   const noteLabels: Record<string, string> = isBangla
     ? {
-      Deposit: "???",
-      Withdraw: "???????",
-      "Service request": "???? ?????????",
-      "shortly Reason": "???? ??????",
-      Pending: "?????????",
+      Deposit: "জমা",
+      Withdraw: "উত্তোলন",
+      "Service request": "সেবা অনুরোধ",
+      "shortly Reason": "সংক্ষিপ্ত কারণ",
+      Pending: "অপেক্ষমাণ",
     }
     : {};
 
@@ -226,54 +229,7 @@ export function ConsultantOverview() {
   const activities = useMemo(() => {
     const requestRows = (summary?.recent_requests ?? []).slice(0, 2).map(requestToActivity);
     const walletRows = transactions.slice(0, 4).map(walletToActivity);
-    const rows = [...requestRows, ...walletRows].slice(0, 4);
-
-    if (rows.length > 0) {
-      return rows;
-    }
-
-    return [
-      {
-        id: "empty-1",
-        name: "Arlene McCoy",
-        detail: "Service name",
-        date: "08 Feb, 2026",
-        amount: "600",
-        amountTone: "positive" as const,
-        note: "Deposit",
-        status: "Completed",
-      },
-      {
-        id: "empty-2",
-        name: "Marvin McKinney",
-        detail: "Service name",
-        date: "08 Feb, 2026",
-        amount: "600",
-        amountTone: "negative" as const,
-        note: "Withdraw",
-        status: "Running",
-      },
-      {
-        id: "empty-3",
-        name: "Ralph Edwards",
-        detail: "Service name",
-        date: "08 Feb, 2026",
-        amount: "0",
-        amountTone: "neutral" as const,
-        note: "shortly Reason",
-        status: "Incomplete",
-      },
-      {
-        id: "empty-4",
-        name: "Jane Cooper",
-        detail: "Service name",
-        date: "08 Feb, 2026",
-        amount: "0",
-        amountTone: "negative" as const,
-        note: "Pending",
-        status: "Pending",
-      },
-    ];
+    return [...requestRows, ...walletRows].slice(0, 4);
   }, [summary?.recent_requests, transactions]);
 
   if (loading || !summary) {
@@ -344,8 +300,8 @@ export function ConsultantOverview() {
           <span>{copy.balance}</span>
           <strong>{formatCurrency(wallet.balance, locale)}</strong>
           <Link href={"/dashboard/consultant/balance" as Route}>
-            <i className="fa-solid fa-plus" aria-hidden="true" />
-            {copy.addMoney}
+            <i className="fa-solid fa-wallet" aria-hidden="true" />
+            {copy.manageBalance}
           </Link>
         </div>
       </section>
@@ -365,23 +321,27 @@ export function ConsultantOverview() {
             <span>{copy.status}</span>
           </div>
 
-          {activities.map((item) => (
-            <div className="sd-consultant-activity-row" key={item.id}>
-              <div className="sd-consultant-activity-user">
-                <img src="/legacy/no-profile-img.png" alt="" aria-hidden="true" />
-                <span>
-                  <strong>{item.name}</strong>
-                  <small>{item.detail}</small>
+          {activities.length === 0 ? (
+            <p className="sd-empty-inline">{copy.noRecentActivity}</p>
+          ) : (
+            activities.map((item) => (
+              <div className="sd-consultant-activity-row" key={item.id}>
+                <div className="sd-consultant-activity-user">
+                  <img src="/legacy/no-profile-img.png" alt="" aria-hidden="true" />
+                  <span>
+                    <strong>{item.name}</strong>
+                    <small>{item.detail}</small>
+                  </span>
+                </div>
+                <span>{formatDate(item.date, locale)}</span>
+                <span>{noteLabels[item.note] ?? item.note}</span>
+                <span className={`sd-consultant-activity-amount is-${item.amountTone}`}>
+                  <strong>{formatActivityAmount(item.amount, item.amountTone, locale)}</strong>
                 </span>
+                <strong>{statusLabels[item.status] ?? item.status}</strong>
               </div>
-              <span>{formatDate(item.date, locale)}</span>
-              <span>{noteLabels[item.note] ?? item.note}</span>
-              <span className={`sd-consultant-activity-amount is-${item.amountTone}`}>
-                <strong>{formatActivityAmount(item.amount, item.amountTone, locale)}</strong>
-              </span>
-              <strong>{statusLabels[item.status] ?? item.status}</strong>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </section>
     </div>
